@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../sass/extra.scss";
 export default function Extra() {
   const [checked, setChecked] = useState(true);
   const checkChanged = () => {

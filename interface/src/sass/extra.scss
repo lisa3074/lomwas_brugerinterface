@@ -1,0 +1,30 @@
+/* --------------------
+# EXTRA SWITCH
+----------------------- */
+
+.extra {
+  border: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.custom-control.custom-switch {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+fieldset.extra {
+  position: relative;
+  transform: translateY(-40px) translateX(15px);
+}
+
+.extra .label {
+  position: absolute;
+  right: 2.5rem;
+  top: -0.15rem;
+  text-align: right;
+}
+
+.extra .custom-control {
+  right: 0.9rem;
+}

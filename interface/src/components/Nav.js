@@ -1,4 +1,5 @@
 import React from "react";
+import "../sass/nav.scss";
 
 export default function Nav() {
   //Basic svg/icon settings converted to an object
@@ -14,7 +15,7 @@ export default function Nav() {
     strokeLinejoin: "round",
   };
   return (
-    <nav>
+    <nav id="Nav">
       <div className="top-buttons">
         <button type="button" className="btn btn-primary undone">
           <svg

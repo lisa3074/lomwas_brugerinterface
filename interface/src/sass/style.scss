@@ -1,15 +1,8 @@
 /* --------------------
-# ROOT
+# ROOT / VARIABLES
 ----------------------- */
+
 :root {
-  //Button colors
-  --primary: #0168fa;
-  --secondary: #fff;
-  --tertiary: #10b759;
-
-  //border colors
-  --gray: rgba(27, 46, 75, 0.7);
-
   //padding on sections -mobile
   --m-padding: 0.9375rem;
 }
@@ -30,15 +23,18 @@ body {
   height: 100vh;
 }
 
-p {
-  font-size: 0.875rem;
-}
-
-.btn {
-  text-transform: uppercase;
+.hide {
+  display: none;
 }
 
 #root {
+  p {
+    font-size: 0.875rem;
+  }
+
+  .btn {
+    text-transform: uppercase;
+  }
   #App {
     background-color: #f5f6fa;
     padding: var(--m-padding);
@@ -47,7 +43,6 @@ p {
   }
 
   .Task {
-    background-color: rgb(255, 239, 255);
     padding: var(--m-padding);
   }
 
@@ -76,83 +71,5 @@ p {
     padding-right: 15px;
     font-size: 11px;
     line-height: 1.773;
-  }
-}
-
-/* --------------------
-# NAVIGATION
------------------------ */
-#App {
-  nav select {
-    display: block;
-    width: 100%;
-    padding: 0.46875rem 0.625rem;
-    margin-bottom: 1rem;
-  }
-  .top-buttons {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    width: 100%;
-    margin: 0 auto;
-    padding-bottom: 1rem;
-  }
-
-  .back,
-  .undone {
-    margin-left: 0.5rem;
-  }
-
-  .btn-container {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .start {
-    margin-right: 0.5rem;
-  }
-
-  .nav-container p span {
-    color: #dc3545;
-  }
-
-  .extra {
-    border: none;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .extra label {
-    text-align: right;
-  }
-
-  .message {
-    height: auto;
-  }
-
-  .back {
-    background-color: #fff;
-  }
-
-  .custom-control.custom-switch {
-    display: flex;
-    flex-direction: row-reverse;
-  }
-
-  fieldset.extra {
-    position: relative;
-  }
-
-  .extra .label {
-    position: absolute;
-    right: 2.5rem;
-    top: -0.15rem;
-  }
-
-  .extra .custom-control {
-    right: 0.9rem;
-  }
-
-  .custom-switch .custom-control-label:empty::after {
   }
 }

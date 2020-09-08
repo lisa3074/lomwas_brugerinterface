@@ -1,0 +1,19 @@
+.level {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding-left: 0.05rem;
+}
+
+.level-no {
+  font-size: 2rem;
+  font-weight: 500;
+  display: block;
+  line-height: 1.7rem;
+}
+
+.level-wrapper {
+  margin-top: 2.5rem;
+}
+.level-wrapper:nth-child(3) {
+  margin-top: 0rem;
+}

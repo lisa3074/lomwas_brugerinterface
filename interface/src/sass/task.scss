@@ -1,0 +1,46 @@
+[data-state="hidden"] {
+  .accordion-body {
+    /* animation: close ease-out 1 forwards; */
+    animation-name: close;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-duration: 0.3s;
+    overflow: hidden;
+  }
+
+  @keyframes close {
+    0% {
+      max-height: 100px;
+    }
+    100% {
+      max-height: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
+[data-state="shown"] {
+  .accordion-body {
+    height: 100%;
+    max-height: 100%;
+    animation-name: open;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-duration: 2s;
+    overflow: hidden;
+  }
+
+  @keyframes open {
+    0% {
+      max-height: 0;
+    }
+
+    100% {
+      height: auto;
+      max-height: 500px;
+      padding-bottom: 1rem;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+/* --------------------
+# NAVIGATION
+----------------------- */
+#Nav {
+  select {
+    display: block;
+    width: 100%;
+    padding: 0.46875rem 0.625rem;
+    margin-bottom: 1rem;
+  }
+  .top-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+  }
+
+  .back,
+  .undone {
+    margin-left: 0.5rem;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .start {
+    margin-right: 0.5rem;
+  }
+
+  .nav-container p span {
+    color: #dc3545;
+  }
+
+  .back {
+    background-color: #fff;
+  }
+  .message {
+    height: auto;
+  }
+}
