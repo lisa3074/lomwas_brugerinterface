@@ -1,3 +1,5 @@
+import setBuildingsConst from "../App";
+
 const api = "https://frontend-22d4.restdb.io/rest/lomwas";
 const apiKey = "5e9581a6436377171a0c234f";
 //https://app.acbacl.com/api/tasks?id=345 -> seperat bygning / id == value i json
@@ -5,8 +7,8 @@ const apiKey = "5e9581a6436377171a0c234f";
 const url = "https://app.acbacl.com/api/tasks";
 const url21 = "https://app.acbacl.com/api/tasks?id=21";
 
-export async function getBuilding(setBuildings) {
-  console.log("getTasks");
+export async function getBuilding(setBuildings, setBuildingsId) {
+  console.log("getBuildings");
   let response = await fetch(url, {
     method: "get",
     headers: {
@@ -14,14 +16,15 @@ export async function getBuilding(setBuildings) {
     },
   });
   let data = await response.json();
-  /*   let id;
-  console.log(data.buildings);
-  setBuildings(data.buildings);
-  data.buildings.map((building) => {
-    id = building.value;
+
+  const firstBuilding = [];
+  data.buildings.filter((building) => {
+    const value = building.value;
+    firstBuilding.push(value);
   });
-  console.log(id);
-    getTasks(id, setTasks);  */
+
+  setBuildings(data.buildings);
+  setBuildingsId(firstBuilding[0]);
 }
 
 export async function getTasks(id, setTasks) {

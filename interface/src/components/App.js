@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 import Main from "./Main";
-import { FetchData, getTasks } from "./modules/fetchData.js";
+import { FetchData } from "./modules/fetchData.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 /* import $ from "jquery";
 import Popper from "popper.js"; */
@@ -15,37 +15,60 @@ import "../../node_modules/moment/locale/da.js";
 import "../../node_modules/moment/locale/en-gb.js";
 
 export default function App() {
+  //library to keep track of date (both Danish and English)
   const moment = require("moment");
   const momentEn = require("../../node_modules/moment/min/moment-with-locales.min.js");
   const week = moment().isoWeek();
 
+  //States
   const [tasks, setTasks] = useState([]);
   const [buildings, setBuildings] = useState([]);
+  const [buildingId, setBuildingId] = useState();
+  const [UpdatedBuildingId, setUpdatedBuildingId] = useState([buildingId]);
 
+  //function that is being passed to Main.js and called whenever a new building has been selected
+  function updateBuildingId(e) {
+    console.log("updateBuildingId");
+    console.log(e);
+    setUpdatedBuildingId(e);
+  }
+
+  //fetching buildings for the navigation, and a buildingId for the tasks
   useEffect(() => {
-    FetchData.getBuilding(setBuildings);
+    FetchData.getBuilding(setBuildings, setBuildingId);
   }, []);
+
   console.log("dette er tasks: " + tasks);
-  const buildingId = 4;
 
+  //fetches the tasks of the first building (that per say is selected in the navigation).
+  //Every time buildingId is updated, tasks are fetched
   useEffect(() => {
+    console.log("fetchTasks");
     FetchData.getTasks(buildingId, setTasks);
-  }, []);
+  }, [buildingId]);
+
+  //fetches the tasks of the building selected in the nav Every time updateBuildingId is updated,
+  //tasks are fetched (every time a new ubuilding is selected in the nav)
+  useEffect(() => {
+    console.log("fetchTasks");
+    FetchData.getTasks(UpdatedBuildingId, setTasks);
+  }, [UpdatedBuildingId]);
 
   console.log(buildings);
   console.log(tasks);
 
-  if (tasks.length === 0) {
-    return (
-      <div className="load_container">
-        <h1 className="loading">LOADING</h1>
-      </div>
-    );
+  //Preloader
+  if (tasks) {
+    if (tasks.length === 0) {
+      return (
+        <div className="load_container">
+          <h1 className="loading">LOADING</h1>
+        </div>
+      );
+    }
   }
 
   // TODO
-  //læse tasks ind fra API i kloner
-  //if (etage == 00) => vis .etage0 p-tag og klon emner derind osv.
 
   // Skjule/vise media
   // Afslutte/fortryde afslutte task
@@ -82,15 +105,10 @@ export default function App() {
           ${week}`}
         )
       </p>
-      <Nav buildings={buildings}></Nav>
+      <Nav buildings={buildings} updateBuildingId={updateBuildingId}></Nav>
 
-      <Main tasks={tasks}></Main>
+      {/* if tasks is true, put the Main component in, otherwise don't put anything in */}
+      {tasks ? <Main tasks={tasks}></Main> : ""}
     </section>
   );
 }
-
-//
-//
-//HUSK AT SÆTTE "PARTIALS" OP UNDER STYLE, SÅ DET ER NEMMERE AT FINDE RUNDT I!!!!
-//
-//

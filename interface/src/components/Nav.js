@@ -15,11 +15,18 @@ export default function Nav(props) {
     strokeLinejoin: "round",
   };
 
+  //Empty array for the buildings that are being fetched from the API
   const buildingArray = [];
+
+  //mapping through the buildings, to create an array of each building with different properties
+  //inside an option tag
   props.buildings.map((building) => {
     const buildingOption = (
-      <option key={building.value}>{building.text}</option>
+      <option key={building.value} value={building.value}>
+        {building.text}
+      </option>
     );
+    //push the buildings/tags into array
     buildingArray.push(buildingOption);
     console.log(buildingArray);
   });
@@ -29,6 +36,7 @@ export default function Nav(props) {
       <div className="top-buttons">
         <button type="button" className="btn btn-primary undone">
           <svg
+            //object with svg settings
             {...svgSettings}
             className="feather feather-alert-circle wd-10 mg-r-5">
             <circle cx="12" cy="12" r="10"></circle>
@@ -48,7 +56,16 @@ export default function Nav(props) {
         <p>
           Bygninger<span> *</span>
         </p>
-        <select className="custom-select">{buildingArray}</select>
+        <select
+          className="custom-select"
+          //Calling the passed down function from App.js and sending along the options target value, whis is equal
+          //to the oprions key, which is equal to the buildings id
+          onChange={(e) => {
+            /*  updateBuilding(e.target.value); */
+            props.updateBuildingId(e.target.value);
+          }}>
+          {buildingArray}
+        </select>
         <div className="btn-container">
           <div className="btn-wrapper">
             <button className="btn btn-success start">
