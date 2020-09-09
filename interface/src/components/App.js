@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 import Main from "./Main";
-import { FetchData } from "./modules/fetchData.js";
+import { FetchData, getTasks } from "./modules/fetchData.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-import $ from "jquery";
-import Popper from "popper.js";
+/* import $ from "jquery";
+import Popper from "popper.js"; */
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../lib/@fortawesome/fontawesome-free/css/all.min.css";
 import "../lib/ionicons/css/ionicons.min.css";
@@ -14,23 +14,26 @@ import "../sass/app.scss";
 import "../../node_modules/moment/locale/da.js";
 import "../../node_modules/moment/locale/en-gb.js";
 
-/* import "../../src/lib/jquery/jquery.min.js";
-import "../lib/bootstrap/js/bootstrap.bundle.min.js";
-import "../lib/feather-icons/feather.min.js";
-import "../assets/js/dashforge.js"; */
-
 export default function App() {
   const moment = require("moment");
   const momentEn = require("../../node_modules/moment/min/moment-with-locales.min.js");
   const week = moment().isoWeek();
-  const jquery = $;
-  const popper = Popper;
+
   const [tasks, setTasks] = useState([]);
+  const [buildings, setBuildings] = useState([]);
 
   useEffect(() => {
-    FetchData.getTasks(setTasks);
+    FetchData.getBuilding(setBuildings);
   }, []);
   console.log("dette er tasks: " + tasks);
+  const buildingId = 4;
+
+  useEffect(() => {
+    FetchData.getTasks(buildingId, setTasks);
+  }, []);
+
+  console.log(buildings);
+  console.log(tasks);
 
   if (tasks.length === 0) {
     return (
@@ -79,7 +82,7 @@ export default function App() {
           ${week}`}
         )
       </p>
-      <Nav></Nav>
+      <Nav buildings={buildings}></Nav>
 
       <Main tasks={tasks}></Main>
     </section>

@@ -1,3 +1,12 @@
+#root {
+  .Task {
+    padding-top: var(--m-padding);
+  }
+  .Task h6 {
+    text-transform: uppercase;
+  }
+}
+
 [data-state="hidden"] {
   .accordion-body {
     /* animation: close ease-out 1 forwards; */

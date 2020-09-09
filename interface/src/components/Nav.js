@@ -1,7 +1,7 @@
 import React from "react";
 import "../sass/nav.scss";
 
-export default function Nav() {
+export default function Nav(props) {
   //Basic svg/icon settings converted to an object
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
@@ -14,6 +14,16 @@ export default function Nav() {
     strokeLinecap: "round",
     strokeLinejoin: "round",
   };
+
+  const buildingArray = [];
+  props.buildings.map((building) => {
+    const buildingOption = (
+      <option key={building.value}>{building.text}</option>
+    );
+    buildingArray.push(buildingOption);
+    console.log(buildingArray);
+  });
+
   return (
     <nav id="Nav">
       <div className="top-buttons">
@@ -38,11 +48,7 @@ export default function Nav() {
         <p>
           Bygninger<span> *</span>
         </p>
-        <select className="custom-select">
-          <option defaultValue>Option 1</option>
-          <option value="1">Option 2</option>
-          <option value="2">Option 3</option>
-        </select>
+        <select className="custom-select">{buildingArray}</select>
         <div className="btn-container">
           <div className="btn-wrapper">
             <button className="btn btn-success start">
