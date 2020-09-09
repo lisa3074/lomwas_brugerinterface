@@ -7,24 +7,27 @@ import "../sass/main.scss";
 
 //props: tasks
 export default function Main({ tasks }) {
-  //PROBLEM MED AT HIDE ETAGE ! (HVOR DER INGEN TASKS ER)
-  const visible = {
-    display: tasks.length <= 0 ? "none" : "block",
-  };
-  console.log(tasks.length);
-  console.log(visible);
-  const found = Object.entries(tasks);
-  console.log(found);
+  console.log("number of tasks in all: " + tasks.length);
+  const floors = [];
+
+  //for each floor that exists in the tasks up to 50, take that floor and filter all tasks of that floor and display it
+  for (let i = 0; i < 50; i++) {
+    if (tasks.filter((t) => t.floor === i).length) {
+      const floor = (
+        <Etage
+          tasks={tasks.filter((t) => t.floor === i)}
+          floor={"0" + i}
+          key={i}></Etage>
+      );
+      floors.push(floor);
+      console.log(floors);
+    }
+  }
+
   return (
     <main className="Main section-bg">
       <Extra></Extra>
-      <Etage tasks={tasks.filter((t) => t.floor === 0)} floor={"00"}></Etage>
-      <Etage
-        tasks={tasks.filter((t) => t.floor === 1)}
-        floor={"01"}
-        style={visible}></Etage>
-      <Etage tasks={tasks.filter((t) => t.floor === 2)} floor={"02"}></Etage>
-      <Etage tasks={tasks.filter((t) => t.floor === 3)} floor={"03"}></Etage>
+      <ul>{floors}</ul>
       <Popup></Popup>
     </main>
   );
