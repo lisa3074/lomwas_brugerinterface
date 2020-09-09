@@ -8,7 +8,11 @@ export function closeExpand(id) {
     if (!accordion.classList.contains(id)) {
       accordion.dataset.state = "hidden";
     } else if (accordion.classList.contains(id)) {
-      accordion.dataset.state = "shown";
+      if (accordion.dataset.state === "shown") {
+        accordion.dataset.state = "hidden";
+      } else {
+        accordion.dataset.state = "shown";
+      }
     }
   });
 }

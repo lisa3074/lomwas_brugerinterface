@@ -7,7 +7,7 @@
   }
 }
 
-[data-state="hidden"] {
+#accordion2 [data-state="hidden"] {
   .accordion-body {
     /* animation: close ease-out 1 forwards; */
     animation-name: close;
@@ -27,9 +27,15 @@
       padding-bottom: 0;
     }
   }
+  .ui-accordion-header .ui-accordion-header-icon::before {
+    content: "\f273";
+    font-family: "Ionicons";
+    font-size: 14px;
+    display: inline-block;
+  }
 }
 
-[data-state="shown"] {
+#accordion2 [data-state="shown"] {
   .accordion-body {
     height: 100%;
     max-height: 100%;
@@ -51,5 +57,17 @@
       max-height: 500px;
       padding-bottom: 1rem;
     }
+  }
+  .ui-accordion-header.ui-state-active .ui-accordion-header-icon::before {
+    content: "\f368";
+  }
+}
+
+.accordion-title {
+  display: flex;
+  justify-content: space-between;
+  p {
+    margin: 0;
+    white-space: pre-wrap;
   }
 }

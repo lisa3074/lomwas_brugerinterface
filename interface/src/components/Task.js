@@ -5,27 +5,20 @@ import "../sass/task.scss";
 /* import $ from "jquery"; */
 import { closeExpand } from "./modules/closeExpand.js";
 export default function Task(props) {
-  /*   function clickTask() {
-    if (this.dataset.visible === "shown") {
-      this.dataset.visible = "hidden";
-    } else {
-      this.dataset.visible = "shown";
-    }
-  } */
-
   return (
     <article className="Task">
       <div
         id="accordion2"
         className={
-          "accordion ui-accordion ui-widget ui-helper-reset " + props.id
+          "accordion ui-accordion ui-widget ui-helper-reset a" + props.id
         }
         role="tablist"
-        onClick={() => closeExpand(props.id)}>
-        <div className={"accordion-wrapper " + props.id} data-state="hidden">
+        onClick={() => closeExpand("a" + props.id)}>
+        <div className={"accordion-wrapper a" + props.id} data-state="hidden">
           <h6 className="accordion-title ui-accordion-header ui-corner-top ui-state-default ui-accordion-icons ui-state-hover ui-accordion-header-active ui-state-active">
-            <span className="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>
-            {props.local.name}
+            <span className="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+            <p>LOKALE: {props.scheduleID}</p>
+            <p> {props.local.name}</p>
           </h6>
           <div className="accordion-body ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active">
             {props.description}
