@@ -15,4 +15,8 @@ export function closeExpand(id) {
       }
     }
   });
+
+  /*   document.querySelectorAll(".custom-control .custom-switch").forEach((field)=>{
+    field.addEventListener
+  }) */
 }

@@ -2,72 +2,132 @@
   .Task {
     padding-top: var(--m-padding);
   }
-  .Task h6 {
+  .Task .accordion-title {
     text-transform: uppercase;
+    background-color: #f4f5f8;
+    border-bottom: 1px solid #d5d5d5;
+  }
+  .ui-accordion-content {
+    padding-top: 15px;
+    padding-right: 27px;
+    border-bottom: none;
   }
 }
 
 #accordion2 [data-state="hidden"] {
+  animation: gray-border 1s ease-in-out 1 forwards;
+  border-radius: 0.2rem;
+
+  @keyframes gray-border {
+    0% {
+      border: 1px solid #0168fa;
+    }
+    100% {
+      border: 1px solid rgba(72, 94, 144, 0.16);
+    }
+  }
+
   .accordion-body {
-    /* animation: close ease-out 1 forwards; */
-    animation-name: close;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-    animation-duration: 0.3s;
+    animation: close 0.3s ease-out 1 forwards;
     overflow: hidden;
+  }
+
+  .accordion-body::-webkit-scrollbar {
+    width: 0;
   }
 
   @keyframes close {
     0% {
       max-height: 100px;
+      overflow: auto;
     }
     100% {
-      max-height: 0;
+      max-height: 75px;
       padding-bottom: 0;
+      overflow: hidden;
     }
   }
   .ui-accordion-header .ui-accordion-header-icon::before {
     content: "\f273";
     font-family: "Ionicons";
-    font-size: 14px;
+    font-size: 20px;
     display: inline-block;
+    transform: translateY(-4px) translateX(-3px);
+  }
+
+  .accordion-body > p {
+    overflow: hidden;
+    font-family: Helvetica, sans-serif;
+    width: 100%;
+    /* padding-right: 5px; */
+    animation: fade 0.3s ease-in-out 1 forwards;
+  }
+
+  @keyframes fade {
+    0% {
+      max-height: 200px;
+    }
+    100% {
+      max-height: 40px;
+    }
+  }
+  .Media,
+  .Switch {
+    display: none;
   }
 }
 
 #accordion2 [data-state="shown"] {
+  animation: blue-border 1s ease-in-out 1 forwards;
+  border-radius: 0.2rem;
+
+  @keyframes blue-border {
+    0% {
+      border: 1px solid rgba(72, 94, 144, 0.16);
+    }
+    100% {
+      border: 1px solid #0168fa;
+    }
+  }
+
   .accordion-body {
     height: 100%;
     max-height: 100%;
-    animation-name: open;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-    animation-duration: 2s;
+    animation: open 2s ease-in-out 1 forwards;
     overflow: hidden;
+    padding-bottom: 0rem;
+    p {
+      margin-bottom: 0;
+    }
   }
 
   @keyframes open {
     0% {
-      max-height: 0;
+      max-height: 65px;
     }
 
     100% {
       height: auto;
-      max-height: 500px;
-      padding-bottom: 1rem;
+      max-height: 5000px;
+      padding-bottom: 0rem;
     }
   }
   .ui-accordion-header.ui-state-active .ui-accordion-header-icon::before {
     content: "\f368";
+    font-size: 20px;
+    transform: translateY(-4px) translateX(-3px);
   }
 }
 
-.accordion-title {
+#root .accordion-title {
   display: flex;
   justify-content: space-between;
   p {
     margin: 0;
     white-space: pre-wrap;
+    color: #001737;
+  }
+  p:nth-child(3) {
+    padding-right: 0.8rem;
   }
 }

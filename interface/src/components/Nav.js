@@ -28,7 +28,8 @@ export default function Nav(props) {
     );
     //push the buildings/tags into array
     buildingArray.push(buildingOption);
-    console.log(buildingArray);
+    //return to avoid warning in console
+    return buildingOption;
   });
 
   return (

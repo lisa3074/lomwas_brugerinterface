@@ -38,8 +38,6 @@ export default function App() {
     FetchData.getBuilding(setBuildings, setBuildingId);
   }, []);
 
-  console.log("dette er tasks: " + tasks);
-
   //fetches the tasks of the first building (that per say is selected in the navigation).
   //Every time buildingId is updated, tasks are fetched
   useEffect(() => {
@@ -53,9 +51,6 @@ export default function App() {
     console.log("fetchTasks");
     FetchData.getTasks(UpdatedBuildingId, setTasks);
   }, [UpdatedBuildingId]);
-
-  console.log(buildings);
-  console.log(tasks);
 
   //Preloader
   if (tasks) {

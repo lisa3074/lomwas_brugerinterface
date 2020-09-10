@@ -6,7 +6,12 @@ export default function Etage(props) {
   console.log(props.floor);
 
   const mappedTasks = props.tasks.map((task) => (
-    <Task key={task.id} {...task} floor={props.floor} />
+    <Task
+      key={task.id}
+      {...task}
+      floor={props.floor}
+      getMedia={props.getMedia}
+    />
   ));
 
   return (
