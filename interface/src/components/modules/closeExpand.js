@@ -7,6 +7,11 @@ export function closeExpand(id) {
     console.log(count);
     if (!accordion.classList.contains(id)) {
       accordion.dataset.state = "hidden";
+      document.querySelectorAll(".Popover").forEach((popover) => {
+        popover.classList.add("hide");
+        popover.classList.remove("video");
+        popover.classList.remove("docs");
+      });
     } else if (accordion.classList.contains(id)) {
       if (accordion.dataset.state === "shown") {
         accordion.dataset.state = "hidden";
@@ -15,8 +20,4 @@ export function closeExpand(id) {
       }
     }
   });
-
-  /*   document.querySelectorAll(".custom-control .custom-switch").forEach((field)=>{
-    field.addEventListener
-  }) */
 }

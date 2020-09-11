@@ -1,13 +1,15 @@
 export function popup() {
-  document
-    .querySelectorAll("#accordion2 > div > div.Media > svg")
-    .forEach((task) => {
-      task.addEventListener("click", function () {
-        document.querySelector(".Popup").classList.remove("hide");
-      });
-    });
+  document.querySelector(".Popup").classList.remove("hide");
 }
 
 export function close() {
   document.querySelector(".Popup").classList.add("hide");
+  document.querySelectorAll(".Popover").forEach((popover) => {
+    popover.classList.add("hide");
+    popover.classList.remove("video");
+    popover.classList.remove("docs");
+  });
+  document.querySelectorAll(".Images, .Documents, .Videos").forEach((e) => {
+    e.classList.remove("hide");
+  });
 }

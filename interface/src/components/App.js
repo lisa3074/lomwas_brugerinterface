@@ -3,8 +3,6 @@ import Nav from "./Nav";
 import Main from "./Main";
 import { FetchData } from "./modules/fetchData.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-/* import $ from "jquery";
-import Popper from "popper.js"; */
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../lib/@fortawesome/fontawesome-free/css/all.min.css";
 import "../lib/ionicons/css/ionicons.min.css";
@@ -64,8 +62,6 @@ export default function App() {
   }
 
   // TODO
-
-  // Skjule/vise media
   // Afslutte/fortryde afslutte task
 
   // starte muligheden for at afslutte tasks (switch skal være disabled, når start ikke er aktiv)

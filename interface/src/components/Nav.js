@@ -62,7 +62,6 @@ export default function Nav(props) {
           //Calling the passed down function from App.js and sending along the options target value, whis is equal
           //to the oprions key, which is equal to the buildings id
           onChange={(e) => {
-            /*  updateBuilding(e.target.value); */
             props.updateBuildingId(e.target.value);
           }}>
           {buildingArray}

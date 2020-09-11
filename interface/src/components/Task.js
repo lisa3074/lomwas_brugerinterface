@@ -2,15 +2,10 @@ import React from "react";
 import Switch from "./Switch";
 import Media from "./Media";
 import "../sass/task.scss";
-/* import $ from "jquery"; */
 import { closeExpand } from "./modules/closeExpand.js";
 export default function Task(props) {
   return (
-    <article
-      className="Task"
-      onClick={() => {
-        props.getMedia(props.id);
-      }}>
+    <article className="Task">
       <div
         id="accordion2"
         className={
@@ -31,7 +26,12 @@ export default function Task(props) {
             <p>{props.description}</p>
           </div>
           <Switch id={props.id}></Switch>
-          <Media></Media>
+          <Media
+            id={props.id}
+            task={props.task}
+            tasks={props.tasks}
+            getMedia={props.getMedia}
+            getMediaElement={props.getMediaElement}></Media>
         </div>
       </div>
     </article>

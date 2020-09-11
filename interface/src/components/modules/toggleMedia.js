@@ -1,7 +1,7 @@
 export function toggleMedia() {
   const eSwitch = document.querySelector("#customSwitch1");
   console.log("toggleMedia");
-  if (eSwitch.checked === 1) {
+  if (eSwitch.checked === true) {
     console.log("checked");
     document.querySelectorAll(".Media").forEach((section) => {
       section.classList = "Media fade-media-in";

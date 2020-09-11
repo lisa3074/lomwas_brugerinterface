@@ -2,15 +2,6 @@ import React from "react";
 import "../sass/extra.scss";
 import { toggleMedia } from "./modules/toggleMedia.js";
 export default function Extra() {
-  /*   const [checked, setChecked] = useState(true);
-  const checkChanged = () => {
-    if (checked === true) {
-      setChecked(false);
-    } else {
-      setChecked(true);
-    }
-  }; */
-
   function media() {
     console.log("media");
     toggleMedia();

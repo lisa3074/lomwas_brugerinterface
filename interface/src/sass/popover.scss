@@ -1,0 +1,62 @@
+/* -----------------
+# GENEREL
+------------------- */
+
+#root .Popover {
+  position: absolute;
+  max-width: 90%;
+  bottom: 0.8rem;
+  z-index: 2;
+  left: 5%;
+
+  .inner-triangle {
+    background-color: transparent;
+    border-top: 15px solid white;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+  }
+  .outer-triangle {
+    background-color: transparent;
+    border-top: 16px solid rgba(28, 39, 60, 0.05);
+    border-bottom: 15px solid transparent;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    height: 34px;
+    width: 34px;
+    position: absolute;
+  }
+
+  /* -----------------
+# VIDEO
+------------------- */
+
+  .video-triangle-inner {
+    transition: 0.5s;
+    transform: translateX(5px) translateY(15px);
+  }
+  .video-triangle-outer {
+    transition: 0.5s;
+    transform: translateX(3px) translateY(16px);
+  }
+
+  /* -----------------
+# DOCUMENTS
+------------------- */
+
+  .docs-triangle-inner {
+    transition: 0.5s;
+    transform: translateX(220px) translateY(15px);
+  }
+  .docs-triangle-outer {
+    transition: 0.5s;
+    transform: translateX(218px) translateY(16px);
+  }
+
+  ul li {
+    list-style: none;
+  }
+}

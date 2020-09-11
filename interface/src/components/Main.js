@@ -4,7 +4,6 @@ import Extra from "./Extra";
 import Etage from "./Etage";
 import "../sass/main.scss";
 
-//props: tasks
 export default function Main(props) {
   console.log("number of tasks in all: " + props.tasks.length);
   const floors = [];
@@ -17,26 +16,37 @@ export default function Main(props) {
           tasks={props.tasks.filter((t) => t.local.floor === i)}
           floor={"0" + i}
           key={i}
-          getMedia={getMedia}></Etage>
+          getMedia={getMedia}
+          getMediaElement={getMediaElement}></Etage>
       );
-
       floors.push(floor);
     }
   }
 
-  const [taskId, setId] = useState([]);
+  const [newDrawer, setNewDrawer] = useState([]);
+  const [elementKey, setElementKey] = useState([]);
 
-  function getMedia(taskId) {
-    console.log("getMedia: " + taskId);
-    setId(taskId);
-    console.log("getMedia: " + taskId);
+  function getMedia(drawer) {
+    setNewDrawer(drawer);
   }
+
+  function getMediaElement(elementKey) {
+    console.log("getMediaElement");
+    setElementKey(elementKey);
+  }
+  console.log(elementKey);
+
+  console.log(newDrawer);
 
   return (
     <main className="Main section-bg">
       <Extra></Extra>
       <ul>{floors}</ul>
-      <Popup floors={floors} tasks={props.tasks} taskId={taskId}></Popup>
+      <Popup
+        floors={floors}
+        tasks={props.tasks}
+        newDrawer={newDrawer}
+        elementKey={elementKey}></Popup>
     </main>
   );
 }

@@ -24,4 +24,11 @@
   .custom-control {
     right: 0.9rem;
   }
+
+  .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+    transform: translate(0.86rem, -50%);
+  }
+  .custom-switch .custom-control-input ~ .custom-control-label::after {
+    transform: translate(0.16rem, -50%);
+  }
 }
