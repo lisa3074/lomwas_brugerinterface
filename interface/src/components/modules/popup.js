@@ -9,7 +9,4 @@ export function close() {
     popover.classList.remove("video");
     popover.classList.remove("docs");
   });
-  document.querySelectorAll(".Images, .Documents, .Videos").forEach((e) => {
-    e.classList.remove("hide");
-  });
 }

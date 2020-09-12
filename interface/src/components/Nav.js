@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../sass/nav.scss";
 
 export default function Nav(props) {
@@ -15,11 +15,16 @@ export default function Nav(props) {
     strokeLinejoin: "round",
   };
 
+  //const [buildings, setBuildings] = useState([]);
+
   //Empty array for the buildings that are being fetched from the API
   const buildingArray = [];
 
   //mapping through the buildings, to create an array of each building with different properties inside an option tag
-  props.buildings.map((building) => {
+
+  //TODO: SET const buildingArray as a constant of the mapping and then delete the return (and the upper empty array) also render the
+  //usestate actve and the setBuildings function (see Media.js)=>
+  /* const buildingArray =  */ props.buildings.map((building) => {
     const buildingOption = (
       <option key={building.value} value={building.value}>
         {building.text}
@@ -30,6 +35,8 @@ export default function Nav(props) {
     //return to avoid warning in console
     return buildingOption;
   });
+
+  //setBuildings(buildingArray);
 
   return (
     <nav id="Nav">
@@ -58,8 +65,8 @@ export default function Nav(props) {
         </p>
         <select
           className="custom-select"
-          //Calling the passed down function from App.js and sending along the options target value, whis is equal
-          //to the oprions key, which is equal to the buildings id
+          //Calling the passed down function from App.js and sending along the options target value, which is equal
+          //to the options key, which is equal to the buildings id
           onChange={(e) => {
             props.updateBuildingId(e.target.value);
           }}>

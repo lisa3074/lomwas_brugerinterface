@@ -8,6 +8,10 @@ export default function Main(props) {
   console.log("number of tasks in all: " + props.tasks.length);
   const floors = [];
 
+  //States
+  const [newDrawer, setNewDrawer] = useState([]);
+  const [elementKey, setElementKey] = useState([]);
+
   //for each floor that exists in the tasks up to 50, take that floor and filter all tasks of that floor and display it
   //.filter loops through the array and creates a new one with only the entries that pass the test (in this case ===i)
   for (let i = 0; i < 50; i++) {
@@ -24,20 +28,18 @@ export default function Main(props) {
     }
   }
 
-  const [newDrawer, setNewDrawer] = useState([]);
-  const [elementKey, setElementKey] = useState([]);
-
+  //Sets newDrawer array (is called from Media.js and drawer is the array of images)
   function getMedia(drawer) {
+    console.log("getMedia");
     setNewDrawer(drawer);
   }
 
+  //Sets elementKey array (is called from Popover.js and elementKey is the property data-index of the element clicked (whitch
+  //corresponds with the same elements index in the array)
   function getMediaElement(elementKey) {
     console.log("getMediaElement");
     setElementKey(elementKey);
   }
-  console.log(elementKey);
-
-  console.log(newDrawer);
 
   return (
     <main className="Main section-bg">

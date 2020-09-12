@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../sass/media.scss";
-
 import { popup } from "./modules/popup.js";
 import { popoverVideo } from "./modules/popover.js";
 import { popoverDoc } from "./modules/popover.js";
@@ -18,15 +17,13 @@ export default function Media(props) {
     strokeLinecap: "round",
     strokeLinejoin: "round",
   };
-  const { getMedia } = props;
 
+  //State
   const [drawer, setDrawer] = useState([]);
-
-  console.log(getMedia);
 
   useEffect(() => {
     console.log("fetchDrawer");
-    getMedia(drawer);
+    props.getMedia(drawer);
   }, [drawer]);
 
   function popoverVideoContent() {
@@ -40,6 +37,7 @@ export default function Media(props) {
           popup();
           props.getMediaElement(e.target.getAttribute("data-index"));
         }}>
+        {/* test input */}
         {item.local.type.name} AND {props.id}
       </li>
     ));
@@ -48,6 +46,7 @@ export default function Media(props) {
 
   function popoverDocsContent() {
     let count = -1;
+    //.map loops through the array and creates a new array from that array with modifications (in this case adds a html tag and properties for each entry)
     const items2 = props.tasks.map((item) => (
       <li
         key={item.id}
@@ -57,6 +56,7 @@ export default function Media(props) {
           popup();
           props.getMediaElement(e.target.getAttribute("data-index"));
         }}>
+        {/* test input */}
         {item.local.name} AND {props.id}
       </li>
     ));
