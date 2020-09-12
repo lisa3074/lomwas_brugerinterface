@@ -18,8 +18,7 @@ export default function Nav(props) {
   //Empty array for the buildings that are being fetched from the API
   const buildingArray = [];
 
-  //mapping through the buildings, to create an array of each building with different properties
-  //inside an option tag
+  //mapping through the buildings, to create an array of each building with different properties inside an option tag
   props.buildings.map((building) => {
     const buildingOption = (
       <option key={building.value} value={building.value}>

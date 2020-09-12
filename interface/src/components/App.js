@@ -3,17 +3,18 @@ import Nav from "./Nav";
 import Main from "./Main";
 import { FetchData } from "./modules/fetchData.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
-import "../lib/@fortawesome/fontawesome-free/css/all.min.css";
-import "../lib/ionicons/css/ionicons.min.css";
 import "../assets/css/dashforge.css";
 import "../sass/style.scss";
 import "../sass/app.scss";
+//test if they are used =>
 import "../../node_modules/moment/locale/da.js";
 import "../../node_modules/moment/locale/en-gb.js";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "../lib/@fortawesome/fontawesome-free/css/all.min.css";
+import "../lib/ionicons/css/ionicons.min.css";
 
 export default function App() {
-  //library to keep track of date (both Danish and English)
+  //library to keep track of date (both Danish and English) (does not work)
   const moment = require("moment");
   const momentEn = require("../../node_modules/moment/min/moment-with-locales.min.js");
   const week = moment().isoWeek();

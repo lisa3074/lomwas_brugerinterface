@@ -31,6 +31,7 @@ export default function Media(props) {
 
   function popoverVideoContent() {
     let count = -1;
+    //.map loops through the array and creates a new array from that array with modifications (in this case adds a html tag and properties for each entry)
     const items1 = props.tasks.map((item) => (
       <li
         key={item.id}
@@ -64,6 +65,7 @@ export default function Media(props) {
 
   function popupImageContent() {
     console.log("popupImageContent");
+    //.map loops through the array and creates a new array from that array with modifications (in this case adds a html tag and properties for each entry)
     const items3 = props.tasks.map((item) => (
       <li key={item.id} onClick={props.getMediaElement("")}>
         {item.id} AND {props.id}

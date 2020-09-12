@@ -9,6 +9,7 @@ export default function Main(props) {
   const floors = [];
 
   //for each floor that exists in the tasks up to 50, take that floor and filter all tasks of that floor and display it
+  //.filter loops through the array and creates a new one with only the entries that pass the test (in this case ===i)
   for (let i = 0; i < 50; i++) {
     if (props.tasks.filter((t) => t.local.floor === i).length) {
       const floor = (
