@@ -13,6 +13,7 @@ export default function Switch(props) {
       setIsChecked(true);
     }
   }; */
+
   return (
     <fieldset className={"Switch a" + props.id}>
       <div className={"custom-control custom-switch"}>
@@ -20,6 +21,7 @@ export default function Switch(props) {
           type="checkbox"
           className={"switch custom-control-input a" + props.id}
           id={"customSwitch1" + props.id}
+          disabled
           /*  onClick={isCheckChanged} */
         />
         <label

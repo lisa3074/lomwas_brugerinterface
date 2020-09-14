@@ -14,11 +14,6 @@ import "../lib/@fortawesome/fontawesome-free/css/all.min.css";
 import "../lib/ionicons/css/ionicons.min.css";
 
 export default function App() {
-  //library to keep track of date (both Danish and English) (does not work)
-  const moment = require("moment");
-  const momentEn = require("../../node_modules/moment/min/moment-with-locales.min.js");
-  const week = moment().isoWeek();
-
   //States
   const [tasks, setTasks] = useState([]);
   const [buildings, setBuildings] = useState([]);
@@ -75,28 +70,8 @@ export default function App() {
     <section id="App">
       {tasks === "" && <h3>Loading</h3>}
       <h1>Opgaver</h1>
-      <p className="dk-date text-muted">
-        {`${moment()
-          .format("dddd")
-          .substring(0, 1)
-          .toUpperCase()}${moment()
-          .format("dddd, Do MMMM YYYY")
-          .substring(1)
-          .toLowerCase()} (Uge 
-          ${week}`}
-        )
-      </p>
-      <p className="en-date text-muted hide">
-        {`${momentEn()
-          .format("dddd")
-          .substring(0, 1)
-          .toUpperCase()}${momentEn()
-          .format("dddd, MMMM Do YYYY")
-          .substring(1)
-          .toLowerCase()} (Uge 
-          ${week}`}
-        )
-      </p>
+      <p className="dk-date text-muted"></p>
+      <p className="en-date text-muted hide"></p>
       <Nav buildings={buildings} updateBuildingId={updateBuildingId}></Nav>
 
       {/* if tasks is true, put the Main component in, otherwise don't put anything in */}

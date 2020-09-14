@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../sass/nav.scss";
+import Start from "./Start";
+import Reset from "./Reset";
+import { closeExpand } from "./modules/closeExpand.js";
+import { unable } from "./modules/navigation.js";
 
 export default function Nav(props) {
   //Basic svg/icon settings converted to an object
@@ -15,28 +19,30 @@ export default function Nav(props) {
     strokeLinejoin: "round",
   };
 
-  //const [buildings, setBuildings] = useState([]);
+  const [buildings, setBuildings] = useState([]);
 
-  //Empty array for the buildings that are being fetched from the API
-  const buildingArray = [];
-
-  //mapping through the buildings, to create an array of each building with different properties inside an option tag
-
-  //TODO: SET const buildingArray as a constant of the mapping and then delete the return (and the upper empty array) also render the
-  //usestate actve and the setBuildings function (see Media.js)=>
-  /* const buildingArray =  */ props.buildings.map((building) => {
-    const buildingOption = (
-      <option key={building.value} value={building.value}>
-        {building.text}
-      </option>
-    );
-    //push the buildings/tags into array
-    buildingArray.push(buildingOption);
-    //return to avoid warning in console
-    return buildingOption;
-  });
-
-  //setBuildings(buildingArray);
+  //UseEffect to make sure the array is only updated when the dependency (props.buildings) is changed (to avoid endless loop)
+  useEffect(() => {
+    //Empty array for the buildings that are being fetched from the API
+    const buildingArray = [];
+    if (props.buildings !== null) {
+      props.buildings.forEach((building) => {
+        const buildingOption = (
+          <option key={building.value} value={building.value}>
+            {building.text}
+          </option>
+        );
+        //push the buildings/tags into array
+        buildingArray.push(buildingOption);
+        setBuildings(buildingArray);
+      });
+    } else {
+      const buildingOption = <option key={"1"}>ingen opgaver i dag</option>;
+      buildingArray.push(buildingOption);
+      setBuildings(buildingArray);
+    }
+    unable();
+  }, [props.buildings]);
 
   return (
     <nav id="Nav">
@@ -70,29 +76,12 @@ export default function Nav(props) {
           onChange={(e) => {
             props.updateBuildingId(e.target.value);
           }}>
-          {buildingArray}
+          {buildings}
         </select>
         <div className="btn-container">
           <div className="btn-wrapper">
-            <button className="btn btn-success start">
-              <svg
-                {...svgSettings}
-                className="feather feather-clock wd-10 mg-r-5">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-              Start
-            </button>
-            <button className="btn btn-outline-light reset">
-              <svg
-                {...svgSettings}
-                className="feather feather-x-circle wd-10 mg-r-5">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="15" y1="9" x2="9" y2="15"></line>
-                <line x1="9" y1="9" x2="15" y2="15"></line>
-              </svg>
-              Nulstil
-            </button>
+            <Start></Start>
+            <Reset></Reset>
           </div>
           <button className="btn btn-outline-light message">
             <svg {...svgSettings} className="feather feather-mail wd-10 mg-r-5">
@@ -102,6 +91,46 @@ export default function Nav(props) {
             Besked
           </button>
         </div>
+        <article className="unfinished-container" data-state="hidden">
+          <p className="inforbox">
+            Der er uafsluttede opgaver, hvordan skal disse afsluttes?
+          </p>
+          <fieldset className="unfinished">
+            <div className="custom-control custom-radio">
+              <input
+                type="radio"
+                id="customRadio1"
+                name="customRadio"
+                className="custom-control-input"
+                defaultChecked
+              />
+              <label className="custom-control-label" htmlFor="customRadio1">
+                Afsluttes på et senere tidspunkt
+              </label>
+            </div>
+
+            <div className="custom-control custom-radio">
+              <input
+                type="radio"
+                id="customRadio2"
+                name="customRadio"
+                className="custom-control-input"
+              />
+              <label className="custom-control-label" htmlFor="customRadio2">
+                Kan ikke udføres
+              </label>
+            </div>
+
+            <label htmlFor="reason" className="reason hide">
+              Skal udfyldes <span className="required"> *</span>
+            </label>
+            <textarea
+              id="reason"
+              className="form-control hide"
+              rows="2"
+              placeholder="Skriv begrundelse"></textarea>
+          </fieldset>
+        </article>
       </div>
     </nav>
   );
