@@ -5,9 +5,38 @@
   top: 0;
   left: 0;
   z-index: 10;
+  background-color: #fff;
 }
 .feather-x {
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  right: 1.2rem;
+  height: 40px;
+  width: 40px;
+}
+
+.Popup ul {
+  padding: 3rem 1.5rem;
+  li {
+    list-style: none;
+    border-radius: 0.2rem;
+  }
+}
+.Popup ul.video,
+.Popup ul.docs {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Popup ul.image {
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  li {
+    padding: 1rem;
+  }
 }

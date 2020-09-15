@@ -7,9 +7,13 @@ export default function Popover(props) {
 
   return (
     <div className={"Popover section-bg hide a" + props.id}>
-      <ul>{props.drawer}</ul>
-      <div className="outer-triangle"></div>
-      <div className="inner-triangle"></div>
+      <ul>
+        {props.drawer}
+        <div className="triangle-wrapper">
+          <div className="outer-triangle"></div>
+          <div className="inner-triangle"></div>
+        </div>
+      </ul>
     </div>
   );
 }

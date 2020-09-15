@@ -20,10 +20,11 @@ export default function Media(props) {
 
   //State
   const [drawer, setDrawer] = useState([]);
+  const [type, setType] = useState([]);
 
   useEffect(() => {
     console.log("fetchDrawer");
-    props.getMedia(drawer);
+    props.getMedia(drawer, type);
   }, [drawer]);
 
   function popoverVideoContent() {
@@ -42,6 +43,7 @@ export default function Media(props) {
       </li>
     ));
     setDrawer(items1);
+    setType("video");
   }
 
   function popoverDocsContent() {
@@ -61,10 +63,12 @@ export default function Media(props) {
       </li>
     ));
     setDrawer(items2);
+    setType("docs");
   }
 
   function popupImageContent() {
     console.log("popupImageContent");
+
     //.map loops through the array and creates a new array from that array with modifications (in this case adds a html tag and properties for each entry)
     const items3 = props.tasks.map((item) => (
       <li key={item.id} onClick={props.getMediaElement("")}>
@@ -72,6 +76,7 @@ export default function Media(props) {
       </li>
     ));
     setDrawer(items3);
+    setType("image");
   }
 
   return (
@@ -110,6 +115,7 @@ export default function Media(props) {
         <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
         <polyline points="13 2 13 9 20 9"></polyline>
       </svg>
+
       <Popover task={props.task} drawer={drawer} id={props.id}></Popover>
     </div>
   );

@@ -21,7 +21,7 @@ export default function Popup(props) {
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
       {/* If the elementKey i not nothing then only show the array entry with the same index as the elementKey, if not, show the whole array */}
-      <ul>
+      <ul className={props.type}>
         {props.elementKey !== ""
           ? props.newDrawer[props.elementKey]
           : props.newDrawer}

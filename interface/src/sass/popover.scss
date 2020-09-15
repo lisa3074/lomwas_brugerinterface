@@ -9,6 +9,15 @@
   z-index: 2;
   left: 5%;
 
+  .Popover ul {
+    position: relative;
+  }
+  .triangle-wrapper {
+    position: absolute;
+    width: 100%;
+    transition: 1s;
+  }
+
   .inner-triangle {
     background-color: transparent;
     border-top: 15px solid white;
@@ -31,16 +40,27 @@
   }
 
   /* -----------------
+#WRAPPER
+------------------- */
+
+  .wrapper-move {
+    transform: translateX(100%);
+  }
+
+  /* -----------------
 # VIDEO
 ------------------- */
 
   .video-triangle-inner {
     transition: 0.5s;
-    transform: translateX(5px) translateY(15px);
+    transform: translateX(5%) translateY(15px);
+
+    /*   left: 1.5rem; */
   }
   .video-triangle-outer {
     transition: 0.5s;
-    transform: translateX(3px) translateY(16px);
+    transform: translateX(5%) translateY(16px);
+    /*  left: 1.37rem; */
   }
 
   /* -----------------
@@ -49,11 +69,13 @@
 
   .docs-triangle-inner {
     transition: 0.5s;
-    transform: translateX(220px) translateY(15px);
+    transform: translateX(-160%) translateY(15px);
+    /*   right: 0.5rem; */
   }
   .docs-triangle-outer {
     transition: 0.5s;
-    transform: translateX(218px) translateY(16px);
+    transform: translateX(-147%) translateY(16px);
+    /*  right: 0.37rem; */
   }
 
   ul li {

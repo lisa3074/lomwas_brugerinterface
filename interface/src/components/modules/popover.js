@@ -13,6 +13,9 @@ export function popoverVideo(id) {
     popover.classList.toggle("hide");
     popover.classList.add("video");
   }
+  document.querySelectorAll(".triangle-wrapper").forEach((wrapper) => {
+    wrapper.classList.remove("wrapper-move");
+  });
 
   document.querySelectorAll(".inner-triangle").forEach((inner) => {
     inner.classList.add("video-triangle-inner");
@@ -43,6 +46,9 @@ export function popoverDoc(id) {
     popover.classList.add("docs");
   }
 
+  document.querySelectorAll(".triangle-wrapper").forEach((wrapper) => {
+    wrapper.classList.add("wrapper-move");
+  });
   document.querySelectorAll(".inner-triangle").forEach((inner) => {
     inner.classList.remove("video-triangle-inner");
   });

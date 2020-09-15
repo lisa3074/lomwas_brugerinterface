@@ -11,6 +11,7 @@ export default function Main(props) {
   //States
   const [newDrawer, setNewDrawer] = useState([]);
   const [elementKey, setElementKey] = useState([]);
+  const [type, setType] = useState([]);
 
   //for each floor that exists in the tasks up to 50, take that floor and filter all tasks of that floor and display it
   //.filter loops through the array and creates a new one with only the entries that pass the test (in this case ===i)
@@ -29,9 +30,11 @@ export default function Main(props) {
   }
 
   //Sets newDrawer array (is called from Media.js and drawer is the array of images)
-  function getMedia(drawer) {
+  function getMedia(drawer, type) {
     console.log("getMedia");
+    console.log(type);
     setNewDrawer(drawer);
+    setType(type);
   }
 
   //Sets elementKey array (is called from Popover.js and elementKey is the property data-index of the element clicked (whitch
@@ -49,7 +52,8 @@ export default function Main(props) {
         floors={floors}
         tasks={props.tasks}
         newDrawer={newDrawer}
-        elementKey={elementKey}></Popup>
+        elementKey={elementKey}
+        type={type}></Popup>
     </main>
   );
 }

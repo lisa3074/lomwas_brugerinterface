@@ -3,10 +3,13 @@ export function popup() {
 }
 
 export function close() {
+  const image = document.querySelector(".Popup ul.image");
   document.querySelector(".Popup").classList.add("hide");
-  document.querySelectorAll(".Popover").forEach((popover) => {
-    popover.classList.add("hide");
-    popover.classList.remove("video");
-    popover.classList.remove("docs");
-  });
+  if (image) {
+    document.querySelectorAll(".Popover").forEach((popover) => {
+      popover.classList.add("hide");
+      popover.classList.remove("video");
+      popover.classList.remove("docs");
+    });
+  }
 }

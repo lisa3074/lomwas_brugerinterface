@@ -47,7 +47,7 @@ export default function Nav(props) {
   return (
     <nav id="Nav">
       <div className="top-buttons">
-        <button type="button" className="btn btn-primary undone">
+        {/* <button type="button" className="btn btn-primary undone">
           <svg
             //object with svg settings
             {...svgSettings}
@@ -57,7 +57,7 @@ export default function Nav(props) {
             <line x1="12" y1="16" x2="12" y2="16"></line>
           </svg>
           UAFSLUTTEDE OPGAVER
-        </button>
+        </button> */}
         <button className="btn btn-outline-light back">
           <svg {...svgSettings} className="feather feather-chevron-left">
             <polyline points="15 18 9 12 15 6"></polyline>
@@ -79,10 +79,22 @@ export default function Nav(props) {
           {buildings}
         </select>
         <div className="btn-container">
-          <div className="btn-wrapper">
-            <Start></Start>
-            <Reset></Reset>
-          </div>
+          {/* <div className="btn-wrapper"> */}
+          <Start></Start>
+          <Reset></Reset>
+          {/* </div> */}
+
+          <button type="button" className="btn btn-primary undone">
+            <svg
+              //object with svg settings
+              {...svgSettings}
+              className="feather feather-alert-circle wd-10 mg-r-5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12" y2="16"></line>
+            </svg>
+            UAFSLUTTEDE OPGAVER
+          </button>
           <button className="btn btn-outline-light message">
             <svg {...svgSettings} className="feather feather-mail wd-10 mg-r-5">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>

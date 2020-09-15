@@ -22,13 +22,41 @@
     margin-left: 0.5rem;
   }
 
+  .undone {
+    position: absolute;
+    transform: translateY(-156.5px);
+    right: 4.5rem;
+  }
+
   .btn-container {
     display: flex;
     justify-content: space-between;
+
+    display: grid;
+    grid-template-areas: "start reset space message";
+    grid-template-columns: 5.3rem 5.8rem auto 6rem;
+    grid-column-gap: 2%;
+    justify-content: initial;
+
+    button:not(.undone) {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 
-  .start {
-    margin-right: 0.5rem;
+  #start,
+  #finish {
+    grid-area: start;
+  }
+
+  #Nav .reset {
+    grid-area: reset;
+  }
+  .message {
+    grid-area: message;
+    position: absolute;
+    transform: translateY(-95px);
+    right: 2rem;
   }
 
   .nav-container p span {
@@ -58,5 +86,52 @@
 
   .required {
     color: #dc3545;
+  }
+}
+
+@media (min-width: 350px) {
+  #Nav .message {
+    position: static;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 400px) {
+  #Nav .btn-container {
+    grid-template-columns: 7rem 7rem auto 6rem;
+    button:not(.undone) {
+      padding: 0.391rem 0.5rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #Nav .btn-container {
+    display: grid;
+    grid-template-areas: "start reset space undone message";
+    grid-template-columns: 7rem 7rem auto 13rem 6rem;
+    grid-column-gap: 1%;
+    justify-content: initial;
+
+    button:not(.undone) {
+      padding: 0.391rem 0.5rem;
+    }
+  }
+
+  #start,
+  #finish {
+    grid-area: start;
+  }
+
+  #Nav .reset {
+    grid-area: reset;
+  }
+  .message {
+    grid-area: message;
+  }
+
+  #Nav .undone {
+    grid-area: undone;
+    position: static;
+    transform: translateY(0);
   }
 }
