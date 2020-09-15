@@ -12,6 +12,9 @@
     padding-right: 27px;
     border-bottom: none;
   }
+  #accordion2 > div > div.accordion-body > p {
+    max-width: 75ch;
+  }
 }
 
 #accordion2 [data-state="hidden"] {
@@ -129,5 +132,141 @@
   }
   p:nth-child(3) {
     padding-right: 0.8rem;
+  }
+}
+
+@media (min-width: 900px) {
+  #root .accordion-wrapper {
+    display: grid;
+    grid-template-areas:
+      "header body body done"
+      "media body body done"
+      /*   "media body body done" */
+      "space body body done";
+    grid-template-columns: 30% 30% 23% 17%;
+    grid-template-rows: auto auto;
+
+    .ui-accordion-header {
+      border-width: 0;
+    }
+
+    .Switch {
+      display: block;
+    }
+  }
+
+  #root #App .accordion-wrapper {
+    background-color: #f4f5f8;
+  }
+  #root #App .Switch {
+    grid-area: done;
+    background-color: #fff;
+    height: 100%;
+    position: relative;
+    border-bottom: 0;
+
+    .custom-control {
+      /*  display: flex; */
+      /*     align-items: center; */
+      position: relative;
+      /* top: 40%; */
+      right: 2rem;
+    }
+  }
+
+  #root #App .accordion-title {
+    grid-area: header;
+    border-bottom-width: 0;
+    display: block;
+    height: auto;
+
+    p {
+      display: block;
+    }
+    p:nth-child(2) {
+      padding-left: 0.2rem;
+      padding: 0 0 0.5rem 0.2rem;
+    }
+  }
+  #root #App .accordion-body {
+    grid-area: body;
+    background-color: #fff;
+    border-right-width: 0;
+    padding-bottom: 15px;
+  }
+  #root #App .Media {
+    grid-area: media;
+    flex-direction: column;
+    background-color: #f4f5f8;
+    max-width: 100%;
+    border-width: 0;
+    padding-top: 0;
+
+    svg {
+      margin: 1rem 0;
+    }
+    svg:nth-child(3) {
+      margin-bottom: 1.5rem;
+    }
+  }
+  #accordion2 [data-state="hidden"] {
+    .Media {
+      animation: close-big 0.3s ease-out 1 forwards;
+      overflow: hidden;
+    }
+
+    @keyframes close-big {
+      0% {
+        max-height: 100px;
+        overflow: auto;
+      }
+      100% {
+        max-height: 75px;
+        overflow: hidden;
+      }
+    }
+
+    .Media,
+    .Switch > .custom-control {
+      display: none;
+    }
+  }
+
+  #accordion2 [data-state="shown"] {
+    .Media {
+      height: 100%;
+      max-height: 100%;
+      animation: open-big 2s ease-in-out 1 forwards;
+      overflow: hidden;
+    }
+
+    @keyframes open-big {
+      0% {
+        max-height: 65px;
+      }
+
+      100% {
+        height: auto;
+        max-height: 5000px;
+        padding-bottom: 0rem;
+      }
+    }
+
+    @keyframes open {
+      0% {
+        max-height: 165px;
+      }
+
+      100% {
+        height: auto;
+        max-height: 5000px;
+        padding-bottom: 0rem;
+      }
+    }
+    .accordion-body {
+      p {
+        margin-bottom: 1rem;
+      }
+    }
   }
 }

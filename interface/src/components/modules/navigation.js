@@ -60,11 +60,12 @@ export function finish() {
 export function unable() {
   console.log("unable");
 
-  document.querySelectorAll(".unfinished input").forEach((e) => {
+  document.querySelectorAll(".unfinished input").forEach((el) => {
     console.log("1");
-    e.addEventListener("change", () => {
+    el.addEventListener("change", () => {
       console.log("2");
       document.querySelector("#reason").classList.toggle("hide");
+      document.querySelector("#reason").toggleAttribute("required");
     });
   });
 

@@ -40,3 +40,63 @@
     padding: 1rem;
   }
 }
+
+@media (min-width: 768px) {
+  .Popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.55);
+
+    svg.close-it {
+      stroke: #fff;
+    }
+
+    ul svg {
+      width: 60px;
+      height: 60px;
+    }
+    ul.video,
+    ul.docs,
+    ul.image {
+      background-color: #fff;
+      width: auto;
+      height: auto;
+    }
+    ul.video li {
+      /* DET PINKE SKAL VÆRE VIDEOEN */
+      background-color: pink;
+      width: 600px;
+      height: 400px;
+    }
+    ul.docs li {
+      /* DET PINKE SKAL VÆRE DOKUMENTET */
+      background-color: pink;
+      width: 550px;
+      height: 700px;
+    }
+    ul.image li {
+      /* DET PINKE SKAL VÆRE BILLEDET */
+      background-color: pink;
+      width: 600px;
+      height: 400px;
+      position: relative;
+    }
+
+    .svg-wrapper {
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+      transform: translateY(1.3rem);
+    }
+  }
+
+  #App > main > div > ul.image > p {
+    position: absolute;
+    bottom: 0rem;
+    right: 2rem;
+  }
+  #root .Popup > ul.image {
+    position: relative;
+  }
+}

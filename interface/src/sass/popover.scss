@@ -52,15 +52,12 @@
 ------------------- */
 
   .video-triangle-inner {
-    transition: 0.5s;
+    transition: 0.2s;
     transform: translateX(5%) translateY(15px);
-
-    /*   left: 1.5rem; */
   }
   .video-triangle-outer {
-    transition: 0.5s;
+    transition: 0.2s;
     transform: translateX(5%) translateY(16px);
-    /*  left: 1.37rem; */
   }
 
   /* -----------------
@@ -68,17 +65,34 @@
 ------------------- */
 
   .docs-triangle-inner {
-    transition: 0.5s;
+    transition: 0.2s;
     transform: translateX(-160%) translateY(15px);
-    /*   right: 0.5rem; */
   }
   .docs-triangle-outer {
-    transition: 0.5s;
+    transition: 0.2s;
     transform: translateX(-147%) translateY(16px);
-    /*  right: 0.37rem; */
   }
 
   ul li {
     list-style: none;
+  }
+}
+
+@media (min-width: 500px) {
+  #root .Popover {
+    max-width: 95%;
+
+    /* -----------------
+# DOCUMENTS
+------------------- */
+
+    .docs-triangle-inner {
+      transition: 0.5s;
+      transform: translateX(-210%) translateY(15px);
+    }
+    .docs-triangle-outer {
+      transition: 0.5s;
+      transform: translateX(-192%) translateY(16px);
+    }
   }
 }

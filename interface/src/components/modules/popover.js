@@ -1,8 +1,22 @@
-export function popoverVideo(id) {
+export function popoverVideo(id, e) {
   console.log("popover module");
   console.log(id);
+  console.log(e);
 
   const popover = document.querySelector(".Popover.a" + id);
+
+  document.querySelectorAll(".feather-film").forEach((video) => {
+    video.classList.toggle("video");
+  });
+
+  document.querySelectorAll(".feather-file").forEach((file) => {
+    file.classList.remove("docs");
+  });
+  document.querySelectorAll(".feather-image").forEach((image) => {
+    image.classList.remove("image");
+  });
+  /*  e.classList.toggle("video"); */
+
   if (popover.classList.contains("video")) {
     popover.classList.toggle("hide");
     popover.classList.remove("video");
@@ -31,9 +45,21 @@ export function popoverVideo(id) {
   });
 }
 
-export function popoverDoc(id) {
+export function popoverDoc(id, e) {
   console.log("popover module");
   const popover = document.querySelector(".Popover.a" + id);
+
+  document.querySelectorAll(".feather-film").forEach((video) => {
+    video.classList.remove("video");
+  });
+
+  document.querySelectorAll(".feather-file").forEach((file) => {
+    file.classList.remove("docs");
+  });
+  document.querySelectorAll(".feather-image").forEach((image) => {
+    image.classList.remove("image");
+  });
+  e.classList.add("docs");
 
   if (popover.classList.contains("docs")) {
     popover.classList.toggle("hide");

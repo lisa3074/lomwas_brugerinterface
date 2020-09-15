@@ -84,8 +84,8 @@ export default function Media(props) {
       <svg
         {...svgSettings}
         className={"feather feather-film a" + props.id}
-        onClick={() => {
-          popoverVideo(props.id);
+        onClick={(e) => {
+          popoverVideo(props.id, e.target);
           popoverVideoContent();
         }}>
         <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
@@ -100,7 +100,7 @@ export default function Media(props) {
       <svg
         {...svgSettings}
         className={"feather feather-image a" + props.id}
-        onClick={() => popupImageContent() + popup()}>
+        onClick={(e) => popupImageContent() + popup(e.target)}>
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
         <circle cx="8.5" cy="8.5" r="1.5"></circle>
         <polyline points="21 15 16 10 5 21"></polyline>
@@ -108,8 +108,8 @@ export default function Media(props) {
       <svg
         {...svgSettings}
         className={"feather feather-file a" + props.id}
-        onClick={() => {
-          popoverDoc(props.id);
+        onClick={(e) => {
+          popoverDoc(props.id, e.target);
           popoverDocsContent();
         }}>
         <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>

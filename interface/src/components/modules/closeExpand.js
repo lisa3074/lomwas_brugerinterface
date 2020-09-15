@@ -2,6 +2,12 @@ export function closeExpand(id) {
   console.log("closeExpand");
   console.log(id);
   let count = 0;
+  document.querySelectorAll(".feather-film").forEach((video) => {
+    video.classList.remove("video");
+  });
+  document.querySelectorAll(".feather-file").forEach((file) => {
+    file.classList.remove("docs");
+  });
   document.querySelectorAll(".accordion-wrapper").forEach((accordion) => {
     count++;
     console.log(count);
