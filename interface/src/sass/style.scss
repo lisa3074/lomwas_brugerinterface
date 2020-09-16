@@ -71,7 +71,18 @@ select,
     min-height: 100vh;
   }
 
-  .Task,
+  #App > h1,
+  #App .text-muted {
+    max-width: 1083px;
+    margin: 1rem auto;
+  }
+
+  .Main,
+  #Nav {
+    max-width: 1083px;
+    margin: 0 auto;
+  }
+
   .Popup {
     padding-top: var(--m-padding);
   }

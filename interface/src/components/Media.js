@@ -52,7 +52,6 @@ export default function Media(props) {
     const items2 = props.tasks.map((item) => (
       <li
         key={item.id}
-        i
         data-index={(count += 1)}
         onClick={(e) => {
           popup();

@@ -1,6 +1,7 @@
 #root {
   .Task {
-    padding-top: var(--m-padding);
+    padding-bottom: var(--m-padding);
+    position: relative;
   }
   .Task .accordion-title {
     text-transform: uppercase;
@@ -14,6 +15,25 @@
   }
   #accordion2 > div > div.accordion-body > p {
     max-width: 75ch;
+  }
+  .read-more {
+    position: absolute;
+    transform: translateY(-2.1rem);
+    right: 1rem;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 31%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    padding-left: 3.5rem;
+    padding-right: 1rem;
+  }
+  .blue-text {
+    color: #0168fa;
   }
 }
 
@@ -29,14 +49,22 @@
       border: 1px solid rgba(72, 94, 144, 0.16);
     }
   }
-
+  .read-more {
+    display: block;
+    opacity: 0;
+    animation: read-fade-in 0.5s 0.5s ease-in-out 1 forwards;
+  }
+  @keyframes read-fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   .accordion-body {
     animation: close 0.3s ease-out 1 forwards;
     overflow: hidden;
-  }
-
-  .accordion-body::-webkit-scrollbar {
-    width: 0;
   }
 
   @keyframes close {
@@ -50,6 +78,9 @@
       overflow: hidden;
     }
   }
+  .accordion-body::-webkit-scrollbar {
+    width: 0;
+  }
   .ui-accordion-header .ui-accordion-header-icon::before {
     content: "\f273";
     font-family: "Ionicons";
@@ -58,11 +89,10 @@
     transform: translateY(-4px) translateX(-3px);
   }
 
-  .accordion-body > p {
+  .accordion-body > p:nth-child(1) {
     overflow: hidden;
     font-family: Helvetica, sans-serif;
     width: 100%;
-    /* padding-right: 5px; */
     animation: fade 0.3s ease-in-out 1 forwards;
   }
 
@@ -93,7 +123,12 @@
     }
   }
 
-  .feather-check {
+  .feather-check,
+  .read-more {
+    display: none;
+  }
+
+  .read-more {
     display: none;
   }
 
@@ -139,15 +174,29 @@
   }
 }
 
+@media (min-width: 700px) {
+  #root .read-more {
+    transform: translateY(-2.1rem);
+    right: auto;
+    left: 30rem;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 35%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+}
 @media (min-width: 900px) {
   #root .accordion-wrapper {
+    width: 100%;
     display: grid;
     grid-template-areas:
       "header body body done"
-      "media body body done"
+      "media body body fill"
       /*   "media body body done" */
-      "space body body done";
-    grid-template-columns: 30% 30% 23% 17%;
+      "space body body fill";
+    grid-template-columns: 15rem 30% auto 154px;
     grid-template-rows: auto auto;
 
     .ui-accordion-header {
@@ -157,6 +206,32 @@
     .Switch {
       display: block;
     }
+
+    .fill-media {
+      grid-area: fill;
+      background-color: #fff;
+    }
+  }
+
+  .task-list {
+    width: 100%;
+    padding-top: 0.4rem;
+  }
+
+  #root #accordion2 > div > div.accordion-body > p {
+    max-width: 450px;
+    min-height: 40px;
+  }
+  #root .read-more {
+    right: 1rem;
+    left: auto;
+    padding-right: 1rem;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 35%,
+      rgba(255, 255, 255, 1) 100%
+    );
   }
 
   #root #App .accordion-wrapper {
@@ -241,7 +316,6 @@
       height: 100%;
       max-height: 100%;
       animation: open-big 2s ease-in-out 1 forwards;
-      overflow: hidden;
     }
 
     @keyframes open-big {
@@ -272,5 +346,11 @@
         margin-bottom: 1rem;
       }
     }
+  }
+}
+@media (min-width: 1025px) {
+  #root .read-more {
+    right: auto;
+    left: 22rem;
   }
 }

@@ -19,8 +19,10 @@ export default function Etage(props) {
 
   return (
     <div className="level-wrapper">
-      <span className="level">ETAGE</span>
-      <span className="level-no">{props.floor}</span>
+      <div>
+        <span className="level">ETAGE</span>
+        <span className="level-no">{props.floor}</span>
+      </div>
       <div className="task-list">
         <ul>{mappedTasks}</ul>
       </div>

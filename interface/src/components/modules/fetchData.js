@@ -9,8 +9,8 @@ const HTML = {};
 function init() {
   console.log("init");
   //TODO: Change this constant to window.location.href when implementing the app
-  //HTML.url = window.location.href;
-  HTML.url = "https://app.acbacl.com/api/tasks/2020-09-14/";
+  HTML.url = window.location.href;
+  /* HTML.url = "https://app.acbacl.com/api/tasks/2020-09-14/"; */
   HTML.day = new Date().getDate();
   HTML.month = new Date().getMonth() + 1;
   HTML.year = new Date().getFullYear();

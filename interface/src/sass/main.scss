@@ -13,7 +13,21 @@
 
 .level-wrapper {
   margin-top: 2.5rem;
+  > div:nth-child(1) {
+    padding-bottom: 1rem;
+  }
 }
 .level-wrapper:nth-child(1) {
   margin-top: 0rem;
+}
+
+@media (min-width: 900px) {
+  .level-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    > div:nth-child(1) {
+      padding-right: 1.5rem;
+      padding-left: 0.5rem;
+    }
+  }
 }

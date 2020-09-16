@@ -25,6 +25,9 @@ export default function Task(props) {
             className="accordion-body ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active"
             onClick={() => closeExpand("a" + props.id)}>
             <p>{props.description}</p>
+            <p className="read-more">
+              ... <span className="blue-text">Læs mere</span>
+            </p>
           </div>
           <Switch id={props.id}></Switch>
           <Media
@@ -33,6 +36,9 @@ export default function Task(props) {
             tasks={props.tasks}
             getMedia={props.getMedia}
             getMediaElement={props.getMediaElement}></Media>
+          {/*    <p className="read-more" onClick={() => closeExpand("a" + props.id)}>
+            ... <span className="blue-text">Læs mere</span> */}
+          {/* </p> */}
         </div>
       </div>
     </article>

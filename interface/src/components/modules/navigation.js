@@ -30,6 +30,7 @@ export function reset() {
   const finish = document.querySelector("#finish");
   const reset = document.querySelector(".btn.btn-outline-light.reset");
   const switches = document.querySelectorAll(".switch.custom-control-input");
+  const checks = document.querySelectorAll(".feather-check");
   const unfinishedBox = document.querySelector(".unfinished-container");
   start.classList.remove("hide");
   finish.classList.add("hide");
@@ -37,6 +38,9 @@ export function reset() {
   switches.forEach((checkbox) => {
     checkbox.disabled = true;
     checkbox.checked = false;
+  });
+  checks.forEach((check) => {
+    check.classList.add("hide");
   });
   unfinishedBox.dataset.state = "hidden";
 }
