@@ -40,7 +40,7 @@ export function setDate(date) {
 
   setTimeout(() => {
     document.querySelector(".dk-date").textContent = danishDate;
-  }, 1500);
+  }, 0);
 }
 
 /////ENGELSK DATO SKAL MULIGVIS GØRES DYNAMISK OG MERGES MED OVENSTÅENDE.
@@ -109,5 +109,5 @@ export function setDateEn(date) {
   console.log(engDate);
   setTimeout(() => {
     document.querySelector(".en-date").textContent = engDate;
-  }, 500);
+  }, 0);
 }

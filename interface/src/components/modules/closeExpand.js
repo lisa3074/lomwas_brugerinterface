@@ -1,7 +1,9 @@
+import { checked } from "./checked.js";
 export function closeExpand(id) {
   console.log("closeExpand");
   console.log(id);
   let count = 0;
+  checked();
   document.querySelectorAll(".feather-film").forEach((video) => {
     video.classList.remove("video");
   });

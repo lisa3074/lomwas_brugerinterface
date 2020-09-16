@@ -12,11 +12,14 @@ export function start() {
   switches.forEach((checkbox) => {
     checkbox.disabled = false;
     checkbox.addEventListener("click", () => {
-      if (!checkbox.checked === false) {
-        finish.disabled = false;
-      } else {
+      if (checkbox.checked === false) {
         finish.disabled = true;
       }
+      switches.forEach((box) => {
+        if (box.checked) {
+          finish.disabled = false;
+        }
+      });
     });
   });
 }

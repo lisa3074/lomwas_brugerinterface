@@ -4,8 +4,6 @@ export function popup(e) {
 
 export function close() {
   const image = document.querySelector(".Popup ul.image");
-  const video = document.querySelector(".Popup ul.video");
-  const docs = document.querySelector(".Popup ul.docs");
 
   if (image) {
     console.log("do nothing");

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../sass/popup.scss";
 import { close } from "./modules/popup.js";
 
 export default function Popup(props) {
-  const image = document.querySelector(".Popup ul.image");
   let [i, setI] = useState(0);
   let [innerWidth, setInnerWidth] = useState(window.innerWidth);
 

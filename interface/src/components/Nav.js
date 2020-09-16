@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../sass/nav.scss";
 import Start from "./Start";
 import Reset from "./Reset";
-import { closeExpand } from "./modules/closeExpand.js";
 import { unable } from "./modules/navigation.js";
 
 export default function Nav(props) {
@@ -47,17 +46,6 @@ export default function Nav(props) {
   return (
     <nav id="Nav">
       <div className="top-buttons">
-        {/* <button type="button" className="btn btn-primary undone">
-          <svg
-            //object with svg settings
-            {...svgSettings}
-            className="feather feather-alert-circle wd-10 mg-r-5">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="12"></line>
-            <line x1="12" y1="16" x2="12" y2="16"></line>
-          </svg>
-          UAFSLUTTEDE OPGAVER
-        </button> */}
         <button className="btn btn-outline-light back">
           <svg {...svgSettings} className="feather feather-chevron-left">
             <polyline points="15 18 9 12 15 6"></polyline>

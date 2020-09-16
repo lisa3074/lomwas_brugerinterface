@@ -1,33 +1,37 @@
 //https://app.acbacl.com/api/tasks?id=345 -> seperat bygning / id == value i json
 import { setDate, setDateEn } from "./setDate.js";
+window.addEventListener("DOMContentLoaded", init);
 
-//TODO: Change this constant to window.location.href when implementing the app
-const url = "https://app.acbacl.com/api/tasks/2020-09-14/";
-//const url = window.location.href;
-const day = new Date().getDate();
-const month = new Date().getMonth() + 1;
-const year = new Date().getFullYear();
-const regex = /([0-9]{4}-[0-9]{2}-[0-9]{2})/gi;
+//Instead of calling global variables, possibly before the DOM has loaded, we put them in a global object,
+//that is called upon, when the DOM content has loaded.
+const HTML = {};
 
-let date =
-  year +
-  "-" +
-  month.toString().padStart(2, "0") +
-  "-" +
-  day.toString().padStart(2, "0");
+function init() {
+  console.log("init");
+  //TODO: Change this constant to window.location.href when implementing the app
+  //HTML.url = window.location.href;
+  HTML.url = "https://app.acbacl.com/api/tasks/2020-09-14/";
+  HTML.day = new Date().getDate();
+  HTML.month = new Date().getMonth() + 1;
+  HTML.year = new Date().getFullYear();
+  HTML.regex = /([0-9]{4}-[0-9]{2}-[0-9]{2})/gi;
+  HTML.date =
+    HTML.year +
+    "-" +
+    HTML.month.toString().padStart(2, "0") +
+    "-" +
+    HTML.day.toString().padStart(2, "0");
 
-if (regex.test(url)) {
-  date = url.match(regex);
+  if (HTML.regex.test(HTML.url)) {
+    HTML.date = HTML.url.match(HTML.regex);
+  }
+
+  HTML.api = "https://app.acbacl.com/api/tasks/" + HTML.date;
 }
 
-setDate(date);
-setDateEn(date);
-
-const api = "https://app.acbacl.com/api/tasks/" + date;
-console.log(date);
 export async function getBuilding(setBuildings, setBuildingsId) {
   console.log("getBuildings");
-  let response = await fetch(api, {
+  let response = await fetch(HTML.api, {
     method: "get",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -51,7 +55,7 @@ export async function getBuilding(setBuildings, setBuildingsId) {
 export async function getTasks(id, setTasks) {
   console.log("getTasks");
   console.log(id);
-  let response = await fetch(api + "?id=" + id, {
+  let response = await fetch(HTML.api + "?id=" + id, {
     method: "get",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -59,7 +63,10 @@ export async function getTasks(id, setTasks) {
   });
   let data = await response.json();
   setTasks(data.schedules);
+  setDate(HTML.date);
+  setDateEn(HTML.date);
 }
+
 export async function putTasks() {
   console.log("putTasks");
 }

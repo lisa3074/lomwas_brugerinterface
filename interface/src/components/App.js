@@ -12,6 +12,7 @@ import "../../node_modules/moment/locale/en-gb.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../lib/@fortawesome/fontawesome-free/css/all.min.css";
 import "../lib/ionicons/css/ionicons.min.css";
+import { checked } from "./modules/checked";
 
 export default function App() {
   //States
@@ -50,25 +51,24 @@ export default function App() {
   if (tasks) {
     if (tasks.length === 0) {
       return (
-        <div className="load_container">
-          <h1 className="loading">LOADING</h1>
+        <div className="spinner-wrapper">
+          <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
         </div>
       );
     }
   }
+  /*   setTimeout(() => {
+    checked();
+  }, 1000); */
 
   // TODO
-  // Afslutte/fortryde afslutte task
-
-  // starte muligheden for at afslutte tasks (switch skal være disabled, når start ikke er aktiv)
-  // Nulstille start(sættte swiches til disabled)
-
   // Sende besked (vise andet view der er lavet)
   // Se uafslttede opgaver (vise andet view der er lavet)
 
   return (
     <section id="App">
-      {tasks === "" && <h3>Loading</h3>}
       <h1>Opgaver</h1>
       <p className="dk-date text-muted"></p>
       <p className="en-date text-muted hide"></p>
