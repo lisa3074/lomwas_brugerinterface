@@ -35,6 +35,12 @@
   .blue-text {
     color: #0168fa;
   }
+  /*   .accordion-wrapper {
+    height: 118px;
+  }
+  .accordion-body p:nth-child(1) {
+    height: 40px;
+  } */
 }
 
 #accordion2 [data-state="hidden"] {
@@ -63,13 +69,13 @@
     }
   }
   .accordion-body {
-    animation: close 0.3s ease-out 1 forwards;
+    animation: close 0.5s ease-out 1 forwards;
     overflow: hidden;
   }
 
   @keyframes close {
     0% {
-      max-height: 100px;
+      max-height: 500px;
       overflow: auto;
     }
     100% {
@@ -98,7 +104,7 @@
 
   @keyframes fade {
     0% {
-      max-height: 200px;
+      max-height: 500px;
     }
     100% {
       max-height: 40px;
@@ -106,7 +112,21 @@
   }
   .Media,
   .Switch {
-    display: none;
+    animation: fade-media-switch 0.5s 1 forwards;
+  }
+
+  @keyframes fade-media-switch {
+    0% {
+      opacity: 1;
+      max-height: 500px;
+    }
+
+    100% {
+      opacity: 0;
+      max-height: 0px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
   }
 }
 
@@ -190,14 +210,15 @@
 @media (min-width: 900px) {
   #root .accordion-wrapper {
     width: 100%;
+    height: 100%;
     display: grid;
     grid-template-areas:
       "header body body done"
       "media body body fill"
-      /*   "media body body done" */
+      "space body body fill"
       "space body body fill";
     grid-template-columns: 15rem 30% auto 154px;
-    grid-template-rows: auto auto;
+    grid-template-rows: 71px auto auto auto;
 
     .ui-accordion-header {
       border-width: 0;
@@ -280,6 +301,8 @@
     max-width: 100%;
     border-width: 0;
     padding-top: 0;
+    justify-content: flex-start;
+    padding-top: 1rem;
 
     svg {
       margin: 1rem 0;
@@ -290,24 +313,49 @@
   }
   #accordion2 [data-state="hidden"] {
     .Media {
-      animation: close-big 0.3s ease-out 1 forwards;
+      animation: close-big 0.5s ease-out 1 forwards;
       overflow: hidden;
+
+      svg {
+        animation: svg-gone 0.5s 1 backwards;
+      }
+    }
+
+    @keyframes svg-gone {
+      0% {
+        width: 30px;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      100% {
+        width: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
 
     @keyframes close-big {
       0% {
-        max-height: 100px;
-        overflow: auto;
+        max-height: 5000px;
+        overflow: hidden;
       }
       100% {
         max-height: 75px;
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
         overflow: hidden;
       }
     }
 
-    .Media,
+    .Switch {
+      animation: none;
+    }
+
     .Switch > .custom-control {
-      display: none;
+      /*   display: none; */
+      transition: 0.5s;
+      opacity: 0;
     }
   }
 
@@ -321,6 +369,7 @@
     @keyframes open-big {
       0% {
         max-height: 65px;
+        padding-bottom: 0rem;
       }
 
       100% {

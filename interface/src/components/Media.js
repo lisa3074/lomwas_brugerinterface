@@ -79,7 +79,7 @@ export default function Media(props) {
   }
 
   return (
-    <div className="Media">
+    <div className="Media hide">
       <svg
         {...svgSettings}
         className={"feather feather-film a" + props.id}

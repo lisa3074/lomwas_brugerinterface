@@ -17,7 +17,7 @@ export default function Switch(props) {
 
   return (
     <>
-      <fieldset className={"Switch a" + props.id}>
+      <fieldset className={"Switch hide a" + props.id}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

@@ -39,6 +39,7 @@ export default function Task(props) {
           {/*    <p className="read-more" onClick={() => closeExpand("a" + props.id)}>
             ... <span className="blue-text">Læs mere</span> */}
           {/* </p> */}
+          <div className="space"></div>
         </div>
       </div>
     </article>
