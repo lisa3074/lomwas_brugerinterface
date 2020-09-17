@@ -41,7 +41,7 @@
 ------------------- */
 
   .wrapper-move {
-    transform: translateX(100%);
+    /*     transform: translateX(100%); */
   }
 
   /* -----------------
@@ -50,11 +50,13 @@
 
   .video-triangle-inner {
     transition: 0.2s;
-    transform: translateX(5%) translateY(15px);
+    transform: translateY(14px);
+    animation: slide-left 0.5s 1 forwards;
   }
   .video-triangle-outer {
     transition: 0.2s;
-    transform: translateX(5%) translateY(16px);
+    transform: translateY(15px);
+    animation: slide-left 0.5s 1 forwards;
   }
 
   /* -----------------
@@ -62,12 +64,45 @@
 ------------------- */
 
   .docs-triangle-inner {
-    transition: 0.2s;
-    transform: translateX(-160%) translateY(15px);
+    transition: 0.5s;
+    transform: translateY(14px);
+    animation: slide-right 0.5s 1 forwards;
   }
   .docs-triangle-outer {
-    transition: 0.2s;
-    transform: translateX(-147%) translateY(16px);
+    transition: 0.5s;
+    transform: translateY(15px);
+    animation: slide-right 0.5s 1 forwards;
+  }
+
+  @keyframes slide-right {
+    0% {
+      opacity: 1;
+      left: 0rem;
+    }
+    50% {
+      opacity: 0;
+      left: auto;
+      right: 1.5rem;
+    }
+    100% {
+      opacity: 1;
+      right: 1.5rem;
+    }
+  }
+  @keyframes slide-left {
+    0% {
+      opacity: 1;
+      right: 1.5rem;
+    }
+    50% {
+      opacity: 0;
+      right: auto;
+      left: 0rem;
+    }
+    100% {
+      opacity: 1;
+      left: 0rem;
+    }
   }
 
   ul li {
@@ -87,11 +122,41 @@
 
     .docs-triangle-inner {
       transition: 0.5s;
-      transform: translateX(-210%) translateY(15px);
+      transform: translateY(15px);
     }
     .docs-triangle-outer {
       transition: 0.5s;
-      transform: translateX(-192%) translateY(16px);
+      transform: translateY(16px);
+    }
+  }
+  @keyframes slide-right {
+    0% {
+      opacity: 1;
+      left: 0rem;
+    }
+    50% {
+      opacity: 0;
+      left: auto;
+      right: 2rem;
+    }
+    100% {
+      opacity: 1;
+      right: 2rem;
+    }
+  }
+  @keyframes slide-left {
+    0% {
+      opacity: 1;
+      right: 2rem;
+    }
+    50% {
+      opacity: 0;
+      right: auto;
+      left: 0rem;
+    }
+    100% {
+      opacity: 1;
+      left: 0rem;
     }
   }
 }
@@ -99,7 +164,7 @@
 @media (min-width: 900px) {
   #root .Popover {
     bottom: auto;
-    top: 0.5rem;
+    top: 1.5rem;
     left: 6rem;
     min-height: 180px;
 
@@ -120,23 +185,27 @@
       border-right: 16px solid rgba(28, 39, 60, 0.05);
     }
     .video-triangle-inner {
-      transform: translateX(0) translateY(0);
+      transform: none;
+      animation: none;
       top: 0.5rem;
       left: -1.8rem;
     }
     .video-triangle-outer {
-      transform: translateX(0) translateY(0);
+      transform: none;
+      animation: none;
       top: 0.4rem;
       left: -2.05rem;
     }
 
     .docs-triangle-inner {
-      transform: translateX(0) translateY(0);
+      transform: none;
+      animation: none;
       top: 8.5rem;
       left: -1.8rem;
     }
     .docs-triangle-outer {
-      transform: translateX(0) translateY(0);
+      transform: none;
+      animation: none;
       top: 8.4rem;
       left: -2.05rem;
     }

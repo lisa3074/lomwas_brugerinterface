@@ -37,6 +37,7 @@ export default function App() {
   //Every time buildingId is updated, tasks are fetched
   useEffect(() => {
     console.log("fetchTasks");
+
     FetchData.getTasks(buildingId, setTasks);
   }, [buildingId]);
 
@@ -59,11 +60,16 @@ export default function App() {
       );
     }
   }
-  /*   setTimeout(() => {
-    checked();
-  }, 1000); */
 
   // TODO
+  //accordion ved extra.unchecked laver stadig højdeforskel
+  //Hvis alle opgaver er afsluttede skal klik på afslut gå dirkte til PUT
+  //når accordions er lukkede og ekstra.checked, så animerer alle bokse
+  //week/iso virker ikke i IOS
+  //gennemgå al kode (console.logs og kommenter
+  //teste alle browsere / forskellige enheder
+  //Switch får sat hide på, når man skifter bygning. Jeg kan ikke se hvor det kommer fra??!!!
+
   // Sende besked (vise andet view der er lavet)
   // Se uafslttede opgaver (vise andet view der er lavet)
 

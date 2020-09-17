@@ -14,26 +14,33 @@ export function closeExpand(id) {
   const extra = document.querySelector("#customSwitch1");
 
   document.querySelectorAll(".accordion-wrapper").forEach((accordion) => {
-    console.log(extra);
     count++;
-    console.log(count);
     if (!accordion.classList.contains(id)) {
-      accordion.dataset.state = "hidden";
-      if (accordion.dataset.state === "hidden") {
-        if (extra.checked === true) {
-          setTimeout(() => {
-            document.querySelector(".Media").classList.remove("hide");
-          }, 500);
+      if (accordion.dataset.state === "start") {
+      } else {
+        accordion.dataset.state = "hidden";
+        if (accordion.dataset.state === "hidden") {
+          if (extra.checked === true) {
+            setTimeout(() => {
+              document.querySelector(".Media").classList.remove("hide");
+            }, 500);
+            document.querySelector(".Switch").classList.remove("hide");
+          }
         }
+        document.querySelectorAll(".Popover").forEach((popover) => {
+          popover.classList.add("hide");
+          popover.classList.remove("video");
+          popover.classList.remove("docs");
+        });
       }
-      document.querySelectorAll(".Popover").forEach((popover) => {
-        popover.classList.add("hide");
-        popover.classList.remove("video");
-        popover.classList.remove("docs");
-      });
     } else if (accordion.classList.contains(id)) {
       if (accordion.dataset.state === "shown") {
         accordion.dataset.state = "hidden";
+        document.querySelectorAll(".Popover").forEach((popover) => {
+          popover.classList.add("hide");
+          popover.classList.remove("video");
+          popover.classList.remove("docs");
+        });
       } else {
         accordion.dataset.state = "shown";
         if (extra.checked === true) {

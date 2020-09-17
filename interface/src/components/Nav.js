@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../sass/nav.scss";
 import Start from "./Start";
 import Reset from "./Reset";
-import { unable } from "./modules/navigation.js";
+import { reset, unable } from "./modules/navigation.js";
 
 export default function Nav(props) {
   //Basic svg/icon settings converted to an object
@@ -63,6 +63,7 @@ export default function Nav(props) {
           //to the options key, which is equal to the buildings id
           onChange={(e) => {
             props.updateBuildingId(e.target.value);
+            reset();
           }}>
           {buildings}
         </select>

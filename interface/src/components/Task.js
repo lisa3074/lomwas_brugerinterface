@@ -13,7 +13,7 @@ export default function Task(props) {
         }
         role="tablist">
         {/* IS IT POSSIBLE TO REMOVE SOME OF THE CLASSES FOR READABILITY?? */}
-        <div className={"accordion-wrapper a" + props.id} data-state="hidden">
+        <div className={"accordion-wrapper a" + props.id} data-state="start">
           <div
             className="accordion-title ui-accordion-header ui-corner-top ui-state-default ui-accordion-icons ui-state-hover ui-accordion-header-active ui-state-active"
             onClick={() => closeExpand("a" + props.id)}>

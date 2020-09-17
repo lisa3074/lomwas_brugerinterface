@@ -59,7 +59,7 @@ export function popoverDoc(id, e) {
   document.querySelectorAll(".feather-image").forEach((image) => {
     image.classList.remove("image");
   });
-  e.classList.add("docs");
+  /*  e.classList.add("docs"); */
 
   if (popover.classList.contains("docs")) {
     popover.classList.toggle("hide");

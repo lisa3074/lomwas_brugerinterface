@@ -38,11 +38,11 @@ export default function Popup(props) {
     strokeLinejoin: "round",
   };
   return (
-    <div className="Popup hide">
+    <div className="Popup hide" onClick={(e) => close(e.target)}>
       <svg
         {...svgSettings}
         className="feather feather-x close-it"
-        onClick={close}>
+        onClick={(e) => close(e.target)}>
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>

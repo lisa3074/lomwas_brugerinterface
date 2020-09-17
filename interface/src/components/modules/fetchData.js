@@ -1,5 +1,6 @@
 //https://app.acbacl.com/api/tasks?id=345 -> seperat bygning / id == value i json
 import { setDate, setDateEn } from "./setDate.js";
+
 window.addEventListener("DOMContentLoaded", init);
 
 //Instead of calling global variables, possibly before the DOM has loaded, we put them in a global object,
@@ -8,6 +9,7 @@ const HTML = {};
 
 function init() {
   console.log("init");
+
   HTML.url = window.location.href;
   HTML.day = new Date().getDate();
   HTML.month = new Date().getMonth() + 1;

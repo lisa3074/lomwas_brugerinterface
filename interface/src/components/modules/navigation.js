@@ -43,6 +43,11 @@ export function reset() {
     check.classList.add("hide");
   });
   unfinishedBox.dataset.state = "hidden";
+  /*   setTimeout(() => {
+    document.querySelectorAll("#root #accordion2 .Switch").forEach((el) => {
+      el.classList.remove("hide");
+    });
+  }, 5000); */
 }
 
 export function finish() {
