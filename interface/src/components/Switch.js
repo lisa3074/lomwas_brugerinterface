@@ -3,18 +3,6 @@ import "../sass/switch.scss";
 import { closeExpand } from "./modules/closeExpand";
 
 export default function Switch(props) {
-  /*   const thisSwitch = document.querySelector(".a" + props.id + " > input");
-  const [checked, setIsChecked] = useState(false);
-  const isCheckChanged = () => {
-    if (checked === true) {
-      console.log("false");
-      setIsChecked(false);
-    } else {
-      console.log("true");
-      setIsChecked(true);
-    }
-  }; */
-
   return (
     <>
       <fieldset className={"Switch hide a" + props.id}>

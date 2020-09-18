@@ -9,7 +9,6 @@ export default function Popup(props) {
   window.addEventListener("resize", resizeHandler);
   function resizeHandler() {
     setInnerWidth(window.innerWidth);
-    console.log("changing innerwidth");
   }
 
   const imageAmount = props.newDrawer.length - 1;
@@ -25,7 +24,7 @@ export default function Popup(props) {
       setI(imageAmount);
     }
   }
-  console.log("skipRight: " + i + " of " + imageAmount);
+
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",

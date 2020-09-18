@@ -12,7 +12,7 @@
   svg:nth-child(2) {
     height: 34px;
     width: 34px;
-    transform: translateY(-2px) translateX(-2px);
+    /*  transform: translateY(-2px) translateX(-2px); */
     stroke-width: 0.9px;
   }
 
@@ -24,15 +24,15 @@
 }
 
 .fade-media-out {
-  animation: fade-out 0.5s ease-in-out 1 forwards;
+  animation: fade-media-out 0.5s ease-in-out 1 forwards;
   overflow: hidden;
 }
 .fade-media-in {
-  animation: fade-in 0.5s ease-in-out 1 forwards;
+  animation: fade-media-in 0.5s ease-in-out 1 forwards;
   overflow: hidden;
 }
 
-@keyframes fade-out {
+@keyframes fade-media-out {
   0% {
     opacity: 1;
     max-height: 70px;
@@ -44,7 +44,7 @@
     padding: 0px 20px 0px 35px;
   }
 }
-@keyframes fade-in {
+@keyframes fade-media-in {
   0% {
     opacity: 0;
     max-height: 0px;
@@ -66,5 +66,32 @@
 @media (min-width: 650px) {
   #root .Media {
     max-width: 40%;
+  }
+}
+
+@media (min-width: 900px) {
+  @keyframes fade-media-out {
+    0% {
+      opacity: 1;
+      max-height: 270px;
+      padding: 20px 20px 15px 35px;
+    }
+    100% {
+      opacity: 0;
+      max-height: 0;
+      padding: 0px 20px 0px 35px;
+    }
+  }
+  @keyframes fade-media-in {
+    0% {
+      opacity: 0;
+      max-height: 0px;
+      padding: 0px 20px 0px 35px;
+    }
+    100% {
+      opacity: 1;
+      max-height: 270px;
+      padding: 20px 20px 15px 35px;
+    }
   }
 }

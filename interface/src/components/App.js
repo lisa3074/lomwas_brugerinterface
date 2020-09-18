@@ -6,13 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/dashforge.css";
 import "../sass/style.scss";
 import "../sass/app.scss";
-//test if they are used =>
-import "../../node_modules/moment/locale/da.js";
-import "../../node_modules/moment/locale/en-gb.js";
-import "bootstrap/dist/js/bootstrap.bundle.min";
-import "../lib/@fortawesome/fontawesome-free/css/all.min.css";
 import "../lib/ionicons/css/ionicons.min.css";
-import { checked } from "./modules/checked";
 
 export default function App() {
   //States
@@ -23,8 +17,6 @@ export default function App() {
 
   //function that is being passed to Main.js and called whenever a new building has been selected
   function updateBuildingId(e) {
-    console.log("updateBuildingId");
-    console.log(e);
     setUpdatedBuildingId(e);
   }
 
@@ -36,15 +28,12 @@ export default function App() {
   //fetches the tasks of the first building (that per say is selected in the navigation).
   //Every time buildingId is updated, tasks are fetched
   useEffect(() => {
-    console.log("fetchTasks");
-
     FetchData.getTasks(buildingId, setTasks);
   }, [buildingId]);
 
   //fetches the tasks of the building selected in the nav Every time updateBuildingId is updated,
   //tasks are fetched (every time a new ubuilding is selected in the nav)
   useEffect(() => {
-    console.log("fetchTasks");
     FetchData.getTasks(UpdatedBuildingId, setTasks);
   }, [UpdatedBuildingId]);
 
@@ -62,13 +51,8 @@ export default function App() {
   }
 
   // TODO
-  //accordion ved extra.unchecked laver stadig højdeforskel
-  //Hvis alle opgaver er afsluttede skal klik på afslut gå dirkte til PUT
-  //når accordions er lukkede og ekstra.checked, så animerer alle bokse
-  //week/iso virker ikke i IOS
-  //gennemgå al kode (console.logs og kommenter
+  //gennemgå al kode og kommenter
   //teste alle browsere / forskellige enheder
-  //Switch får sat hide på, når man skifter bygning. Jeg kan ikke se hvor det kommer fra??!!!
 
   // Sende besked (vise andet view der er lavet)
   // Se uafslttede opgaver (vise andet view der er lavet)
@@ -78,6 +62,7 @@ export default function App() {
       <h1>Opgaver</h1>
       <p className="dk-date text-muted"></p>
       <p className="en-date text-muted hide"></p>
+
       <Nav buildings={buildings} updateBuildingId={updateBuildingId}></Nav>
 
       {/* if tasks is true, put the Main component in, otherwise don't put anything in */}

@@ -23,7 +23,6 @@ export default function Media(props) {
   const [type, setType] = useState([]);
 
   useEffect(() => {
-    console.log("fetchDrawer");
     props.getMedia(drawer, type);
   }, [drawer]);
 

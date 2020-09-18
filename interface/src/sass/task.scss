@@ -36,15 +36,20 @@
     color: #0168fa;
   }
 
-  /*   .accordion-wrapper {
-    box-shadow: 0 0 10px rgba(28, 39, 60, 0.05);
-  } */
-
   #accordion2 [data-state="start"] {
     border: 1px solid rgba(72, 94, 144, 0.16);
     border-radius: 0.2rem;
     height: 118px;
     overflow: hidden;
+
+    .ui-accordion-header .ui-accordion-header-icon::before {
+      content: "\f273";
+      font-family: "Ionicons";
+      font-size: 20px;
+      display: inline-block;
+      transform: translateY(-4px) translateX(-3px);
+    }
+
     .accordion-wrapper {
       height: 118px;
     }
@@ -62,145 +67,6 @@
       max-height: 40px;
       overflow: hidden;
     }
-  }
-}
-
-#accordion2 [data-state="hidden"] {
-  animation: gray-border 1s linear 1 forwards;
-  border-radius: 0.2rem;
-  border: 1px solid rgba(72, 94, 144, 0.16);
-
-  @keyframes gray-border {
-    0% {
-      border: 1px solid #0168fa;
-    }
-    100% {
-      border: 1px solid rgba(72, 94, 144, 0.16);
-    }
-  }
-  .read-more {
-    display: block;
-    opacity: 0;
-    animation: read-fade-in 0.5s 0.5s linear 1 forwards;
-  }
-  @keyframes read-fade-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  .accordion-body {
-    animation: close 0.5s linear 1 forwards;
-    overflow: hidden;
-  }
-
-  @keyframes close {
-    0% {
-      max-height: 500px;
-      overflow: auto;
-    }
-    100% {
-      max-height: 75px;
-      padding-bottom: 0;
-      overflow: hidden;
-    }
-  }
-  .accordion-body::-webkit-scrollbar {
-    width: 0;
-  }
-  .ui-accordion-header .ui-accordion-header-icon::before {
-    content: "\f273";
-    font-family: "Ionicons";
-    font-size: 20px;
-    display: inline-block;
-    transform: translateY(-4px) translateX(-3px);
-  }
-
-  .accordion-body > p:nth-child(1) {
-    overflow: hidden;
-    width: 100%;
-    animation: fade 0.3s linear 1 forwards;
-  }
-
-  @keyframes fade {
-    0% {
-      max-height: 500px;
-    }
-    100% {
-      max-height: 40px;
-    }
-  }
-  .Media,
-  .Switch {
-    animation: fade-media-switch 0.5s 1 forwards;
-  }
-
-  @keyframes fade-media-switch {
-    0% {
-      opacity: 1;
-      max-height: 500px;
-    }
-
-    100% {
-      opacity: 0;
-      max-height: 0px;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-  }
-}
-
-#accordion2 [data-state="shown"] {
-  animation: blue-border 1s linear 1 forwards;
-  border-radius: 0.2rem;
-  border: 1px solid #0168fa;
-
-  @keyframes blue-border {
-    0% {
-      border: 1px solid rgba(72, 94, 144, 0.16);
-    }
-    100% {
-      border: 1px solid #0168fa;
-    }
-  }
-
-  .feather-check,
-  .read-more {
-    display: none;
-  }
-
-  .read-more {
-    display: none;
-  }
-
-  .accordion-body {
-    height: 100%;
-    max-height: 100%;
-    animation: open 3s linear 1 forwards;
-    overflow: hidden;
-    padding-bottom: 0rem;
-    p {
-      margin-bottom: 0;
-    }
-  }
-
-  @keyframes open {
-    0% {
-      max-height: 65px;
-    }
-
-    100% {
-      height: auto;
-      max-height: 5000px;
-      padding-bottom: 0rem;
-    }
-  }
-  .ui-accordion-header.ui-state-active .ui-accordion-header-icon::before {
-    content: "\f368";
-    font-size: 20px;
-    transform: translateY(-4px) translateX(-3px);
   }
 }
 
@@ -231,13 +97,6 @@
   }
 }
 @media (min-width: 900px) {
-  #root #accordion2 [data-state="start"] {
-    height: 71px;
-
-    .accordion-wrapper {
-      height: 71px;
-    }
-  }
   #root .accordion-wrapper {
     width: 100%;
     height: 100%;
@@ -341,88 +200,11 @@
       margin-bottom: 1.5rem;
     }
   }
-  #accordion2 [data-state="hidden"] {
-    .Media {
-      animation: close-big 0.5s linear 1 forwards;
-      overflow: hidden;
+  #root #accordion2 [data-state="start"] {
+    height: 71px;
 
-      svg {
-        animation: svg-gone 0.5s 1 backwards;
-      }
-    }
-
-    @keyframes svg-gone {
-      0% {
-        width: 30px;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-      }
-      100% {
-        width: 0;
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-    }
-
-    @keyframes close-big {
-      0% {
-        max-height: 5000px;
-        overflow: hidden;
-      }
-      100% {
-        max-height: 75px;
-        height: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        overflow: hidden;
-      }
-    }
-
-    .Switch {
-      animation: none;
-    }
-
-    .Switch > .custom-control {
-      transition: 0.5s;
-      opacity: 0;
-    }
-  }
-
-  #accordion2 [data-state="shown"] {
-    .Media {
-      height: 100%;
-      max-height: 100%;
-      animation: open-big 10s linear 1 forwards;
-    }
-
-    @keyframes open-big {
-      0% {
-        max-height: 65px;
-        padding-bottom: 0rem;
-      }
-
-      100% {
-        height: auto;
-        max-height: 5000px;
-        padding-bottom: 0rem;
-      }
-    }
-
-    @keyframes open {
-      0% {
-        max-height: 165px;
-      }
-
-      100% {
-        height: auto;
-        max-height: 5000px;
-        padding-bottom: 0rem;
-      }
-    }
-    .accordion-body {
-      p {
-        margin-bottom: 1rem;
-      }
+    .accordion-wrapper {
+      height: 71px;
     }
   }
 }

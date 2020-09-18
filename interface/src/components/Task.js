@@ -2,6 +2,8 @@ import React from "react";
 import Switch from "./Switch";
 import Media from "./Media";
 import "../sass/task.scss";
+import "../sass/task-shown.scss";
+import "../sass/task-hidden.scss";
 import { closeExpand } from "./modules/closeExpand.js";
 export default function Task(props) {
   return (

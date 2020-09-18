@@ -11,7 +11,6 @@ export function close(e) {
     const image = document.querySelector(".Popup ul.image");
 
     if (image) {
-      console.log("do nothing");
       document.querySelectorAll(".feather-film").forEach((video) => {
         video.classList.remove("video");
       });

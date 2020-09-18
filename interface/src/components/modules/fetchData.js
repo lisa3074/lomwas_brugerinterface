@@ -10,6 +10,7 @@ const HTML = {};
 function init() {
   console.log("init");
 
+  /*  HTML.url = "https://app.acbacl.com/api/tasks/2020-09-18"; */
   HTML.url = window.location.href;
   HTML.day = new Date().getDate();
   HTML.month = new Date().getMonth() + 1;
@@ -54,7 +55,6 @@ export async function getBuilding(setBuildings, setBuildingsId) {
 
 export async function getTasks(id, setTasks) {
   console.log("getTasks");
-  console.log(id);
   let response = await fetch(HTML.api + "?id=" + id, {
     method: "get",
     headers: {

@@ -11,22 +11,12 @@ export function checked() {
                 checkbox.parentNode.parentNode.parentNode.dataset.state ===
                 "hidden"
               ) {
-                console.log("PARENTNODE HIDDEN");
                 el.classList.remove("hide");
               } else {
-                console.log("PARENTNODE SHOWN");
                 el.classList.add("hide");
               }
             }
           }, 500);
-        });
-      } else {
-        const check = document.querySelectorAll(".feather-check");
-        check.forEach((el) => {
-          /*   if (el.dataset.id === checkbox.value) {
-            console.log("PARENTNODE SHOWN");
-            el.classList.add("hide");
-          } */
         });
       }
     });

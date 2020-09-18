@@ -1,9 +1,7 @@
 import { checked } from "./checked.js";
 export function closeExpand(id) {
   console.log("closeExpand");
-  console.log(id);
-
-  let count = 0;
+  /* let count = 0; */
   checked();
   document.querySelectorAll(".feather-film").forEach((video) => {
     video.classList.remove("video");
@@ -14,20 +12,10 @@ export function closeExpand(id) {
   const extra = document.querySelector("#customSwitch1");
 
   document.querySelectorAll(".accordion-wrapper").forEach((accordion) => {
-    count++;
+    /*   count++; */
     if (!accordion.classList.contains(id)) {
-      if (accordion.dataset.state === "start") {
-      } else {
+      if (accordion.dataset.state === "shown") {
         accordion.dataset.state = "hidden";
-        if (accordion.dataset.state === "hidden") {
-          if (extra.checked === true) {
-            setTimeout(() => {
-              document.querySelector(".Media").classList.remove("hide");
-            }, 500);
-          } else {
-            document.querySelector(".Switch").classList.remove("hide");
-          }
-        }
         document.querySelectorAll(".Popover").forEach((popover) => {
           popover.classList.add("hide");
           popover.classList.remove("video");
@@ -44,13 +32,11 @@ export function closeExpand(id) {
         });
       } else {
         accordion.dataset.state = "shown";
+        accordion.querySelector(".Switch").classList.remove("hide");
         if (extra.checked === true) {
-          setTimeout(() => {
-            console.log("SHOW");
-            document.querySelectorAll(".Media, .Switch").forEach((el) => {
-              el.classList.remove("hide");
-            });
-          }, 0);
+          accordion.querySelectorAll(".Media, .Switch").forEach((el) => {
+            el.classList.remove("hide");
+          });
         }
       }
     }

@@ -1,113 +1,52 @@
-export function setDate(date) {
-  const moment = require("moment");
-  const week = moment(`'${date}'`).isoWeek();
+import dayjs from "dayjs";
 
-  console.log("date: " + date);
-  const dateString = date.toString();
-  const newDay = dateString.substring(8, 10);
-  const newYear = dateString.substring(0, 4);
+window.addEventListener("DOMContentLoaded", init);
+const HTML = {};
 
-  const d = new Date(date);
-
-  let weekday = [
-    "Søndag",
-    "Mandag",
-    "Tirsdag",
-    "Onsdag",
-    "Torsdag",
-    "Fredag",
-    "Lørdag",
-  ];
-
-  let month = [
-    "januar",
-    "februar",
-    "marts",
-    "april",
-    "maj",
-    "juni",
-    "juli",
-    "august",
-    "september",
-    "oktober",
-    "november",
-    "december",
-  ];
-  const m = month[d.getMonth()];
-  const w = weekday[d.getDay()];
-  const danishDate =
-    w + " d. " + newDay + ". " + m + ", " + newYear + " (Uge " + week + ")";
-
-  setTimeout(() => {
-    document.querySelector(".dk-date").textContent = danishDate;
-  }, 0);
+function init() {
+  HTML.weekOfYear = require("dayjs/plugin/weekOfYear");
+  require("dayjs/locale/da");
+  require("dayjs/locale/en");
+  dayjs.extend(HTML.weekOfYear);
 }
 
-/////ENGELSK DATO SKAL MULIGVIS GØRES DYNAMISK OG MERGES MED OVENSTÅENDE.
+export function setDate(date) {
+  console.log("setDate");
+  const weekday =
+    dayjs(`'${date}'`)
+      .locale("da")
+      .format("dddd")
+      .substring(0, 1)
+      .toUpperCase() +
+    dayjs(`'${date}'`).locale("da").format("dddd").substring(1).toLowerCase();
+  const daynumber = dayjs(`'${date}'`).locale("da").format("D");
+  const month = dayjs(`'${date}'`).locale("da").format("MMMM");
+  const year = dayjs(`'${date}'`).locale("da").format("YYYY");
+  const week = dayjs(`'${date}'`).locale("da").week();
+  document.querySelector(".dk-date").textContent = `
+    ${weekday} d. ${daynumber}. ${month}, ${year} (uge ${week})`;
+}
+
 export function setDateEn(date) {
-  const moment = require("moment");
-  const week = moment(`'${date}'`).isoWeek();
+  console.log("setDateEn");
+  const weekday = dayjs(`'${date}'`).locale("en").format("dddd");
+  const daynumber = dayjs(`'${date}'`).locale("den").format("D");
+  const month = dayjs(`'${date}'`).locale("en").format("MMMM");
+  const year = dayjs(`'${date}'`).locale("en").format("YYYY");
+  const week = dayjs(`'${date}'`).locale("en").week();
 
-  console.log("date: " + date);
-  const dateString = date.toString();
-  const newDay = dateString.substring(8, 10);
-  const newYear = dateString.substring(0, 4);
-
-  const d = new Date(date);
-
-  let weekday = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  let month = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
   let theEnd = "th";
-  if (newDay === "01") {
+  if (daynumber === "1" || daynumber === "21" || daynumber === "31") {
     theEnd = "st";
-  } else if (newDay === "02") {
+  } else if (daynumber === "2" || daynumber === "22") {
     theEnd = "nd";
-  } else if (newDay === "03") {
+  } else if (daynumber === "3" || daynumber === "23") {
     theEnd = "rd";
   } else {
     theEnd = "th";
   }
 
-  console.log(theEnd);
-  const m = month[d.getMonth()];
-  const w = weekday[d.getDay()];
-  const engDate =
-    w +
-    " " +
-    m +
-    " " +
-    newDay +
-    theEnd +
-    ", " +
-    newYear +
-    " (Week " +
-    week +
-    ")";
-
-  console.log(engDate);
-  setTimeout(() => {
-    document.querySelector(".en-date").textContent = engDate;
-  }, 0);
+  document.querySelector(
+    ".en-date"
+  ).textContent = `${weekday}, ${month} ${daynumber}${theEnd}, ${year} (week ${week})`;
 }

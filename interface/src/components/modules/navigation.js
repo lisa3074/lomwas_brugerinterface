@@ -43,43 +43,53 @@ export function reset() {
     check.classList.add("hide");
   });
   unfinishedBox.dataset.state = "hidden";
-  /*   setTimeout(() => {
-    document.querySelectorAll("#root #accordion2 .Switch").forEach((el) => {
-      el.classList.remove("hide");
-    });
-  }, 5000); */
 }
 
 export function finish() {
   console.log("finish");
   const unfinishedBox = document.querySelector(".unfinished-container");
   const finish = document.querySelector("#finish");
-  unfinishedBox.dataset.state = "shown";
-
-  if (finish.dataset.state === "firstClick") {
-    finish.dataset.state = "secondClick";
-    console.log("first");
-  } else {
-    console.log("second");
-    finish.dataset.state = "firstClick";
-    //HER SKAL DER SENDES TIL DB (PUT)
-    FetchData.putTasks();
-    /*     window.location.reload();
-    return false; */
-  }
+  const switches = document.querySelectorAll(".switch");
+  let checkedElementCount = 0;
+  let elementCount = 0;
+  switches.forEach((el) => {
+    //counting how many checkboxes (tasks) exist on this building
+    elementCount++;
+  });
+  switches.forEach((el) => {
+    if (el.checked === true) {
+      //counting how many checkboxes are checked
+      checkedElementCount++;
+      shouldPut();
+      function shouldPut() {
+        //If amount of checkboxes checked is equal to amount of checkboxes PUT the data
+        if (checkedElementCount === elementCount) {
+          unfinishedBox.dataset.state = "hidden";
+          FetchData.putTasks();
+          //GET tasks der er running=false
+        } else {
+          if (finish.dataset.state === "firstClick") {
+            finish.dataset.state = "secondClick";
+            unfinishedBox.dataset.state = "shown";
+          } else {
+            finish.dataset.state = "firstClick";
+            //HER SKAL DER SENDES TIL DB (PUT)
+            FetchData.putTasks();
+            //GET tasks der er running=false
+            reset();
+          }
+        }
+      }
+    }
+  });
 }
 
 export function unable() {
   console.log("unable");
-
   document.querySelectorAll(".unfinished input").forEach((el) => {
-    console.log("1");
     el.addEventListener("change", () => {
-      console.log("2");
       document.querySelector("#reason").classList.toggle("hide");
       document.querySelector("#reason").toggleAttribute("required");
     });
   });
-
-  console.log(document.querySelector("#customRadio2"));
 }

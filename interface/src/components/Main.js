@@ -29,10 +29,14 @@ export default function Main(props) {
     }
   }
 
+  function hideUnfinishedBox() {
+    console.log("hideUnfinishedBox");
+    document.querySelector(".unfinished-container").dataset.state = "hidden";
+  }
+
   //Sets newDrawer array (is called from Media.js and drawer is the array of images)
   function getMedia(drawer, type) {
     console.log("getMedia");
-    console.log(type);
     setNewDrawer(drawer);
     setType(type);
   }
@@ -45,7 +49,7 @@ export default function Main(props) {
   }
 
   return (
-    <main className="Main section-bg">
+    <main className="Main section-bg" onClick={hideUnfinishedBox}>
       <Extra></Extra>
       <ul>{floors}</ul>
       <Popup
