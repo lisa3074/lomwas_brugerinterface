@@ -24,6 +24,7 @@ export function closeExpand(id) {
             setTimeout(() => {
               document.querySelector(".Media").classList.remove("hide");
             }, 500);
+          } else {
             document.querySelector(".Switch").classList.remove("hide");
           }
         }
@@ -55,4 +56,3 @@ export function closeExpand(id) {
     }
   });
 }
-/* parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.document.querySelector(".extra > .custom-control > .custom-control-input").checked */
