@@ -1,29 +1,20 @@
-export function popup(e) {
+export function popup() {
+  console.log("[function] || popup.js | popoverVideo");
   document.querySelector(".Popup").classList.remove("hide");
 }
 
 export function close(e) {
-  if (
-    e.classList.contains("Popup") ||
-    e.classList.contains("close-it") ||
-    e.nodeName === "line"
-  ) {
-    const image = document.querySelector(".Popup ul.image");
-
-    if (image) {
-      document.querySelectorAll(".feather-film").forEach((video) => {
-        video.classList.remove("video");
-      });
-      document.querySelectorAll(".feather-file").forEach((file) => {
-        file.classList.remove("docs");
-      });
-    }
+  console.log("[function] || popup.js | close | e: " + e);
+  const image = document.querySelector(".Popup ul.image");
+  if (e.classList.contains("Popup") || e.classList.contains("close-it") || e.nodeName === "line") {
     document.querySelector(".Popup").classList.add("hide");
     if (image) {
+      document.querySelectorAll(".feather-film, .feather-file").forEach((el) => {
+        el.classList.remove("video", "docs");
+      });
       document.querySelectorAll(".Popover").forEach((popover) => {
         popover.classList.add("hide");
-        popover.classList.remove("video");
-        popover.classList.remove("docs");
+        popover.classList.remove("video", "docs");
       });
     }
   } else {

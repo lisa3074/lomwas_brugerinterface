@@ -3,7 +3,7 @@ import "../sass/extra.scss";
 import { toggleMedia } from "./modules/toggleMedia.js";
 export default function Extra() {
   function media() {
-    console.log("media");
+    console.log("[function] || Extra.js | media");
     toggleMedia();
   }
   return (

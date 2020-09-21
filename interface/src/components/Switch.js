@@ -3,9 +3,12 @@ import "../sass/switch.scss";
 import { closeExpand } from "./modules/closeExpand";
 
 export default function Switch(props) {
+  function resetFinish() {
+    document.querySelector("#finish").dataset.state = "firstClick";
+  }
   return (
     <>
-      <fieldset className={"Switch hide a" + props.id}>
+      <fieldset className={"Switch hide a" + props.id} onClick={resetFinish}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -27,7 +30,6 @@ export default function Switch(props) {
             id={"customSwitch1" + props.id}
             value={props.id}
             disabled
-            /*  onClick={isCheckChanged} */
           />
           <label
             className="custom-control-label"

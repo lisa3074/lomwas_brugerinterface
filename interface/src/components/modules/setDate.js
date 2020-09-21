@@ -1,52 +1,107 @@
 import dayjs from "dayjs";
-
-window.addEventListener("DOMContentLoaded", init);
 const HTML = {};
 
-function init() {
+export function initDate(date) {
+  console.log("[function] || setDate.js | initDate | date: " + date);
   HTML.weekOfYear = require("dayjs/plugin/weekOfYear");
-  require("dayjs/locale/da");
-  require("dayjs/locale/en");
   dayjs.extend(HTML.weekOfYear);
+  HTML.week = dayjs(`'${date}'`).locale("da").week();
+  HTML.dateString = date.toString();
+  HTML.newDay = HTML.dateString.substring(8, 10);
+  HTML.newYear = HTML.dateString.substring(0, 4);
+  HTML.d = new Date(date);
+  setDate();
+  setDateEn();
+}
+function setDate() {
+  console.log("[function] || setDate.js | setDateEn");
+  let weekday = [
+    "Søndag",
+    "Mandag",
+    "Tirsdag",
+    "Onsdag",
+    "Torsdag",
+    "Fredag",
+    "Lørdag",
+  ];
+
+  let month = [
+    "januar",
+    "februar",
+    "marts",
+    "april",
+    "maj",
+    "juni",
+    "juli",
+    "august",
+    "september",
+    "oktober",
+    "november",
+    "december",
+  ];
+  const m = month[HTML.d.getMonth()];
+  const w = weekday[HTML.d.getDay()];
+  //week (day.js) does not work in firefox, so if firefox browser -> remove week
+  if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
+    document.querySelector(
+      ".dk-date"
+    ).textContent = `${w} d. ${HTML.newDay}. ${m}, ${HTML.newYear}`;
+  } else {
+    document.querySelector(
+      ".dk-date"
+    ).textContent = `${w} d. ${HTML.newDay}. ${m}, ${HTML.newYear} (Uge ${HTML.week})`;
+  }
 }
 
-export function setDate(date) {
-  console.log("setDate");
-  const weekday =
-    dayjs(`'${date}'`)
-      .locale("da")
-      .format("dddd")
-      .substring(0, 1)
-      .toUpperCase() +
-    dayjs(`'${date}'`).locale("da").format("dddd").substring(1).toLowerCase();
-  const daynumber = dayjs(`'${date}'`).locale("da").format("D");
-  const month = dayjs(`'${date}'`).locale("da").format("MMMM");
-  const year = dayjs(`'${date}'`).locale("da").format("YYYY");
-  const week = dayjs(`'${date}'`).locale("da").week();
-  document.querySelector(".dk-date").textContent = `
-    ${weekday} d. ${daynumber}. ${month}, ${year} (uge ${week})`;
-}
+/////ENGELSK DATO SKAL MULIGVIS GØRES DYNAMISK OG MERGES MED OVENSTÅENDE.
+function setDateEn() {
+  console.log("[function] || setDateEn.js | setDateEn");
+  let weekday = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-export function setDateEn(date) {
-  console.log("setDateEn");
-  const weekday = dayjs(`'${date}'`).locale("en").format("dddd");
-  const daynumber = dayjs(`'${date}'`).locale("den").format("D");
-  const month = dayjs(`'${date}'`).locale("en").format("MMMM");
-  const year = dayjs(`'${date}'`).locale("en").format("YYYY");
-  const week = dayjs(`'${date}'`).locale("en").week();
-
+  let month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   let theEnd = "th";
-  if (daynumber === "1" || daynumber === "21" || daynumber === "31") {
+  if (HTML.newDay === "1" || HTML.newDay === "21" || HTML.newDay === "31") {
     theEnd = "st";
-  } else if (daynumber === "2" || daynumber === "22") {
+  } else if (HTML.newDay === "2" || HTML.newDay === "22") {
     theEnd = "nd";
-  } else if (daynumber === "3" || daynumber === "23") {
+  } else if (HTML.newDay === "3" || HTML.newDay === "23") {
     theEnd = "rd";
   } else {
     theEnd = "th";
   }
 
-  document.querySelector(
-    ".en-date"
-  ).textContent = `${weekday}, ${month} ${daynumber}${theEnd}, ${year} (week ${week})`;
+  const m = month[HTML.d.getMonth()];
+  const w = weekday[HTML.d.getDay()];
+
+  //week (day.js) does not work in firefox, so if firefox browser -> remove week
+  if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
+    document.querySelector(
+      ".en-date"
+    ).textContent = `${w}, ${m} ${HTML.newDay}${theEnd}, ${HTML.newYear}`;
+  } else {
+    document.querySelector(
+      ".en-date"
+    ).textContent = `${w}, ${m} ${HTML.newDay}${theEnd}, ${HTML.newYear} (Uge ${HTML.week})`;
+  }
 }

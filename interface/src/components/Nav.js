@@ -43,6 +43,10 @@ export default function Nav(props) {
     unable();
   }, [props.buildings]);
 
+  function resetText() {
+    document.querySelector(".error").textContent = "";
+  }
+
   return (
     <nav id="Nav">
       <div className="top-buttons">
@@ -124,12 +128,14 @@ export default function Nav(props) {
 
             <label htmlFor="reason" className="reason hide">
               Skal udfyldes <span className="required"> *</span>
+              <span className="error"></span>
             </label>
             <textarea
               id="reason"
               className="form-control hide"
               rows="2"
-              placeholder="Skriv begrundelse"></textarea>
+              placeholder="Skriv begrundelse"
+              onKeyUp={resetText}></textarea>
           </fieldset>
         </article>
       </div>

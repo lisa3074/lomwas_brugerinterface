@@ -5,7 +5,9 @@ import Etage from "./Etage";
 import "../sass/main.scss";
 
 export default function Main(props) {
-  console.log("number of tasks in all: " + props.tasks.length);
+  console.log(
+    "[function] || Main.js | Main() | number of tasks: " + props.tasks.length
+  );
   const floors = [];
 
   //States
@@ -15,8 +17,10 @@ export default function Main(props) {
 
   //for each floor that exists in the tasks up to 50, take that floor and filter all tasks of that floor and display it
   //.filter loops through the array and creates a new one with only the entries that pass the test (in this case ===i)
+  const tasks = props.tasks.filter((t) => t.running === false);
+
   for (let i = 0; i < 50; i++) {
-    if (props.tasks.filter((t) => t.local.floor === i).length) {
+    if (tasks.filter((t) => t.local.floor === i).length) {
       const floor = (
         <Etage
           tasks={props.tasks.filter((t) => t.local.floor === i)}
@@ -30,13 +34,13 @@ export default function Main(props) {
   }
 
   function hideUnfinishedBox() {
-    console.log("hideUnfinishedBox");
+    console.log("[function] || Main.js | hideUnfinishedBox()");
     document.querySelector(".unfinished-container").dataset.state = "hidden";
   }
 
   //Sets newDrawer array (is called from Media.js and drawer is the array of images)
   function getMedia(drawer, type) {
-    console.log("getMedia");
+    console.log("[function] || Main.js | getMedia()");
     setNewDrawer(drawer);
     setType(type);
   }
@@ -44,7 +48,7 @@ export default function Main(props) {
   //Sets elementKey array (is called from Popover.js and elementKey is the property data-index of the element clicked (whitch
   //corresponds with the same elements index in the array)
   function getMediaElement(elementKey) {
-    console.log("getMediaElement");
+    console.log("[function] || Main.js | getMediaElement()");
     setElementKey(elementKey);
   }
 

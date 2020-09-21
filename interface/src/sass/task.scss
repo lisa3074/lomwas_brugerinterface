@@ -35,6 +35,9 @@
   .blue-text {
     color: #0168fa;
   }
+  .accordion-body p {
+    scrollbar-width: none;
+  }
 
   #accordion2 [data-state="start"] {
     border: 1px solid rgba(72, 94, 144, 0.16);
@@ -208,7 +211,7 @@
     }
   }
 }
-@media (min-width: 1025px) {
+@media (min-width: 1045px) {
   #root .read-more {
     right: auto;
     left: 22rem;

@@ -19,7 +19,6 @@ export default function App() {
   function updateBuildingId(e) {
     setUpdatedBuildingId(e);
   }
-
   //fetching buildings for the navigation, and a buildingId for the tasks
   useEffect(() => {
     FetchData.getBuilding(setBuildings, setBuildingId);

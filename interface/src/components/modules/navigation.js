@@ -1,23 +1,39 @@
 import { FetchData } from "./fetchData.js";
+
+const HTML = {};
+
+function init() {
+  // "Global vars"
+  HTML.start = document.querySelector("#start");
+  HTML.finish = document.querySelector("#finish");
+  HTML.reset = document.querySelector(".btn.btn-outline-light.reset");
+  HTML.checkboxeS = document.querySelectorAll(".switch.custom-control-input");
+  HTML.unfinishedBox = document.querySelector(".unfinished-container");
+  HTML.reason = document.querySelector("#reason");
+  HTML.customRadio1 = document.querySelector("#customRadio1");
+  HTML.customRadio2 = document.querySelector("#customRadio1");
+  HTML.reason_required = document.querySelector(".reason");
+  HTML.error = document.querySelector(".error");
+}
+
 export function start() {
-  console.log("start");
-  const start = document.querySelector("#start");
-  const finish = document.querySelector("#finish");
-  const reset = document.querySelector(".btn.btn-outline-light.reset");
-  const switches = document.querySelectorAll(".switch.custom-control-input");
-  start.classList.add("hide");
-  finish.classList.remove("hide");
-  finish.disabled = true;
-  reset.dataset.state = "shown";
-  switches.forEach((checkbox) => {
+  console.log("[function] || navigation.js || start");
+  init();
+  HTML.start.classList.add("hide");
+  HTML.finish.classList.remove("hide");
+  HTML.finish.disabled = true;
+  HTML.reset.dataset.state = "shown";
+
+  HTML.checkboxeS.forEach((checkbox) => {
+    //set all to unchecked
     checkbox.disabled = false;
     checkbox.addEventListener("click", () => {
       if (checkbox.checked === false) {
-        finish.disabled = true;
+        HTML.finish.disabled = true;
       }
-      switches.forEach((box) => {
-        if (box.checked) {
-          finish.disabled = false;
+      HTML.checkboxeS.forEach((checkbox) => {
+        if (checkbox.checked) {
+          HTML.finish.disabled = false;
         }
       });
     });
@@ -25,37 +41,48 @@ export function start() {
 }
 
 export function reset() {
-  console.log("reset");
-  const start = document.querySelector("#start");
-  const finish = document.querySelector("#finish");
-  const reset = document.querySelector(".btn.btn-outline-light.reset");
-  const switches = document.querySelectorAll(".switch.custom-control-input");
-  const checks = document.querySelectorAll(".feather-check");
-  const unfinishedBox = document.querySelector(".unfinished-container");
-  start.classList.remove("hide");
-  finish.classList.add("hide");
-  reset.dataset.state = "hidden";
-  switches.forEach((checkbox) => {
+  console.log("[function] || navigation.js || reset");
+  init();
+  // Vars
+  const checkmarkS = document.querySelectorAll(".feather-check");
+
+  HTML.start.classList.remove("hide");
+  HTML.finish.classList.add("hide");
+  HTML.reset.dataset.state = "hidden";
+
+  //Set attributes and classes
+  HTML.error.textContent = "";
+  HTML.reason.value = "";
+  HTML.customRadio2.checked = false;
+  HTML.customRadio1.checked = true;
+  HTML.reason_required.classList.add("hide");
+  HTML.reason.classList.add("hide");
+  HTML.reason.removeAttribute("required");
+
+  //set all checkboxes to disabled and unchecked and hide all checkmarks and the inputfield for unfinished tasks
+  HTML.checkboxeS.forEach((checkbox) => {
     checkbox.disabled = true;
     checkbox.checked = false;
   });
-  checks.forEach((check) => {
-    check.classList.add("hide");
+  checkmarkS.forEach((checkmark) => {
+    checkmark.classList.add("hide");
   });
-  unfinishedBox.dataset.state = "hidden";
+  HTML.unfinishedBox.dataset.state = "hidden";
 }
 
 export function finish() {
-  console.log("finish");
-  const unfinishedBox = document.querySelector(".unfinished-container");
-  const finish = document.querySelector("#finish");
+  console.log("[function] || navigation.js || finish");
+  init();
+  //Vars
   const switches = document.querySelectorAll(".switch");
   let checkedElementCount = 0;
   let elementCount = 0;
+
   switches.forEach((el) => {
     //counting how many checkboxes (tasks) exist on this building
     elementCount++;
   });
+
   switches.forEach((el) => {
     if (el.checked === true) {
       //counting how many checkboxes are checked
@@ -64,20 +91,32 @@ export function finish() {
       function shouldPut() {
         //If amount of checkboxes checked is equal to amount of checkboxes PUT the data
         if (checkedElementCount === elementCount) {
-          unfinishedBox.dataset.state = "hidden";
+          HTML.unfinishedBox.dataset.state = "hidden";
           FetchData.putTasks();
           //GET tasks der er running=false
+        }
+        //depending on the data-state of the finish button
+        else if (HTML.finish.dataset.state === "firstClick") {
+          HTML.unfinishedBox.dataset.state = "shown";
+          setTimeout(() => {
+            HTML.finish.dataset.state = "secondClick";
+          }, 500);
+        } else if (HTML.finish.dataset.state === "secondClick" && !HTML.customRadio2.checked) {
+          HTML.finish.dataset.state = "firstClick";
+          HTML.error.textContent = "";
+          //HER SKAL DER SENDES TIL DB (PUT)
+          FetchData.putTasks();
+          //GET tasks der er running=false
+          reset();
+        } else if (HTML.finish.dataset.state === "secondClick" && HTML.reason.value !== "") {
+          HTML.finish.dataset.state = "firstClick";
+          //HER SKAL DER SENDES TIL DB (PUT)
+          FetchData.putTasks();
+          HTML.error.textContent = "";
+          //GET tasks der er running=false
+          reset();
         } else {
-          if (finish.dataset.state === "firstClick") {
-            finish.dataset.state = "secondClick";
-            unfinishedBox.dataset.state = "shown";
-          } else {
-            finish.dataset.state = "firstClick";
-            //HER SKAL DER SENDES TIL DB (PUT)
-            FetchData.putTasks();
-            //GET tasks der er running=false
-            reset();
-          }
+          HTML.error.textContent = " || Du mangler at udfylde en beskrivelse";
         }
       }
     }
@@ -85,11 +124,21 @@ export function finish() {
 }
 
 export function unable() {
-  console.log("unable");
+  console.log("[function] || navigation.js || unable");
+  init();
+
+  //should the input field
   document.querySelectorAll(".unfinished input").forEach((el) => {
     el.addEventListener("change", () => {
-      document.querySelector("#reason").classList.toggle("hide");
-      document.querySelector("#reason").toggleAttribute("required");
+      if (HTML.customRadio1.checked) {
+        HTML.reason_required.classList.add("hide");
+        HTML.reason.classList.add("hide");
+        HTML.reason.removeAttribute("required");
+      } else {
+        HTML.reason_required.classList.remove("hide");
+        HTML.reason.classList.remove("hide");
+        HTML.reason.setAttribute("required", true);
+      }
     });
   });
 }

@@ -65,7 +65,7 @@ export default function Media(props) {
   }
 
   function popupImageContent() {
-    console.log("popupImageContent");
+    console.log("[function] || Media.js | popupImageContent()");
 
     //.map loops through the array and creates a new array from that array with modifications (in this case adds a html tag and properties for each entry)
     const items3 = props.tasks.map((item) => (
