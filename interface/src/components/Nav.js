@@ -17,7 +17,7 @@ export default function Nav(props) {
     strokeLinecap: "round",
     strokeLinejoin: "round",
   };
-
+  //state
   const [buildings, setBuildings] = useState([]);
 
   //UseEffect to make sure the array is only updated when the dependency (props.buildings) is changed (to avoid endless loop)
@@ -36,11 +36,11 @@ export default function Nav(props) {
         setBuildings(buildingArray);
       });
     } else {
+      //if there are no buildings/tasks
       const buildingOption = <option key={"1"}>ingen opgaver i dag</option>;
       buildingArray.push(buildingOption);
       setBuildings(buildingArray);
     }
-    unable();
   }, [props.buildings]);
 
   function resetText() {
@@ -72,10 +72,8 @@ export default function Nav(props) {
           {buildings}
         </select>
         <div className="btn-container">
-          {/* <div className="btn-wrapper"> */}
-          <Start></Start>
+          <Start buildings={buildings}></Start>
           <Reset></Reset>
-          {/* </div> */}
 
           <button type="button" className="btn btn-primary undone">
             <svg
@@ -97,9 +95,7 @@ export default function Nav(props) {
           </button>
         </div>
         <article className="unfinished-container" data-state="hidden">
-          <p className="inforbox">
-            Der er uafsluttede opgaver, hvordan skal disse afsluttes?
-          </p>
+          <p className="inforbox">Der er uafsluttede opgaver, hvordan skal disse afsluttes?</p>
           <fieldset className="unfinished">
             <div className="custom-control custom-radio">
               <input
@@ -115,12 +111,7 @@ export default function Nav(props) {
             </div>
 
             <div className="custom-control custom-radio">
-              <input
-                type="radio"
-                id="customRadio2"
-                name="customRadio"
-                className="custom-control-input"
-              />
+              <input type="radio" id="customRadio2" name="customRadio" className="custom-control-input" />
               <label className="custom-control-label" htmlFor="customRadio2">
                 Kan ikke udføres
               </label>

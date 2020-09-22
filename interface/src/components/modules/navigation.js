@@ -74,25 +74,29 @@ export function finish() {
   console.log("[function] || navigation.js || finish");
   init();
   //Vars
-  const switches = document.querySelectorAll(".switch");
+  const checkboxeS = document.querySelectorAll(".switch");
   let checkedElementCount = 0;
   let elementCount = 0;
 
-  switches.forEach((el) => {
+  checkboxeS.forEach(() => {
     //counting how many checkboxes (tasks) exist on this building
     elementCount++;
   });
 
-  switches.forEach((el) => {
+  checkboxeS.forEach((el) => {
     if (el.checked === true) {
       //counting how many checkboxes are checked
       checkedElementCount++;
       shouldPut();
       function shouldPut() {
+        console.log(
+          "[count] || navigation.js | finish | " + checkedElementCount + " out of " + elementCount + " tasks finished"
+        );
         //If amount of checkboxes checked is equal to amount of checkboxes PUT the data
         if (checkedElementCount === elementCount) {
           HTML.unfinishedBox.dataset.state = "hidden";
           FetchData.putTasks();
+          reset();
           //GET tasks der er running=false
         }
         //depending on the data-state of the finish button
@@ -101,14 +105,18 @@ export function finish() {
           setTimeout(() => {
             HTML.finish.dataset.state = "secondClick";
           }, 500);
-        } else if (HTML.finish.dataset.state === "secondClick" && !HTML.customRadio2.checked) {
+        } else if (HTML.finish.dataset.state === "secondClick" && HTML.customRadio1.checked) {
           HTML.finish.dataset.state = "firstClick";
           HTML.error.textContent = "";
           //HER SKAL DER SENDES TIL DB (PUT)
           FetchData.putTasks();
           //GET tasks der er running=false
           reset();
-        } else if (HTML.finish.dataset.state === "secondClick" && HTML.reason.value !== "") {
+        } else if (
+          HTML.finish.dataset.state === "secondClick" &&
+          !HTML.customRadio1.checked &&
+          HTML.reason.value !== ""
+        ) {
           HTML.finish.dataset.state = "firstClick";
           //HER SKAL DER SENDES TIL DB (PUT)
           FetchData.putTasks();

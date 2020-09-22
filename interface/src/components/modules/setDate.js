@@ -1,29 +1,34 @@
-import dayjs from "dayjs";
 const HTML = {};
 
 export function initDate(date) {
   console.log("[function] || setDate.js | initDate | date: " + date);
-  HTML.weekOfYear = require("dayjs/plugin/weekOfYear");
-  dayjs.extend(HTML.weekOfYear);
-  HTML.week = dayjs(`'${date}'`).locale("da").week();
   HTML.dateString = date.toString();
   HTML.newDay = HTML.dateString.substring(8, 10);
   HTML.newYear = HTML.dateString.substring(0, 4);
   HTML.d = new Date(date);
+  HTML.weekNumber = getWeekNumber();
   setDate();
   setDateEn();
 }
+
+function getWeekNumber() {
+  //set date to fetched date
+  let d = HTML.d;
+  // Set to nearest Thursday: current date + 4 - current day number
+  // Make Sunday's day number 7
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  // Get first day of year
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  // Calculate full weeks to nearest Thursday
+  const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+  // Return array of week number
+  return [weekNo];
+}
+
 function setDate() {
   console.log("[function] || setDate.js | setDateEn");
-  let weekday = [
-    "Søndag",
-    "Mandag",
-    "Tirsdag",
-    "Onsdag",
-    "Torsdag",
-    "Fredag",
-    "Lørdag",
-  ];
+
+  let weekday = ["Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag"];
 
   let month = [
     "januar",
@@ -41,30 +46,15 @@ function setDate() {
   ];
   const m = month[HTML.d.getMonth()];
   const w = weekday[HTML.d.getDay()];
-  //week (day.js) does not work in firefox, so if firefox browser -> remove week
-  if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
-    document.querySelector(
-      ".dk-date"
-    ).textContent = `${w} d. ${HTML.newDay}. ${m}, ${HTML.newYear}`;
-  } else {
-    document.querySelector(
-      ".dk-date"
-    ).textContent = `${w} d. ${HTML.newDay}. ${m}, ${HTML.newYear} (Uge ${HTML.week})`;
-  }
+
+  document.querySelector(
+    ".dk-date"
+  ).textContent = `${w} d. ${HTML.newDay}. ${m}, ${HTML.newYear} (Uge ${HTML.weekNumber})`;
 }
 
-/////ENGELSK DATO SKAL MULIGVIS GØRES DYNAMISK OG MERGES MED OVENSTÅENDE.
 function setDateEn() {
   console.log("[function] || setDateEn.js | setDateEn");
-  let weekday = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
   let month = [
     "January",
@@ -94,14 +84,7 @@ function setDateEn() {
   const m = month[HTML.d.getMonth()];
   const w = weekday[HTML.d.getDay()];
 
-  //week (day.js) does not work in firefox, so if firefox browser -> remove week
-  if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) {
-    document.querySelector(
-      ".en-date"
-    ).textContent = `${w}, ${m} ${HTML.newDay}${theEnd}, ${HTML.newYear}`;
-  } else {
-    document.querySelector(
-      ".en-date"
-    ).textContent = `${w}, ${m} ${HTML.newDay}${theEnd}, ${HTML.newYear} (Uge ${HTML.week})`;
-  }
+  document.querySelector(
+    ".en-date"
+  ).textContent = `${w}, ${m} ${HTML.newDay}${theEnd}, ${HTML.newYear} (Week ${HTML.weekNumber})`;
 }

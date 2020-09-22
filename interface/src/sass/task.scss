@@ -2,6 +2,10 @@
   .Task {
     padding-bottom: var(--m-padding);
     position: relative;
+    .ui-accordion-header,
+    .ui-accordion-content {
+      border: none;
+    }
   }
   .Task .accordion-title {
     text-transform: uppercase;
@@ -184,7 +188,8 @@
     grid-area: body;
     background-color: #fff;
     border-right-width: 0;
-    padding-bottom: 15px;
+    padding-bottom: 0px;
+    scrollbar-width: none;
   }
   #root #App .Media {
     grid-area: media;

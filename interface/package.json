@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://frontnd.ninja/userinterface/",
+  "homepage": "https://frontnd.ninja/ui",
   "eslintConfig": {
     "extends": "react-app"
   },

@@ -18,9 +18,7 @@ export default function Task(props) {
             <p>LOKALE: {props.local.id}</p>
             <p> {props.local.name}</p>
           </div>
-          <div
-            className="accordion-body ui-accordion-content"
-            onClick={() => closeExpand("a" + props.id)}>
+          <div className="accordion-body ui-accordion-content" onClick={() => closeExpand("a" + props.id)}>
             <p>{props.description}</p>
             <p className="read-more">
               ... <span className="blue-text">Læs mere</span>

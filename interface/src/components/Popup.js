@@ -3,6 +3,21 @@ import "../sass/popup.scss";
 import { close } from "./modules/popup.js";
 
 export default function Popup(props) {
+  //vars
+  const imageAmount = props.newDrawer.length - 1;
+  const svgSettings = {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+  };
+
+  //states
   let [i, setI] = useState(0);
   let [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
@@ -11,7 +26,7 @@ export default function Popup(props) {
     setInnerWidth(window.innerWidth);
   }
 
-  const imageAmount = props.newDrawer.length - 1;
+  //skip between images
   function skipRight() {
     setI(i + 1);
     if (i >= imageAmount) {
@@ -25,35 +40,28 @@ export default function Popup(props) {
     }
   }
 
-  const svgSettings = {
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "24",
-    height: "24",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "1.5",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-  };
   return (
     <div className="Popup hide" onClick={(e) => close(e.target)}>
-      <svg
-        {...svgSettings}
-        className="feather feather-x close-it"
-        onClick={(e) => close(e.target)}>
+      <svg {...svgSettings} className="feather feather-x close-it" onClick={(e) => close(e.target)}>
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
-      {/* If the elementKey is not nothing then only show the array entry with the same index as the elementKey, if not, show the whole array */}
+      {/* If the elementKey is not nothing then only show the array entry with the same index as the elementKey, 
+      if not, show the whole array */}
       <ul className={props.type}>
-        {innerWidth < 767
-          ? props.elementKey !== ""
-            ? props.newDrawer[props.elementKey]
-            : props.newDrawer
-          : props.newDrawer[i]}
-        {innerWidth > 767 && props.elementKey === "" ? (
+        {innerWidth < 767 && props.elementKey !== "" ? (
+          props.newDrawer[props.elementKey]
+        ) : innerWidth < 767 && props.elementKey === "" ? (
+          props.newDrawer
+        ) : innerWidth < 767 && props.elementKey !== "" ? (
+          props.newDrawer[i]
+        ) : /* If the elementKey is not nothing then only show the array entry with the same index as the elementKey, 
+        if not, show the first image in the array and set up clickable arrows to loop throght the images */
+        innerWidth > 767 && props.elementKey !== "" ? (
+          props.newDrawer[props.elementKey]
+        ) : innerWidth > 767 && props.elementKey === "" ? (
           <>
+            {props.newDrawer[i]}
             <div className="svg-wrapper">
               <svg
                 {...svgSettings}

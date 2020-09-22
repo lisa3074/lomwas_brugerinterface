@@ -49,19 +49,15 @@ export default function App() {
     }
   }
 
-  // TODO
-  //gennemgå al kode og kommenter
-  //teste alle browsere / forskellige enheder
-
-  // Sende besked (vise andet view der er lavet)
-  // Se uafslttede opgaver (vise andet view der er lavet)
-
   return (
     <section id="App">
       <h1>Opgaver</h1>
+      {/* Danish date */}
       <p className="dk-date text-muted"></p>
+      {/* English date */}
       <p className="en-date text-muted hide"></p>
 
+      {/* passing buildings array and update function to navigation*/}
       <Nav buildings={buildings} updateBuildingId={updateBuildingId}></Nav>
 
       {/* if tasks is true, put the Main component in, otherwise don't put anything in */}
@@ -69,3 +65,9 @@ export default function App() {
     </section>
   );
 }
+
+// TODO
+//gennemgå al kode og kommenter
+
+// Sende besked (vise andet view der er lavet)
+// Se uafslttede opgaver (vise andet view der er lavet)

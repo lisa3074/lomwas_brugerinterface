@@ -8,8 +8,8 @@ const HTML = {};
 function init() {
   console.log("[function] || fetchData.js || init");
 
-  /* HTML.url = "https://app.acbacl.com/api/tasks/2020-09-14"; */
-  HTML.url = window.location.href;
+  HTML.url = "https://app.acbacl.com/api/tasks/2020-09-21";
+  /* HTML.url = window.location.href; */
   HTML.day = new Date().getDate();
   HTML.month = new Date().getMonth() + 1;
   HTML.year = new Date().getFullYear();

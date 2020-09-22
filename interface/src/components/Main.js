@@ -5,9 +5,7 @@ import Etage from "./Etage";
 import "../sass/main.scss";
 
 export default function Main(props) {
-  console.log(
-    "[function] || Main.js | Main() | number of tasks: " + props.tasks.length
-  );
+  console.log("[function] || Main.js | Main() | number of tasks: " + props.tasks.length);
   const floors = [];
 
   //States
@@ -34,7 +32,6 @@ export default function Main(props) {
   }
 
   function hideUnfinishedBox() {
-    console.log("[function] || Main.js | hideUnfinishedBox()");
     document.querySelector(".unfinished-container").dataset.state = "hidden";
   }
 
@@ -48,20 +45,16 @@ export default function Main(props) {
   //Sets elementKey array (is called from Popover.js and elementKey is the property data-index of the element clicked (whitch
   //corresponds with the same elements index in the array)
   function getMediaElement(elementKey) {
-    console.log("[function] || Main.js | getMediaElement()");
+    console.log("[function] || Main.js | getMediaElement() | elementkey: " + elementKey);
     setElementKey(elementKey);
   }
 
   return (
     <main className="Main section-bg" onClick={hideUnfinishedBox}>
       <Extra></Extra>
+      {/* write the floors array into the <ul> */}
       <ul>{floors}</ul>
-      <Popup
-        floors={floors}
-        tasks={props.tasks}
-        newDrawer={newDrawer}
-        elementKey={elementKey}
-        type={type}></Popup>
+      <Popup floors={floors} tasks={props.tasks} newDrawer={newDrawer} elementKey={elementKey} type={type}></Popup>
     </main>
   );
 }

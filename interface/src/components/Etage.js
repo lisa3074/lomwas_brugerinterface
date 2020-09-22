@@ -2,6 +2,7 @@ import React from "react";
 import Task from "./Task";
 
 export default function Etage(props) {
+  console.log("[function] || Etage.js | Etage | etage: " + props.floor);
   //.map loops through the array and creates a new array from that array with modifications (in this case adds a html tag and properties for each entry)
   const mappedTasks = props.tasks.map((task) => (
     <Task
