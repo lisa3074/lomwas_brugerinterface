@@ -9,7 +9,7 @@ export function closeExpand(id) {
     svg.classList.remove("video", "docs");
   });
 
-  document.querySelector("#finish").dataset.state = "firstClick";
+  document.querySelector("#finish").dataset.state = "hidden firstClick";
 
   document.querySelectorAll(".accordion-wrapper").forEach((accordion) => {
     //if an accordions does not match the id of the clicked accordion && the data-state is shown -> close it

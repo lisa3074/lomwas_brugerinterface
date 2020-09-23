@@ -19,6 +19,7 @@ function init() {
 export function start() {
   console.log("[function] || navigation.js || start");
   init();
+  HTML.finish.dataset.state = "hidden firstClick";
   HTML.start.classList.add("hide");
   HTML.finish.classList.remove("hide");
   HTML.finish.disabled = true;
@@ -46,6 +47,7 @@ export function reset() {
   // Vars
   const checkmarkS = document.querySelectorAll(".feather-check");
 
+  HTML.finish.dataset.state = "hidden firstClick";
   HTML.start.classList.remove("hide");
   HTML.finish.classList.add("hide");
   HTML.reset.dataset.state = "hidden";
@@ -100,13 +102,13 @@ export function finish() {
           //GET tasks der er running=false
         }
         //depending on the data-state of the finish button
-        else if (HTML.finish.dataset.state === "firstClick") {
+        else if (HTML.finish.dataset.state === "hidden firstClick") {
           HTML.unfinishedBox.dataset.state = "shown";
           setTimeout(() => {
             HTML.finish.dataset.state = "secondClick";
           }, 500);
         } else if (HTML.finish.dataset.state === "secondClick" && HTML.customRadio1.checked) {
-          HTML.finish.dataset.state = "firstClick";
+          HTML.finish.dataset.state = "hidden firstClick";
           HTML.error.textContent = "";
           //HER SKAL DER SENDES TIL DB (PUT)
           FetchData.putTasks();
@@ -117,7 +119,7 @@ export function finish() {
           !HTML.customRadio1.checked &&
           HTML.reason.value !== ""
         ) {
-          HTML.finish.dataset.state = "firstClick";
+          HTML.finish.dataset.state = "hidden firstClick";
           //HER SKAL DER SENDES TIL DB (PUT)
           FetchData.putTasks();
           HTML.error.textContent = "";
@@ -149,4 +151,21 @@ export function unable() {
       }
     });
   });
+}
+
+export function saveProgress(e) {
+  console.log("[function] || navigation.js || saveProgress");
+  document.querySelector(".save-progress").classList = "save-progress fade-in-modal";
+}
+export function returnNothing() {
+  console.log("[function] || navigation.js || returnNothing");
+  return;
+}
+
+export function closeDialog() {
+  console.log("[function] || navigation.js || closeDialog");
+  document.querySelector(".save-progress").classList = "save-progress fade-out-modal";
+  setTimeout(() => {
+    document.querySelector(".save-progress").classList = "save-progress hide fade-out-modal";
+  }, 500);
 }

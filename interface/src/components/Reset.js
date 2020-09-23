@@ -2,7 +2,7 @@ import React from "react";
 import { reset } from "./modules/navigation.js";
 import "../sass/navButtons.scss";
 
-export default function Reset() {
+export default function Reset({ isStartHidden }) {
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
@@ -18,7 +18,10 @@ export default function Reset() {
     <button
       className="btn btn-outline-light reset"
       data-state="hidden"
-      onClick={() => reset()}>
+      onClick={() => {
+        reset();
+        isStartHidden("");
+      }}>
       <svg {...svgSettings} className="feather feather-x-circle wd-10 mg-r-5">
         <circle cx="12" cy="12" r="10"></circle>
         <line x1="15" y1="9" x2="9" y2="15"></line>

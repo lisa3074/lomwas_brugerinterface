@@ -4,7 +4,7 @@ import { closeExpand } from "./modules/closeExpand";
 
 export default function Switch(props) {
   function resetFinishedButton() {
-    document.querySelector("#finish").dataset.state = "firstClick";
+    document.querySelector("#finish").dataset.state = "hidden firstClick";
   }
   return (
     <>
