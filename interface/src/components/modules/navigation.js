@@ -14,12 +14,17 @@ function init() {
   HTML.customRadio2 = document.querySelector("#customRadio1");
   HTML.reason_required = document.querySelector(".reason");
   HTML.error = document.querySelector(".error");
+  HTML.setDataState = "";
+}
+function setCount() {
+  HTML.count = 0;
 }
 
 export function start() {
   console.log("[function] || navigation.js || start");
   init();
-  HTML.finish.dataset.state = "hidden firstClick";
+  setCount();
+  /* HTML.finish.dataset.state = "hidden firstClick"; */
   HTML.start.classList.add("hide");
   HTML.finish.classList.remove("hide");
   HTML.finish.disabled = true;
@@ -102,7 +107,7 @@ export function finish() {
           //GET tasks der er running=false
         }
         //depending on the data-state of the finish button
-        else if (HTML.finish.dataset.state === "hidden firstClick") {
+        else if (HTML.finish.dataset.state === "hidden firstClick" && HTML.customRadio1.checked) {
           HTML.unfinishedBox.dataset.state = "shown";
           setTimeout(() => {
             HTML.finish.dataset.state = "secondClick";
@@ -115,7 +120,7 @@ export function finish() {
           //GET tasks der er running=false
           reset();
         } else if (
-          HTML.finish.dataset.state === "secondClick" &&
+          HTML.finish.dataset.state === "hidden firstClick" &&
           !HTML.customRadio1.checked &&
           HTML.reason.value !== ""
         ) {
@@ -153,7 +158,7 @@ export function unable() {
   });
 }
 
-export function saveProgress(e) {
+export function saveProgress() {
   console.log("[function] || navigation.js || saveProgress");
   document.querySelector(".save-progress").classList = "save-progress fade-in-modal";
 }
@@ -168,4 +173,40 @@ export function closeDialog() {
   setTimeout(() => {
     document.querySelector(".save-progress").classList = "save-progress hide fade-out-modal";
   }, 500);
+}
+
+export function setDataState(radio1, callback) {
+  console.log("setDataState");
+  const finishButton = document.querySelector("#finish");
+  if (radio1 === false && finishButton.classList.contains("hide")) {
+    document.querySelector("select").disabled = false;
+    callback(true);
+    console.log("sat til true");
+  } else if (radio1 === true) {
+    HTML.finish.dataset.state = "secondClick";
+  } else if (radio1 === false) {
+    HTML.finish.dataset.state = "hidden firstClick";
+  }
+}
+
+export function changeDataState(callback) {
+  console.log("changeDataState");
+  console.log(HTML.setDataState);
+  callback(HTML.setDataState);
+}
+
+export function checkSwitches(callback, e) {
+  console.log("checkSwitches");
+
+  console.log(e.target.checked);
+  if (e.target.checked) {
+    HTML.count++;
+    callback("hidden");
+  } else {
+    HTML.count--;
+    if (HTML.count <= 0) {
+      callback("");
+    }
+  }
+  console.log(HTML.count);
 }

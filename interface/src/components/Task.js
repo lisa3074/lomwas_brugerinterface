@@ -24,7 +24,7 @@ export default function Task(props) {
               ... <span className="blue-text">Læs mere</span>
             </p>
           </div>
-          <Switch id={props.id}></Switch>
+          <Switch id={props.id} setStartState={props.setStartState}></Switch>
           <Media
             id={props.id}
             task={props.task}

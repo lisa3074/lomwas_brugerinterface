@@ -2,8 +2,17 @@ import React, { useEffect, useState } from "react";
 import "../sass/nav.scss";
 import Start from "./Start";
 import Reset from "./Reset";
-import { reset, saveProgress, returnNothing } from "./modules/navigation.js";
+import {
+  reset,
+  saveProgress,
+  returnNothing,
+  finish,
+  unable,
+  setDataState,
+  changeDataState,
+} from "./modules/navigation.js";
 import SaveProgress from "./SaveProgress";
+import { Callbacks } from "jquery";
 
 export default function Nav(props) {
   //Basic svg/icon settings converted to an object
@@ -20,7 +29,9 @@ export default function Nav(props) {
   };
   //state
   const [buildings, setBuildings] = useState([]);
-  const [startState, setStartState] = useState([]);
+  const [radio1, setRadio1] = useState([true]);
+
+  console.log(radio1);
 
   //UseEffect to make sure the array is only updated when the dependency (props.buildings) is changed (to avoid endless loop)
   useEffect(() => {
@@ -45,13 +56,29 @@ export default function Nav(props) {
     }
   }, [props.buildings]);
 
+  useEffect(() => {
+    setDataState(radio1);
+  }, [radio1]);
+
   function resetText() {
     document.querySelector(".error").textContent = "";
   }
   function isStartHidden(startState) {
     console.log("[function] || isStartHidden | function passed to Start.js and called from there");
-    setStartState(startState);
+    props.setStartState(startState);
     console.log(startState);
+  }
+
+  function getStartState() {
+    changeDataState(props.setStartState);
+  }
+
+  function isDoneHidden(e) {
+    console.log("[function] || Start.js | isDoneHidden");
+    const isButtonHidden = e.target.dataset.state.substring(0, 6);
+    isStartHidden(isButtonHidden);
+    finish();
+    unable();
   }
 
   return (
@@ -72,7 +99,7 @@ export default function Nav(props) {
           <div
             //make select clickable, when disabled so that dialog box pops up
             onClick={() => {
-              startState === "hidden" ? saveProgress() : returnNothing();
+              props.startState === "hidden" ? saveProgress() : returnNothing();
             }}>
             <select
               className="custom-select"
@@ -82,12 +109,18 @@ export default function Nav(props) {
                 props.updateBuildingId(e.target.value);
                 reset();
               }}
-              disabled={startState === "hidden" ? true : false}>
+              disabled={props.startState === "hidden" ? true : false}>
               {buildings}
             </select>
           </div>
           <div className="btn-container">
-            <Start buildings={buildings} isStartHidden={isStartHidden}></Start>
+            <Start
+              buildings={buildings}
+              isStartHidden={isStartHidden}
+              isDoneHidden={isDoneHidden}
+              getStartState={getStartState}
+              setRadio1={setRadio1}
+              radio1={radio1}></Start>
             <Reset isStartHidden={isStartHidden}></Reset>
 
             <button type="button" className="btn btn-primary undone">
@@ -118,6 +151,9 @@ export default function Nav(props) {
                   id="customRadio1"
                   name="customRadio"
                   className="custom-control-input"
+                  onClick={(e) => {
+                    setRadio1(true);
+                  }}
                   defaultChecked
                 />
                 <label className="custom-control-label" htmlFor="customRadio1">
@@ -126,7 +162,15 @@ export default function Nav(props) {
               </div>
 
               <div className="custom-control custom-radio">
-                <input type="radio" id="customRadio2" name="customRadio" className="custom-control-input" />
+                <input
+                  type="radio"
+                  id="customRadio2"
+                  name="customRadio"
+                  className="custom-control-input"
+                  onClick={() => {
+                    setRadio1(false);
+                  }}
+                />
                 <label className="custom-control-label" htmlFor="customRadio2">
                   Kan ikke udføres
                 </label>
@@ -147,7 +191,7 @@ export default function Nav(props) {
         </div>
       </nav>
       <section className="save-progress hide fade-out">
-        <SaveProgress></SaveProgress>
+        <SaveProgress isStartHidden={isStartHidden} isDoneHidden={isDoneHidden}></SaveProgress>
       </section>
     </>
   );

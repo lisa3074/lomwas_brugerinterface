@@ -4,3 +4,7 @@
 #Nav [data-state="shown"] {
   display: inline-block;
 }
+
+#Nav #finish svg {
+  pointer-events: none;
+}

@@ -17,6 +17,10 @@
   }
 } */
 
+.modal-header button.close {
+  outline: none;
+}
+
 #modal2 {
   background-color: rgba(0, 0, 0, 0.36);
   .tx-13 {
@@ -97,5 +101,16 @@
       transform: scale(1);
       opacity: 1;
     }
+  }
+}
+
+.modal-content .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  div button {
+    margin-right: 0.5rem;
+  }
+  svg {
+    pointer-events: none;
   }
 }

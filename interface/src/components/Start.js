@@ -1,7 +1,7 @@
 import React from "react";
-import { start, finish, unable } from "./modules/navigation.js";
+import { finish, start, setDataState } from "./modules/navigation.js";
 
-export default function Start({ buildings, isStartHidden }) {
+export default function Start({ buildings, isStartHidden, isDoneHidden, getStartState, setRadio1, radio1 }) {
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
@@ -14,20 +14,6 @@ export default function Start({ buildings, isStartHidden }) {
     strokeLinejoin: "round",
   };
 
-  function isDoneHidden(e) {
-    console.log("[function] || Start.js | isDoneHidden");
-    /*  e.target.dataset.state === "hidden" ? isStartHidden("") && finish() && unable() : finish() && unable(); */
-
-    if (e.target.dataset.state === "hidden") {
-      console.log("THIS IS THE STATE" + e.target.dataset.state);
-    }
-    let isButtonHidden = e.target.dataset.state.substring(0, 6);
-    isStartHidden(isButtonHidden);
-
-    finish();
-    unable();
-    console.log(e.target.dataset.state);
-  }
   return (
     <>
       <button
@@ -35,9 +21,10 @@ export default function Start({ buildings, isStartHidden }) {
         disabled={buildings.length <= 1 ? true : false}
         id="start"
         className="btn btn-success start"
-        onClick={(e) => {
+        onClick={() => {
           start();
-          isStartHidden("hidden");
+          isStartHidden("");
+          getStartState();
         }}>
         <svg {...svgSettings} className="feather feather-clock wd-10 mg-r-5">
           <circle cx="12" cy="12" r="10"></circle>
@@ -51,6 +38,8 @@ export default function Start({ buildings, isStartHidden }) {
         data-state="disabled"
         onClick={(e) => {
           isDoneHidden(e);
+          finish();
+          setDataState(radio1, setRadio1);
         }}>
         <svg {...svgSettings} className="feather feather-check-circle wd-10 mg-r-5">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>

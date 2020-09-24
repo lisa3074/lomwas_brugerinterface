@@ -14,6 +14,7 @@ export default function App() {
   const [buildings, setBuildings] = useState([]);
   const [buildingId, setBuildingId] = useState();
   const [UpdatedBuildingId, setUpdatedBuildingId] = useState([buildingId]);
+  const [startState, setStartState] = useState([]);
 
   //function that is being passed to Main.js and called whenever a new building has been selected
   function updateBuildingId(e) {
@@ -58,10 +59,14 @@ export default function App() {
       <p className="en-date text-muted hide"></p>
 
       {/* passing buildings array and update function to navigation*/}
-      <Nav buildings={buildings} updateBuildingId={updateBuildingId}></Nav>
+      <Nav
+        buildings={buildings}
+        updateBuildingId={updateBuildingId}
+        setStartState={setStartState}
+        startState={startState}></Nav>
 
       {/* if tasks is true, put the Main component in, otherwise don't put anything in */}
-      {tasks ? <Main tasks={tasks}></Main> : ""}
+      {tasks ? <Main tasks={tasks} setStartState={setStartState}></Main> : ""}
     </section>
   );
 }
