@@ -2,7 +2,7 @@
 # ROOT / VARIABLES
 ----------------------- */
 
-:root {
+:root #root {
   //padding on sections -mobile
   --m-padding: 0.9375rem;
 }
@@ -55,6 +55,13 @@ select,
 
 #root {
   position: relative;
+
+  .dk-date,
+  .en-date {
+    font-size: 1.09375rem;
+    font-weight: 300;
+  }
+
   p {
     font-size: 0.875rem;
     color: #707070;
@@ -62,29 +69,6 @@ select,
 
   .btn {
     text-transform: uppercase;
-  }
-  #App {
-    background-color: #f5f6fa;
-    padding: var(--m-padding);
-    width: 100%;
-    margin: 0;
-    min-height: 100vh;
-  }
-
-  #App > h1,
-  #App .text-muted {
-    max-width: 1083px;
-    margin: 1rem auto;
-  }
-
-  .Main,
-  #Nav {
-    max-width: 1083px;
-    margin: 0 auto;
-  }
-
-  .Popup {
-    padding-top: var(--m-padding);
   }
 
   .section-bg {
@@ -110,6 +94,35 @@ select,
     line-height: 1.773;
   }
 
+  /* --------------------
+# APP.JS
+----------------------- */
+  #App {
+    background-color: #f5f6fa;
+    padding: var(--m-padding);
+    width: 100%;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  #App > h1,
+  #App .text-muted {
+    max-width: 1083px;
+    margin: 1rem auto;
+  }
+
+  /* --------------------
+# MAX-WIDTH
+----------------------- */
+  .Main,
+  #Nav {
+    max-width: 1083px;
+    margin: 0 auto;
+  }
+
+  /* --------------------
+# PRELOADER
+----------------------- */
   .spinner-wrapper {
     display: flex;
     justify-content: center;

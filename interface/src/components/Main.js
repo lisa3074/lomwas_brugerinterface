@@ -26,7 +26,7 @@ export default function Main(props) {
           key={i}
           getMedia={getMedia}
           getMediaElement={getMediaElement}
-          setStartState={props.setStartState}></Etage>
+          setDisableIt={props.setDisableIt}></Etage>
       );
       floors.push(floor);
     }

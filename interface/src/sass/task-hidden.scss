@@ -1,3 +1,7 @@
+/* --------------------
+# WHEN ACCORDION IS CLOSED
+----------------------- */
+
 #root #accordion2 [data-state="hidden"] {
   animation: gray-border 1s linear 1 forwards;
   border-radius: 0.2rem;
@@ -65,9 +69,7 @@
       max-height: 40px;
     }
   }
-  /*   .Media {
-    display: none;
-  } */
+
   .Switch,
   .Media {
     animation: fade-media-switch 0.5s 1 forwards;
@@ -108,19 +110,6 @@
         margin-bottom: 0;
       }
     }
-    /*     @keyframes close-big {
-      0% {
-        max-height: 500px;
-        overflow: hidden;
-      }
-      100% {
-        max-height: 75px;
-        height: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        overflow: hidden;
-      }
-    } */
 
     .Switch {
       animation: none;

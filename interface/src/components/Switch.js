@@ -1,7 +1,7 @@
 import React from "react";
 import "../sass/switch.scss";
 import { closeExpand } from "./modules/closeExpand";
-import { setDataState, switchOn, returnNothing, checkSwitches } from "./modules/navigation.js";
+import { checkSwitches } from "./modules/navigation.js";
 
 export default function Switch(props) {
   function resetFinishedButton() {
@@ -32,8 +32,7 @@ export default function Switch(props) {
             id={"customSwitch1" + props.id}
             value={props.id}
             onChange={(e) => {
-              console.log(e.target);
-              checkSwitches(props.setStartState, e);
+              checkSwitches(props.setDisableIt, e); //callback function, that sets if select should be disabled (when no tasks are marked as done) or not.
             }}
             disabled
           />

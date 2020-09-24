@@ -2,6 +2,16 @@
 # NAVIGATION
 ----------------------- */
 #Nav {
+  [data-state="hidden"] {
+    display: none;
+  }
+  [data-state="shown"] {
+    display: inline-block;
+  }
+
+  #finish svg {
+    pointer-events: none;
+  }
   select {
     display: block;
     width: 100%;

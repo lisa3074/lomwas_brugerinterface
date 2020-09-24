@@ -12,7 +12,7 @@ export default function Etage(props) {
       floor={props.floor}
       getMedia={props.getMedia}
       getMediaElement={props.getMediaElement}
-      setStartState={props.setStartState}
+      setDisableIt={props.setDisableIt}
       //This one below needs reevaluation, when pictures and videos is made available in the json file
       //is only used for loop in popovers (for testing) I'm not sure ir should be removed though
       tasks={props.tasks}

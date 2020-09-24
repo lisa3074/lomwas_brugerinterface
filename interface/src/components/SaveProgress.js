@@ -1,10 +1,8 @@
 import React from "react";
-import isDoneHidden from "./Start.js";
-import isStartHidden from "./Start.js";
 import { closeDialog, reset } from "./modules/navigation.js";
 import "../../src/sass/saveProgress.scss";
 
-export default function SaveProgress({ isStartHidden, isDoneHidden }) {
+export default function SaveProgress({ shouldSelectBeDisabled, isDataStateHidden, setDataState, setRadio1, radio1 }) {
   console.log("DoneButton");
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
@@ -39,12 +37,13 @@ export default function SaveProgress({ isStartHidden, isDoneHidden }) {
             <div className="modal-footer">
               <div>
                 <button
-                  id="finish"
+                  id="finish2"
                   className="btn btn-success start"
                   data-state="hidden"
                   onClick={(e) => {
-                    isDoneHidden(e);
-                    closeDialog();
+                    isDataStateHidden(e); //check if data state is hidden on this element
+                    closeDialog(); //close dialog box
+                    setDataState(radio1, setRadio1); //reset radio1 state
                   }}>
                   <svg {...svgSettings} className="feather feather-check-circle wd-10 mg-r-5">
                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
@@ -56,9 +55,9 @@ export default function SaveProgress({ isStartHidden, isDoneHidden }) {
                   className="btn btn-outline-light reset"
                   data-state="hidden"
                   onClick={() => {
-                    closeDialog();
-                    reset();
-                    isStartHidden("");
+                    closeDialog(); //close dialog box
+                    reset(); //reset all progress
+                    shouldSelectBeDisabled(""); //check if select element should be disabled
                   }}>
                   <svg {...svgSettings} className="feather feather-x-circle wd-10 mg-r-5">
                     <circle cx="12" cy="12" r="10"></circle>

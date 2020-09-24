@@ -17,7 +17,7 @@ function init() {
   HTML.setDataState = "";
 }
 function setCount() {
-  HTML.count = 0;
+  HTML.tasksChecked = 0;
 }
 
 export function start() {
@@ -163,10 +163,6 @@ export function saveProgress() {
   console.log("[function] || navigation.js || saveProgress");
   document.querySelector(".save-progress").classList = "save-progress fade-in-modal";
 }
-export function returnNothing() {
-  console.log("[function] || navigation.js || returnNothing");
-  return;
-}
 
 export function closeDialog() {
   console.log("[function] || navigation.js || closeDialog");
@@ -176,8 +172,13 @@ export function closeDialog() {
   }, 200);
 }
 
+export function returnNothing() {
+  console.log("[function] || navigation.js || returnNothing");
+  return;
+}
+
 export function setDataState(radio1Selected, callback) {
-  console.log("setDataState");
+  console.log("[function] || navigation.js || setDataState");
   const finishButton = document.querySelector("#finish");
   if (radio1Selected === false && finishButton.classList.contains("hide")) {
     document.querySelector("select").disabled = false;
@@ -190,23 +191,20 @@ export function setDataState(radio1Selected, callback) {
 }
 
 export function changeDataState(callback) {
-  console.log("changeDataState");
-  console.log(HTML.setDataState);
+  console.log("[function] || navigation.js || changeDataState");
   callback(HTML.setDataState);
 }
 
 export function checkSwitches(callback, e) {
-  console.log("checkSwitches");
-
-  console.log(e.target.checked);
+  console.log("[function] || navigation.js || checkSwitches");
+  //check if minimum 1 task is marked complete, if yes disable select, if not enable select
   if (e.target.checked) {
-    HTML.count++;
+    HTML.tasksChecked++;
     callback("hidden");
   } else {
-    HTML.count--;
-    if (HTML.count <= 0) {
+    HTML.tasksChecked--;
+    if (HTML.tasksChecked <= 0) {
       callback("");
     }
   }
-  console.log(HTML.count);
 }

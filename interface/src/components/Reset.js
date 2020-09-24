@@ -1,8 +1,7 @@
 import React from "react";
 import { reset } from "./modules/navigation.js";
-import "../sass/navButtons.scss";
 
-export default function Reset({ isStartHidden }) {
+export default function Reset({ shouldSelectBeDisabled }) {
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
@@ -19,8 +18,8 @@ export default function Reset({ isStartHidden }) {
       className="btn btn-outline-light reset"
       data-state="hidden"
       onClick={() => {
-        reset();
-        isStartHidden("");
+        reset(); //reset all progress
+        shouldSelectBeDisabled(""); //check if select element should be disabled
       }}>
       <svg {...svgSettings} className="feather feather-x-circle wd-10 mg-r-5">
         <circle cx="12" cy="12" r="10"></circle>

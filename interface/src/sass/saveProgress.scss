@@ -44,23 +44,6 @@
 .save-progress > div > .modal {
   display: block;
 
-  /*   &.animated .modal-dialog {
-    transform: translate(0, 0);
-  }*/
-
-  &.effect-scale {
-    .modal-dialog {
-      transform: scale(0.7);
-      opacity: 0;
-      transition: all 0.3s;
-    }
-
-    &.show .modal-dialog {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-
   &.effect-just-me {
     .modal-content {
       background-color: transparent;

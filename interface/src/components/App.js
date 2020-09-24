@@ -5,7 +5,6 @@ import { FetchData } from "./modules/fetchData.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/dashforge.css";
 import "../sass/style.scss";
-import "../sass/app.scss";
 import "../lib/ionicons/css/ionicons.min.css";
 
 export default function App() {
@@ -14,7 +13,7 @@ export default function App() {
   const [buildings, setBuildings] = useState([]);
   const [buildingId, setBuildingId] = useState();
   const [UpdatedBuildingId, setUpdatedBuildingId] = useState([buildingId]);
-  const [startState, setStartState] = useState([]);
+  const [disableIt, setDisableIt] = useState([]);
 
   //function that is being passed to Main.js and called whenever a new building has been selected
   function updateBuildingId(e) {
@@ -62,11 +61,11 @@ export default function App() {
       <Nav
         buildings={buildings}
         updateBuildingId={updateBuildingId}
-        setStartState={setStartState}
-        startState={startState}></Nav>
+        setDisableIt={setDisableIt}
+        disableIt={disableIt}></Nav>
 
       {/* if tasks is true, put the Main component in, otherwise don't put anything in */}
-      {tasks ? <Main tasks={tasks} setStartState={setStartState}></Main> : ""}
+      {tasks ? <Main tasks={tasks} setDisableIt={setDisableIt}></Main> : ""}
     </section>
   );
 }

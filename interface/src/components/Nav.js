@@ -12,7 +12,6 @@ import {
   changeDataState,
 } from "./modules/navigation.js";
 import SaveProgress from "./SaveProgress";
-import { Callbacks } from "jquery";
 
 export default function Nav(props) {
   //Basic svg/icon settings converted to an object
@@ -30,8 +29,6 @@ export default function Nav(props) {
   //state
   const [buildings, setBuildings] = useState([]);
   const [radio1, setRadio1] = useState([true]);
-
-  console.log(radio1);
 
   //UseEffect to make sure the array is only updated when the dependency (props.buildings) is changed (to avoid endless loop)
   useEffect(() => {
@@ -56,27 +53,33 @@ export default function Nav(props) {
     }
   }, [props.buildings]);
 
+  //Call setDataState whenever radio1 is changed to update variable
   useEffect(() => {
     setDataState(radio1);
   }, [radio1]);
 
+  //reset error text for textarea on keyup
   function resetText() {
     document.querySelector(".error").textContent = "";
   }
-  function isStartHidden(startState) {
+
+  //set if select should be disabled (React component)
+  function shouldSelectBeDisabled(startState) {
     console.log("[function] || isStartHidden | function passed to Start.js and called from there");
-    props.setStartState(startState);
-    console.log(startState);
+    props.setDisableIt(startState);
   }
 
-  function getStartState() {
-    changeDataState(props.setStartState);
+  //Set if select should be disabled (javaScript module)
+  function getDataState() {
+    changeDataState(props.setDisableIt);
   }
 
-  function isDoneHidden(e) {
-    console.log("[function] || Start.js | isDoneHidden");
+  //check if the first 6 characters of data state on finish button is "hidden". Send whatever is found to shouldSelectBeDisabled
+  //if "hidden", select will be disabled if anything else, select wont be disabled.
+  function isDataStateHidden(e) {
+    console.log("[function] || Start.js | isDataStateHidden");
     const isButtonHidden = e.target.dataset.state.substring(0, 6);
-    isStartHidden(isButtonHidden);
+    shouldSelectBeDisabled(isButtonHidden);
     finish();
     unable();
   }
@@ -99,7 +102,7 @@ export default function Nav(props) {
           <div
             //make select clickable, when disabled so that dialog box pops up
             onClick={() => {
-              props.startState === "hidden" ? saveProgress() : returnNothing();
+              props.disableIt === "hidden" ? saveProgress() : returnNothing();
             }}>
             <select
               className="custom-select"
@@ -109,19 +112,21 @@ export default function Nav(props) {
                 props.updateBuildingId(e.target.value);
                 reset();
               }}
-              disabled={props.startState === "hidden" ? true : false}>
+              disabled={props.disableIt === "hidden" ? true : false}>
               {buildings}
             </select>
           </div>
           <div className="btn-container">
+            {/*   Start and finish button conponent */}
             <Start
               buildings={buildings}
-              isStartHidden={isStartHidden}
-              isDoneHidden={isDoneHidden}
-              getStartState={getStartState}
+              shouldSelectBeDisabled={shouldSelectBeDisabled}
+              isDataStateHidden={isDataStateHidden}
+              getDataState={getDataState}
               setRadio1={setRadio1}
               radio1={radio1}></Start>
-            <Reset isStartHidden={isStartHidden}></Reset>
+            {/*   Reset button conponent */}
+            <Reset shouldSelectBeDisabled={shouldSelectBeDisabled}></Reset>
 
             <button type="button" className="btn btn-primary undone">
               <svg
@@ -152,6 +157,7 @@ export default function Nav(props) {
                   name="customRadio"
                   className="custom-control-input"
                   onClick={(e) => {
+                    //updater function to change state on radio1 variable to true
                     setRadio1(true);
                   }}
                   defaultChecked
@@ -168,6 +174,7 @@ export default function Nav(props) {
                   name="customRadio"
                   className="custom-control-input"
                   onClick={() => {
+                    //updater function to change state on radio1 variable to false
                     setRadio1(false);
                   }}
                 />
@@ -191,7 +198,13 @@ export default function Nav(props) {
         </div>
       </nav>
       <section className="save-progress hide fade-out">
-        <SaveProgress isStartHidden={isStartHidden} isDoneHidden={isDoneHidden}></SaveProgress>
+        {/* dialog box to save progress */}
+        <SaveProgress
+          shouldSelectBeDisabled={shouldSelectBeDisabled}
+          isDataStateHidden={isDataStateHidden}
+          setDataState={setDataState}
+          setRadio1={setRadio1}
+          radio1={radio1}></SaveProgress>
       </section>
     </>
   );

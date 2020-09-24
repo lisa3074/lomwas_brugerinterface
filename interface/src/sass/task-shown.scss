@@ -1,3 +1,7 @@
+/* --------------------
+# WHEN ACCORDION IS OPEN
+----------------------- */
+
 #root #accordion2 [data-state="shown"] {
   animation: blue-border 1s linear 1 forwards;
   border-radius: 0.2rem;
