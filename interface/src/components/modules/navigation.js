@@ -24,7 +24,7 @@ export function start() {
   console.log("[function] || navigation.js || start");
   init();
   setCount();
-  /* HTML.finish.dataset.state = "hidden firstClick"; */
+
   HTML.start.classList.add("hide");
   HTML.finish.classList.remove("hide");
   HTML.finish.disabled = true;
@@ -92,9 +92,8 @@ export function finish() {
 
   checkboxeS.forEach((el) => {
     if (el.checked === true) {
-      //counting how many checkboxes are checked
-      checkedElementCount++;
-      shouldPut();
+      checkedElementCount++; //counting how many checkboxes are checked
+      shouldPut(); //fuction with conditions to see wheather tasks should be PUT or not.
       function shouldPut() {
         console.log(
           "[count] || navigation.js | finish | " + checkedElementCount + " out of " + elementCount + " tasks finished"
@@ -102,9 +101,9 @@ export function finish() {
         //If amount of checkboxes checked is equal to amount of checkboxes PUT the data
         if (checkedElementCount === elementCount) {
           HTML.unfinishedBox.dataset.state = "hidden";
-          FetchData.putTasks();
+          FetchData.putTasks(); //PUT tasks
           reset();
-          //GET tasks der er running=false
+          //GET tasks === running=false
         }
         //depending on the data-state of the finish button
         else if (HTML.finish.dataset.state === "hidden firstClick" && HTML.customRadio1.checked) {
@@ -115,22 +114,24 @@ export function finish() {
         } else if (HTML.finish.dataset.state === "secondClick" && HTML.customRadio1.checked) {
           HTML.finish.dataset.state = "hidden firstClick";
           HTML.error.textContent = "";
-          //HER SKAL DER SENDES TIL DB (PUT)
-          FetchData.putTasks();
-          //GET tasks der er running=false
+
+          FetchData.putTasks(); //PUT tasks
+          //GET tasks === running=false
           reset();
         } else if (
+          //if the second option is selected, and the button's data.state is hidden firsktclick and there's content in the textarea
           HTML.finish.dataset.state === "hidden firstClick" &&
           !HTML.customRadio1.checked &&
           HTML.reason.value !== ""
         ) {
           HTML.finish.dataset.state = "hidden firstClick";
-          //HER SKAL DER SENDES TIL DB (PUT)
-          FetchData.putTasks();
+
+          FetchData.putTasks(); //PUT tasks
           HTML.error.textContent = "";
-          //GET tasks der er running=false
+          //GET tasks === running=false
           reset();
         } else {
+          //if theres no content in textarea
           HTML.error.textContent = " || Du mangler at udfylde en beskrivelse";
         }
       }
@@ -172,19 +173,18 @@ export function closeDialog() {
   document.querySelector(".save-progress").classList = "save-progress fade-out-modal";
   setTimeout(() => {
     document.querySelector(".save-progress").classList = "save-progress hide fade-out-modal";
-  }, 500);
+  }, 200);
 }
 
-export function setDataState(radio1, callback) {
+export function setDataState(radio1Selected, callback) {
   console.log("setDataState");
   const finishButton = document.querySelector("#finish");
-  if (radio1 === false && finishButton.classList.contains("hide")) {
+  if (radio1Selected === false && finishButton.classList.contains("hide")) {
     document.querySelector("select").disabled = false;
     callback(true);
-    console.log("sat til true");
-  } else if (radio1 === true) {
+  } else if (radio1Selected === true) {
     HTML.finish.dataset.state = "secondClick";
-  } else if (radio1 === false) {
+  } else if (radio1Selected === false) {
     HTML.finish.dataset.state = "hidden firstClick";
   }
 }
