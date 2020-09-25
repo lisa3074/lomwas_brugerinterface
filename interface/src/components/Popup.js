@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "../sass/popup.scss";
 import { close } from "./modules/popup.js";
+import Image from "./Image.js";
+import DocsAndVideos from "./DocsAndVideos.js";
 
 export default function Popup(props) {
   //vars
+
   const imageAmount = props.newDrawer.length - 1;
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
@@ -39,6 +42,7 @@ export default function Popup(props) {
       setI(imageAmount);
     }
   }
+  console.log(props.newDrawer[props.elementKey]);
 
   return (
     <div className="Popup hide" onClick={(e) => close(e.target)}>
@@ -50,38 +54,27 @@ export default function Popup(props) {
       if not, show the whole array */}
       <ul className={props.type}>
         {innerWidth < 767 && props.elementKey !== "" ? (
-          props.newDrawer[props.elementKey]
+          <DocsAndVideos newDrawer={props.newDrawer} elementKey={props.elementKey} type={props.type}></DocsAndVideos>
         ) : innerWidth < 767 && props.elementKey === "" ? (
-          props.newDrawer
-        ) : innerWidth < 767 && props.elementKey !== "" ? (
+          <Image
+            newDrawer={props.newDrawer}
+            i={i}
+            innerWidth={
+              innerWidth
+            }></Image> /*  innerWidth < 767 && props.elementKey !== "" ? (
           props.newDrawer[i]
+        ) : */
         ) : /* If the elementKey is not nothing then only show the array entry with the same index as the elementKey, 
         if not, show the first image in the array and set up clickable arrows to loop throght the images */
         innerWidth > 767 && props.elementKey !== "" ? (
-          props.newDrawer[props.elementKey]
+          <DocsAndVideos newDrawer={props.newDrawer} elementKey={props.elementKey} type={props.type}></DocsAndVideos>
         ) : innerWidth > 767 && props.elementKey === "" ? (
-          <>
-            {props.newDrawer[i]}
-            <div className="svg-wrapper">
-              <svg
-                {...svgSettings}
-                strokeWidth="1"
-                className="feather feather-chevrons-left"
-                onClick={() => skipLeft()}>
-                <polyline points="11 17 6 12 11 7"></polyline>
-              </svg>
-              <svg
-                {...svgSettings}
-                strokeWidth="1"
-                className="feather feather-chevrons-right"
-                onClick={() => skipRight()}>
-                <polyline points="13 17 18 12 13 7"></polyline>
-              </svg>
-            </div>
-            <p>
-              {i + 1} ud af {imageAmount + 1}
-            </p>
-          </>
+          <Image
+            newDrawer={props.newDrawer}
+            i={i}
+            skipLeft={skipLeft}
+            skipRight={skipRight}
+            imageAmount={imageAmount}></Image>
         ) : (
           ""
         )}

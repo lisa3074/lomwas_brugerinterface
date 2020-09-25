@@ -17,6 +17,18 @@
   }
 } */
 
+button.btn.reset {
+  background-color: #fed65e;
+  border-color: #fed65e;
+  color: #000;
+}
+button.btn.reset:active,
+button.btn.reset:hover {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #000;
+}
+
 .modal-header button.close {
   outline: none;
 }

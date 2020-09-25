@@ -6,7 +6,7 @@ function init() {
   // "Global vars"
   HTML.start = document.querySelector("#start");
   HTML.finish = document.querySelector("#finish");
-  HTML.reset = document.querySelector(".btn.btn-outline-light.reset");
+  HTML.reset = document.querySelector(".btn.reset");
   HTML.checkboxeS = document.querySelectorAll(".switch.custom-control-input");
   HTML.unfinishedBox = document.querySelector(".unfinished-container");
   HTML.reason = document.querySelector("#reason");
@@ -206,5 +206,18 @@ export function checkSwitches(callback, e) {
     if (HTML.tasksChecked <= 0) {
       callback("");
     }
+  }
+}
+export function shouldYouSave(e) {
+  init();
+  console.log("[function] || navigation.js || unfinishedTasks");
+  if (!HTML.finish.classList.contains("hide") && HTML.finish.disabled === false) {
+    saveProgress();
+  } else if (e.target.classList.contains("undone")) {
+    console.log("go to unfinished tasks"); //set go to unfinished tasks
+  } else if (e.target.classList.contains("back")) {
+    console.log("go back"); //set go back
+  } else if (e.target.classList.contains("message")) {
+    console.log("start message"); //set start message
   }
 }

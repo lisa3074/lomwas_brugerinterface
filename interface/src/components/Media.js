@@ -46,12 +46,13 @@ export default function Media(props) {
         }>
         {/* test input */}
         {e === "video"
-          ? item.local.type.name + " AND " + props.id
+          ? item.local.name + " AND " + item.id
           : e === "docs"
-          ? item.local.name + " AND " + props.id
-          : item.id + " AND " + props.id}
+          ? item.local.type.name + " AND " + item.id
+          : item.local.type.name + " AND " + item.id}
       </li>
     ));
+
     //updater funktion for drawer and type
     setDrawer(items);
     setType(e);

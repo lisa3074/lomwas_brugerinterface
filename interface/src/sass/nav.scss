@@ -2,11 +2,20 @@
 # NAVIGATION
 ----------------------- */
 #Nav {
+  position: relative;
+
   [data-state="hidden"] {
     display: none;
   }
   [data-state="shown"] {
     display: inline-block;
+  }
+
+  .fire-dialogbox {
+    position: absolute;
+
+    width: 95%;
+    height: 37px;
   }
 
   #finish svg {
@@ -25,6 +34,18 @@
     width: 100%;
     margin: 0 auto;
     padding-bottom: 1rem;
+  }
+
+  button.btn.reset {
+    background-color: #fed65e;
+    border-color: #fed65e;
+    color: #000;
+  }
+  button.btn.reset:active,
+  button.btn.reset:hover {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #000;
   }
 
   .back,

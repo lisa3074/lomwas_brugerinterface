@@ -10,6 +10,7 @@ import {
   unable,
   setDataState,
   changeDataState,
+  shouldYouSave,
 } from "./modules/navigation.js";
 import SaveProgress from "./SaveProgress";
 
@@ -84,11 +85,20 @@ export default function Nav(props) {
     unable();
   }
 
+  const zindex = {
+    zIndex: props.disableIt === "hidden" ? "100" : "-20",
+    cursor: "pointer",
+  };
+
   return (
     <>
       <nav id="Nav">
         <div className="top-buttons">
-          <button className="btn btn-outline-light back">
+          <button
+            className="btn btn-outline-light back"
+            onClick={(e) => {
+              shouldYouSave(e);
+            }}>
             <svg {...svgSettings} className="feather feather-chevron-left">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
@@ -100,22 +110,26 @@ export default function Nav(props) {
             Bygninger<span> *</span>
           </p>
           <div
+            className="fire-dialogbox"
+            style={zindex}
             //make select clickable, when disabled so that dialog box pops up
             onClick={() => {
               props.disableIt === "hidden" ? saveProgress() : returnNothing();
             }}>
-            <select
-              className="custom-select"
-              //Calling the passed down function from App.js and sending along the options target value, which is equal
-              //to the options key, which is equal to the buildings id
-              onChange={(e) => {
-                props.updateBuildingId(e.target.value);
-                reset();
-              }}
-              disabled={props.disableIt === "hidden" ? true : false}>
-              {buildings}
-            </select>
+            {" "}
           </div>
+          <select
+            className="custom-select"
+            //Calling the passed down function from App.js and sending along the options target value, which is equal
+            //to the options key, which is equal to the buildings id
+            onChange={(e) => {
+              props.updateBuildingId(e.target.value);
+              reset();
+            }}
+            disabled={props.disableIt === "hidden" ? true : false}>
+            {buildings}
+          </select>
+
           <div className="btn-container">
             {/*   Start and finish button conponent */}
             <Start
@@ -128,7 +142,12 @@ export default function Nav(props) {
             {/*   Reset button conponent */}
             <Reset shouldSelectBeDisabled={shouldSelectBeDisabled}></Reset>
 
-            <button type="button" className="btn btn-primary undone">
+            <button
+              type="button"
+              className="btn btn-secondary undone"
+              onClick={(e) => {
+                shouldYouSave(e);
+              }}>
               <svg
                 //object with svg settings
                 {...svgSettings}
@@ -139,7 +158,11 @@ export default function Nav(props) {
               </svg>
               UAFSLUTTEDE OPGAVER
             </button>
-            <button className="btn btn-outline-light message">
+            <button
+              className="btn btn-outline-light message"
+              onClick={(e) => {
+                shouldYouSave(e);
+              }}>
               <svg {...svgSettings} className="feather feather-mail wd-10 mg-r-5">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>

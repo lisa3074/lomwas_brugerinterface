@@ -26,7 +26,7 @@ export default function Start({
       <button
         disabled={buildings.length <= 1 ? true : false} //disable start if there are no tasks
         id="start"
-        className="btn btn-success start"
+        className="btn btn-primary start"
         onClick={() => {
           start(); // function in fetchData.js
           shouldSelectBeDisabled(""); //sets the state of the variable disableIt (in Nav.js)

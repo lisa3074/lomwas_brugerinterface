@@ -52,7 +52,7 @@ export default function SaveProgress({ shouldSelectBeDisabled, isDataStateHidden
                   Afslut
                 </button>
                 <button
-                  className="btn btn-outline-light reset"
+                  className="btn btn-warning reset"
                   data-state="hidden"
                   onClick={() => {
                     closeDialog(); //close dialog box

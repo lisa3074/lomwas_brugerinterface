@@ -6,8 +6,18 @@
   left: 0;
   z-index: 10;
   background-color: #fff;
-
   padding-top: var(--m-padding);
+  display: flex;
+  justify-content: center;
+}
+
+.Popup ul.image .figcaption-image > li {
+  padding: 0.5rem 0 1rem;
+  margin: 0;
+}
+.Popup ul.image {
+  overflow: scroll;
+  padding: 4rem 1rem 1rem;
 }
 .feather-x {
   position: absolute;
@@ -15,10 +25,21 @@
   right: 1.2rem;
   height: 40px;
   width: 40px;
+  background: #ffffffa6;
+  border-radius: 50%;
+  padding: 0.5rem;
+  width: 50px;
+  height: 50px;
+}
+
+.loadedImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .Popup ul {
-  padding: 3rem 1.5rem;
+  padding: 1rem 1.5rem 3rem;
   li {
     list-style: none;
     border-radius: 0.2rem;
@@ -35,6 +56,22 @@
   display: flex;
   align-items: center;
 }
+.Popup ul.video,
+.Popup ul.docs {
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.Popup ul.docs {
+  width: 100%;
+  height: 100%;
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+  }
+}
 
 .Popup ul.image {
   flex-wrap: nowrap;
@@ -45,7 +82,40 @@
   }
 }
 
+ul.video,
+ul.docs {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  padding: 1rem;
+}
+ul.video iframe {
+  width: 100%;
+  height: 400px;
+  padding-bottom: 0.5rem;
+  border: none;
+}
+
 @media (min-width: 768px) {
+  .feather-x {
+    height: 40px;
+    width: 40px;
+    background: transparent;
+    border-radius: 0%;
+    padding: 0rem;
+  }
+
+  .loadedImage {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 400px;
+    object-fit: contain;
+  }
+  .Popup ul.image {
+    padding: 1rem 1.5rem 3rem;
+  }
   .Popup {
     display: flex;
     justify-content: center;
@@ -61,30 +131,14 @@
       height: 60px;
     }
     ul.video,
-    ul.docs,
     ul.image {
       background-color: #fff;
       width: auto;
       height: auto;
     }
-    ul.video li {
-      /* DET BLÅ SKAL VÆRE VIDEOEN */
-      background-color: rgb(195, 205, 229);
-      width: 600px;
-      height: 400px;
-    }
-    ul.docs li {
-      /* DET BLÅ SKAL VÆRE DOKUMENTET */
-      background-color: rgb(195, 205, 229);
-      width: 70vw;
-      height: 80vh;
-    }
-    ul.image li {
-      /* DET BLÅ SKAL VÆRE BILLEDET */
-      background-color: rgb(195, 205, 229);
-      width: 600px;
-      height: 400px;
-      position: relative;
+
+    ul.video {
+      width: 100%;
     }
 
     .svg-wrapper {
@@ -94,7 +148,9 @@
       transform: translateY(1.3rem);
     }
   }
-
+  .Popup ul.docs iframe {
+    width: 80vw;
+  }
   #App > main > div > ul.image > p {
     position: absolute;
     bottom: 0rem;

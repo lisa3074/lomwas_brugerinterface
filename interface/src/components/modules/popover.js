@@ -20,8 +20,10 @@ export function popover(id, e, eClass, eRemove) {
     popover.classList.add(e);
     popover.classList.remove(eRemove);
 
-    if (el.classList.contains("docs") || el.classList.contains("video")) {
+    if (el.classList.contains(e, eRemove) && popover.classList.contains("hide")) {
       popover.classList.remove("hide");
+    } else if (!el.classList.contains(e, eRemove) && !popover.classList.contains("hide")) {
+      popover.classList.add("hide");
     }
   });
 }

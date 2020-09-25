@@ -15,7 +15,7 @@ export default function Reset({ shouldSelectBeDisabled }) {
   };
   return (
     <button
-      className="btn btn-outline-light reset"
+      className="btn btn-warning reset"
       data-state="hidden"
       onClick={() => {
         reset(); //reset all progress
