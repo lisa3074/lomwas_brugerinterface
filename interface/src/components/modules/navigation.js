@@ -132,6 +132,7 @@ export function finish() {
           reset();
         } else {
           //if theres no content in textarea
+          HTML.unfinishedBox.dataset.state = "shown";
           HTML.error.textContent = " || Du mangler at udfylde en beskrivelse";
         }
       }

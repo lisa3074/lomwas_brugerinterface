@@ -4,9 +4,9 @@
 #Nav {
   position: relative;
 
-  /*  [data-state="hidden"] {
+  [data-state="hidden"] {
     display: none;
-  } */
+  }
   > div.nav-container.section-bg > article[data-state="hidden"] {
     transition: 0.4s;
     opacity: 0;
