@@ -49,7 +49,7 @@ export default function Main(props) {
   //Sets elementKey array (is called from Popover.js and elementKey is the property data-index of the element clicked (whitch
   //corresponds with the same elements index in the array)
   function getMediaElement(elementKey) {
-    console.log("[function] || Main.js | getMediaElement() | elementkey: " + elementKey);
+    console.log("[function] || Main.js | getMediaElement() | elementKey: " + elementKey);
     setElementKey(elementKey);
   }
 

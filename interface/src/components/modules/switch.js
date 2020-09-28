@@ -15,7 +15,10 @@ export function isDone(setDone, tasks, setUnFinishedTasks) {
   const unfinishedTasks = [];
   unfinishedItems.forEach((item) => {
     tasks.forEach((task) => {
+      //giver warning ved 2 x ==, men virker (item er number og scheduleID er string)
       if (task.scheduleID == item) {
+        //Test om dette virker
+        /*   if (task.scheduleID === item.toString()) { */
         unfinishedTasks.push(task);
       }
       setUnFinishedTasks(unfinishedTasks);

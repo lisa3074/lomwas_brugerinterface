@@ -18,6 +18,8 @@ export default function App() {
   const [buildingId, setBuildingId] = useState([]); // current building ID
   const [taskDate, setTaskDate] = useState([]); // the date of the tasks
   const [scheduleId, setScheduleId] = useState([]); // the scheduleIDs of the tasks marked as "done"
+  console.log(`
+    [Paremeters for PUT] || App.js | buildingId: ${buildingId} | taskDate: ${taskDate} | scheduleID: ${scheduleId} |`);
 
   //function that is being passed to Main.js and called whenever a new building has been selected
   function updateBuildingId(e) {
@@ -87,6 +89,7 @@ export default function App() {
 
 // TODO
 //gennemgå al kode og kommenter
+//har ændret i switch.js (toString()) og i Switch.js og Media.js (useEffect)
 
 // Sende besked (vise andet view der er lavet)
 // Se uafslttede opgaver (vise andet view der er lavet)

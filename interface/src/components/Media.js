@@ -4,7 +4,7 @@ import { popup } from "./modules/popup.js";
 import { popover } from "./modules/popover.js";
 import Popover from "./Popover";
 
-export default function Media(props) {
+export default function Media(props, { getMedia }) {
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
@@ -22,6 +22,13 @@ export default function Media(props) {
   const [type, setType] = useState([]);
 
   //Call the passed down function getMedia only when dependency [drawer] change.
+
+  //Har alle de krævede i dependencies, men kan ikke teste om det virker ->
+  /*   useEffect(() => {
+    getMedia(drawer, type);
+  }, [drawer, type, getMedia]); */
+
+  //hvis ovenstående ikke virker ->
   useEffect(() => {
     props.getMedia(drawer, type);
   }, [drawer]);

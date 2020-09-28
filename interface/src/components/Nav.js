@@ -49,7 +49,7 @@ export default function Nav(props) {
       });
     } else {
       //if there are no buildings/tasks
-      const buildingOption = <option key={"1"}>ingen opgaver i dag</option>;
+      const buildingOption = <option key={"1"}>Der er ingen uafsluttede opgaver i dag</option>;
       buildingArray.push(buildingOption);
       setBuildings(buildingArray);
     }
