@@ -13,6 +13,9 @@ export default function Etage(props) {
       getMedia={props.getMedia}
       getMediaElement={props.getMediaElement}
       setDisableIt={props.setDisableIt}
+      setScheduleId={props.setScheduleId}
+      allTasks={props.allTasks}
+      setUnfinishedTasks={props.setUnfinishedTasks}
       //This one below needs reevaluation, when pictures and videos is made available in the json file
       //is only used for loop in popovers (for testing) I'm not sure ir should be removed though
       tasks={props.tasks}

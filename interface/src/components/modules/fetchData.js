@@ -8,8 +8,8 @@ const HTML = {};
 function init() {
   console.log("[function] || fetchData.js || init");
 
-  HTML.url = "https://app.acbacl.com/api/tasks/2020-09-21";
-  /* HTML.url = window.location.href; */
+  /*  HTML.url = "https://app.acbacl.com/api/tasks/2020-09-21"; */
+  HTML.url = window.location.href;
   HTML.day = new Date().getDate();
   HTML.month = new Date().getMonth() + 1;
   HTML.year = new Date().getFullYear();
@@ -26,7 +26,7 @@ function init() {
 }
 
 //passing callback functions as parameters
-export async function getBuilding(setBuildings, setBuildingsId) {
+export async function getBuilding(setBuildings, setFirstBuildingId, setTaskDate) {
   console.log("[function] || fetchData.js || getBuildings");
   init();
   let response = await fetch(HTML.api, {
@@ -51,7 +51,8 @@ export async function getBuilding(setBuildings, setBuildingsId) {
     setBuildings(data.buildings);
   }
   //get the first building in the array and set the state of buildingId in App.js
-  setBuildingsId(firstBuilding[0]);
+  setFirstBuildingId(firstBuilding[0]);
+  setTaskDate(HTML.date);
 }
 
 //passing an id and a callback function as parameters

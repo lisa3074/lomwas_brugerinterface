@@ -22,6 +22,7 @@ export default function Popup(props) {
 
   //states
   let [i, setI] = useState(0);
+
   let [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
   window.addEventListener("resize", resizeHandler);
@@ -42,11 +43,19 @@ export default function Popup(props) {
       setI(imageAmount);
     }
   }
-  console.log(props.newDrawer[props.elementKey]);
 
   return (
-    <div className="Popup hide" onClick={(e) => close(e.target)}>
-      <svg {...svgSettings} className="feather feather-x close-it" onClick={(e) => close(e.target)}>
+    <div
+      className="Popup hide"
+      onClick={(e) => {
+        close(e.target, setI);
+      }}>
+      <svg
+        {...svgSettings}
+        className="feather feather-x close-it"
+        onClick={(e) => {
+          close(e.target, setI);
+        }}>
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
@@ -58,9 +67,9 @@ export default function Popup(props) {
         ) : innerWidth < 767 && props.elementKey === "" ? (
           <Image
             newDrawer={props.newDrawer}
-            i={i}
-            innerWidth={
-              innerWidth
+            innerWidth={innerWidth}
+            type={
+              props.type
             }></Image> /*  innerWidth < 767 && props.elementKey !== "" ? (
           props.newDrawer[i]
         ) : */

@@ -26,7 +26,10 @@ export default function Main(props) {
           key={i}
           getMedia={getMedia}
           getMediaElement={getMediaElement}
-          setDisableIt={props.setDisableIt}></Etage>
+          setDisableIt={props.setDisableIt}
+          setScheduleId={props.setScheduleId}
+          allTasks={props.allTasks}
+          setUnfinishedTasks={props.setUnfinishedTasks}></Etage>
       );
       floors.push(floor);
     }

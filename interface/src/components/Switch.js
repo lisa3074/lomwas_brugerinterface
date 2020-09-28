@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../sass/switch.scss";
 import { closeExpand } from "./modules/closeExpand";
+import { isDone } from "./modules/switch.js";
 import { checkSwitches } from "./modules/navigation.js";
 
 export default function Switch(props) {
+  const [done, setDone] = useState([]);
+  const [unFinishedTasks, setUnFinishedTasks] = useState([]);
+  console.log(done);
+
+  useEffect(() => {
+    props.setScheduleId(done);
+  }, [done]);
+  useEffect(() => {
+    props.setUnfinishedTasks(unFinishedTasks);
+  }, [unFinishedTasks]);
+
   function resetFinishedButton() {
     document.querySelector("#finish").dataset.state = "hidden firstClick";
   }
@@ -31,8 +43,10 @@ export default function Switch(props) {
             className={"switch custom-control-input a" + props.id}
             id={"customSwitch1" + props.id}
             value={props.id}
+            data-state={props.task.scheduleID}
             onChange={(e) => {
               checkSwitches(props.setDisableIt, e); //callback function, that sets if select should be disabled (when no tasks are marked as done) or not.
+              isDone(setDone, props.allTasks, setUnFinishedTasks);
             }}
             disabled
           />

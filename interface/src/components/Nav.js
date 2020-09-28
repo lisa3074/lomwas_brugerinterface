@@ -13,6 +13,7 @@ import {
   shouldYouSave,
 } from "./modules/navigation.js";
 import SaveProgress from "./SaveProgress";
+import UnfinishedTasks from "./UnfinishedTasks.js";
 
 export default function Nav(props) {
   //Basic svg/icon settings converted to an object
@@ -171,52 +172,58 @@ export default function Nav(props) {
             </button>
           </div>
           <article className="unfinished-container" data-state="hidden">
-            <p className="inforbox">Der er uafsluttede opgaver, hvordan skal disse afsluttes?</p>
-            <fieldset className="unfinished">
-              <div className="custom-control custom-radio">
-                <input
-                  type="radio"
-                  id="customRadio1"
-                  name="customRadio"
-                  className="custom-control-input"
-                  onClick={(e) => {
-                    //updater function to change state on radio1 variable to true
-                    setRadio1(true);
-                  }}
-                  defaultChecked
-                />
-                <label className="custom-control-label" htmlFor="customRadio1">
-                  Afsluttes på et senere tidspunkt
-                </label>
-              </div>
+            <div>
+              <p className="infobox">Der er uafsluttede opgaver:</p>
+              <UnfinishedTasks unfinishedTasks={props.unfinishedTasks}></UnfinishedTasks>
+            </div>
+            <div>
+              <p className="infobox">Hvordan skal disse afsluttes?</p>
+              <fieldset className="unfinished">
+                <div className="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio1"
+                    name="customRadio"
+                    className="custom-control-input"
+                    onClick={(e) => {
+                      //updater function to change state on radio1 variable to true
+                      setRadio1(true);
+                    }}
+                    defaultChecked
+                  />
+                  <label className="custom-control-label" htmlFor="customRadio1">
+                    Afsluttes på et senere tidspunkt
+                  </label>
+                </div>
 
-              <div className="custom-control custom-radio">
-                <input
-                  type="radio"
-                  id="customRadio2"
-                  name="customRadio"
-                  className="custom-control-input"
-                  onClick={() => {
-                    //updater function to change state on radio1 variable to false
-                    setRadio1(false);
-                  }}
-                />
-                <label className="custom-control-label" htmlFor="customRadio2">
-                  Kan ikke udføres
-                </label>
-              </div>
+                <div className="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="customRadio2"
+                    name="customRadio"
+                    className="custom-control-input"
+                    onClick={() => {
+                      //updater function to change state on radio1 variable to false
+                      setRadio1(false);
+                    }}
+                  />
+                  <label className="custom-control-label" htmlFor="customRadio2">
+                    Kan ikke udføres
+                  </label>
+                </div>
 
-              <label htmlFor="reason" className="reason hide">
-                Skal udfyldes <span className="required"> *</span>
-                <span className="error"></span>
-              </label>
-              <textarea
-                id="reason"
-                className="form-control hide"
-                rows="2"
-                placeholder="Skriv begrundelse"
-                onKeyUp={resetText}></textarea>
-            </fieldset>
+                <label htmlFor="reason" className="reason hide">
+                  Skal udfyldes <span className="required"> *</span>
+                  <span className="error"></span>
+                </label>
+                <textarea
+                  id="reason"
+                  className="form-control hide"
+                  rows="2"
+                  placeholder="Skriv begrundelse"
+                  onKeyUp={resetText}></textarea>
+              </fieldset>
+            </div>
           </article>
         </div>
       </nav>

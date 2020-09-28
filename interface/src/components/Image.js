@@ -13,12 +13,14 @@ export default function Image(props) {
     strokeLinejoin: "round",
   };
 
+  let imageAmount = -1;
   const items = props.newDrawer.map((item) => (
-    <figure key={item.id} className="image-wrapper">
-      <img className="loadedImage" src={require("../images/" + props.i + ".jpg")} />
-      <figcaption className="figcaption-image"> {props.newDrawer[props.i]}</figcaption>
+    <figure key={item.key} className="image-wrapper">
+      <img className="loadedImage" alt={props.type} src={require(`../images/${(imageAmount += 1)}.jpg`)} />
+      <figcaption className="figcaption-image"> {props.newDrawer[imageAmount]}</figcaption>
     </figure>
   ));
+  console.log(imageAmount);
   return (
     <>
       {props.innerWidth < 767 ? (
@@ -26,7 +28,7 @@ export default function Image(props) {
       ) : (
         <>
           {props.newDrawer[props.i]}
-          <img className="loadedImage" src={require("../images/" + props.i + ".jpg")} />
+          <img className="loadedImage" alt={props.type} src={require("../images/" + props.i + ".jpg")} />
 
           <div className="svg-wrapper">
             <svg

@@ -11,30 +11,35 @@ export default function App() {
   //States
   const [tasks, setTasks] = useState([]);
   const [buildings, setBuildings] = useState([]);
-  const [buildingId, setBuildingId] = useState();
-  const [UpdatedBuildingId, setUpdatedBuildingId] = useState([buildingId]);
+  const [firstBuildingId, setFirstBuildingId] = useState();
   const [disableIt, setDisableIt] = useState([]);
+  const [unfinishedTasks, setUnfinishedTasks] = useState([]);
+  //States for PUT ->
+  const [buildingId, setBuildingId] = useState([]); // current building ID
+  const [taskDate, setTaskDate] = useState([]); // the date of the tasks
+  const [scheduleId, setScheduleId] = useState([]); // the scheduleIDs of the tasks marked as "done"
 
   //function that is being passed to Main.js and called whenever a new building has been selected
   function updateBuildingId(e) {
-    setUpdatedBuildingId(e);
+    setBuildingId(e);
   }
   //fetching buildings for the navigation, and a buildingId for the tasks
   useEffect(() => {
-    FetchData.getBuilding(setBuildings, setBuildingId);
-  }, []);
+    FetchData.getBuilding(setBuildings, setFirstBuildingId, setTaskDate);
+    setBuildingId(firstBuildingId);
+  }, [firstBuildingId]);
 
   //fetches the tasks of the first building (that per say is selected in the navigation).
   //Every time buildingId is updated, tasks are fetched
   useEffect(() => {
-    FetchData.getTasks(buildingId, setTasks);
-  }, [buildingId]);
+    FetchData.getTasks(firstBuildingId, setTasks);
+  }, [firstBuildingId]);
 
   //fetches the tasks of the building selected in the nav Every time updateBuildingId is updated,
   //tasks are fetched (every time a new ubuilding is selected in the nav)
   useEffect(() => {
-    FetchData.getTasks(UpdatedBuildingId, setTasks);
-  }, [UpdatedBuildingId]);
+    FetchData.getTasks(buildingId, setTasks);
+  }, [buildingId]);
 
   //Preloader
   if (tasks) {
@@ -62,10 +67,20 @@ export default function App() {
         buildings={buildings}
         updateBuildingId={updateBuildingId}
         setDisableIt={setDisableIt}
-        disableIt={disableIt}></Nav>
+        disableIt={disableIt}
+        unfinishedTasks={unfinishedTasks}></Nav>
 
       {/* if tasks is true, put the Main component in, otherwise don't put anything in */}
-      {tasks ? <Main tasks={tasks} setDisableIt={setDisableIt}></Main> : ""}
+      {tasks ? (
+        <Main
+          tasks={tasks}
+          setDisableIt={setDisableIt}
+          setScheduleId={setScheduleId}
+          allTasks={tasks}
+          setUnfinishedTasks={setUnfinishedTasks}></Main>
+      ) : (
+        ""
+      )}
     </section>
   );
 }

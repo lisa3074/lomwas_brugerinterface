@@ -6,12 +6,12 @@ export default function DocsAndVideos(props) {
     <>
       {props.type === "video" ? (
         <>
-          <iframe src="https://www.youtube.com/embed/-C-ic2H24OU"></iframe>
+          <iframe src="https://www.youtube.com/embed/-C-ic2H24OU" title="video"></iframe>
           {props.newDrawer[props.elementKey]}
         </>
       ) : props.type === "docs" ? (
         <>
-          <iframe src={require("../docs/0.pdf")} type="application/pdf" view="fit"></iframe>
+          <iframe src={require("../docs/0.pdf")} type="application/pdf" view="fit" title="docs"></iframe>
           {props.newDrawer[props.elementKey]}
         </>
       ) : (

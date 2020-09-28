@@ -24,7 +24,13 @@ export default function Task(props) {
               ... <span className="blue-text">Læs mere</span>
             </p>
           </div>
-          <Switch id={props.id} setDisableIt={props.setDisableIt}></Switch>
+          <Switch
+            id={props.id}
+            setDisableIt={props.setDisableIt}
+            setScheduleId={props.setScheduleId}
+            task={props.task}
+            allTasks={props.allTasks}
+            setUnfinishedTasks={props.setUnfinishedTasks}></Switch>
           <Media
             id={props.id}
             task={props.task}
