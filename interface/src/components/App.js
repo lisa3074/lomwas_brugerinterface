@@ -19,7 +19,7 @@ export default function App() {
   const [taskDate, setTaskDate] = useState([]); // the date of the tasks
   const [scheduleId, setScheduleId] = useState([]); // the scheduleIDs of the tasks marked as "done"
   console.log(`
-    [Paremeters for PUT] || App.js | buildingId: ${buildingId} | taskDate: ${taskDate} | scheduleID: ${scheduleId} |`);
+    [Parameters for PUT] || App.js | buildingId: ${buildingId} | taskDate: ${taskDate} | scheduleID: ${scheduleId} |`);
 
   //function that is being passed to Main.js and called whenever a new building has been selected
   function updateBuildingId(e) {

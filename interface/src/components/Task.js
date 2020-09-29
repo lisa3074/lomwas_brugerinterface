@@ -15,7 +15,7 @@ export default function Task(props) {
             className="accordion-title ui-accordion-header ui-state-active"
             onClick={() => closeExpand("a" + props.id)}>
             <span className="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
-            <p>LOKALE: {props.local.id}</p>
+            <p>Lokale: {props.local.id}</p>
             <p> {props.local.name}</p>
           </div>
           <div className="accordion-body ui-accordion-content" onClick={() => closeExpand("a" + props.id)}>

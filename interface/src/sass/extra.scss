@@ -1,34 +1,36 @@
 /* --------------------
 # EXTRA SWITCH (MEDIA)
 ----------------------- */
-
-.extra {
-  border: none;
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  transform: translateY(-40px) translateX(15px);
-
-  .custom-control.custom-switch {
+#root {
+  .extra {
+    border: none;
     display: flex;
-    flex-direction: row-reverse;
-  }
+    justify-content: flex-end;
+    position: relative;
+    transform: translateY(-40px) translateX(15px);
 
-  .label {
-    position: absolute;
-    right: 2.5rem;
-    top: -0.15rem;
-    text-align: right;
-  }
+    .custom-control.custom-switch {
+      display: flex;
+      flex-direction: row-reverse;
+    }
 
-  .custom-control {
-    right: 0.9rem;
-  }
+    .label {
+      position: absolute;
+      right: 2.5rem;
+      top: -0.15rem;
+      text-align: right;
+      color: #1b2e4b;
+    }
 
-  .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
-    transform: translate(0.86rem, -50%);
-  }
-  .custom-switch .custom-control-input ~ .custom-control-label::after {
-    transform: translate(0.16rem, -50%);
+    .custom-control {
+      right: 0.9rem;
+    }
+
+    .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+      transform: translate(0.86rem, -50%);
+    }
+    .custom-switch .custom-control-input ~ .custom-control-label::after {
+      transform: translate(0.16rem, -50%);
+    }
   }
 }

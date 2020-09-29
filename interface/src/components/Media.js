@@ -4,7 +4,7 @@ import { popup } from "./modules/popup.js";
 import { popover } from "./modules/popover.js";
 import Popover from "./Popover";
 
-export default function Media(props, { getMedia }) {
+export default function Media(props) {
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
@@ -23,15 +23,12 @@ export default function Media(props, { getMedia }) {
 
   //Call the passed down function getMedia only when dependency [drawer] change.
 
-  //Har alle de krævede i dependencies, men kan ikke teste om det virker ->
-  /*   useEffect(() => {
-    getMedia(drawer, type);
-  }, [drawer, type, getMedia]); */
-
-  //hvis ovenstående ikke virker ->
   useEffect(() => {
     props.getMedia(drawer, type);
-  }, [drawer]);
+    /*  disable eslint warning. In this specific case there is no reason, since the only dependencies 
+  needed are the two constants below and not props.getMedia => */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [drawer, type]);
 
   function popoverContent(e) {
     let count = -1;

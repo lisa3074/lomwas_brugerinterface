@@ -4,33 +4,18 @@ import { closeExpand } from "./modules/closeExpand";
 import { isDone } from "./modules/switch.js";
 import { checkSwitches } from "./modules/navigation.js";
 
-//uden destructured props, uden setScheduleId og setUnfinishedTasks i dependencies (giver warning, men virker)
 export default function Switch(props) {
   const [done, setDone] = useState([]);
   const [unFinishedTasks, setUnFinishedTasks] = useState([]);
-  console.log(done);
-
-  useEffect(() => {
-    props.setScheduleId(done);
-  }, [done]);
-
-  useEffect(() => {
-    props.setUnfinishedTasks(unFinishedTasks);
-  }, [unFinishedTasks]);
-
-  //med destructured props, uden setScheduleId og setUnfinishedTasks i dependencies (giver ingen warning, men kan ikke teste om det virker)
-  /* export default function Switch(props, { setScheduleId, setUnfinishedTasks }) {
-  const [done, setDone] = useState([]);
-  const [unFinishedTasks, setUnFinishedTasks] = useState([]);
-  console.log(done);
-
+  //destructuring the two functions, så they can be used as a dependency in useEffect
+  const { setScheduleId, setUnfinishedTasks } = props;
   useEffect(() => {
     setScheduleId(done);
   }, [done, setScheduleId]);
 
   useEffect(() => {
     setUnfinishedTasks(unFinishedTasks);
-  }, [unFinishedTasks, setUnfinishedTasks]); */
+  }, [unFinishedTasks, setUnfinishedTasks]);
 
   function resetFinishedButton() {
     document.querySelector("#finish").dataset.state = "hidden firstClick";
@@ -67,7 +52,7 @@ export default function Switch(props) {
             disabled
           />
           <label className="custom-control-label" htmlFor={"customSwitch1" + props.id}>
-            AFSLUTTET
+            Afsluttet
           </label>
         </div>
       </fieldset>

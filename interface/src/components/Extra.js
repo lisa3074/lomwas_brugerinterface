@@ -7,7 +7,7 @@ export default function Extra() {
   }
   return (
     <fieldset className="extra">
-      <p className="label"> EXTRA</p>
+      <p className="label"> Ekstra</p>
       <div className="custom-control custom-switch">
         <input
           type="checkbox"

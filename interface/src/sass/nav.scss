@@ -23,7 +23,7 @@
     height: auto;
     max-height: 100%;
     overflow: hidden;
-    padding: 1rem;
+    padding: 1.5rem 1rem 1rem;
   }
 
   .fire-dialogbox {
@@ -134,11 +134,12 @@
     p {
       font-size: 0.875rem;
       color: #001737;
-      text-transform: uppercase;
+
       margin-bottom: 0;
     }
     ul {
       padding-bottom: 1rem;
+
       li {
         line-height: 1.7rem;
       }
@@ -168,7 +169,7 @@
 }
 @media (min-width: 400px) {
   #Nav .btn-container {
-    grid-template-columns: 7rem 7rem auto 6rem;
+    grid-template-columns: 6rem 7rem auto 6rem;
     button:not(.undone) {
       padding: 0.391rem 0.5rem;
     }
@@ -192,12 +193,19 @@
   #Nav .btn-container {
     display: grid;
     grid-template-areas: "start reset space undone message";
-    grid-template-columns: 7rem 7rem auto 13rem 6rem;
+    grid-template-columns: 6rem 7rem auto 13rem 6rem;
     grid-column-gap: 1%;
     justify-content: initial;
 
     button:not(.undone) {
       padding: 0.391rem 0.5rem;
+    }
+
+    .unfinished-container {
+      ul {
+        padding-bottom: 0rem;
+        margin-bottom: 0rem;
+      }
     }
   }
 
