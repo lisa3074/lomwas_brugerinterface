@@ -111,7 +111,7 @@ export default function Nav(props) {
             Bygninger<span> *</span>
           </p>
           <div
-            className="fire-dialogbox"
+            className="fire-dialogbox hide"
             style={zindex}
             //make select clickable, when disabled so that dialog box pops up
             onClick={() => {

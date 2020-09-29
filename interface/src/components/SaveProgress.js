@@ -1,5 +1,5 @@
 import React from "react";
-import { closeDialog, reset } from "./modules/navigation.js";
+import { closeDialog, reset, shouldYouSave } from "./modules/navigation.js";
 import "../../src/sass/saveProgress.scss";
 
 export default function SaveProgress({ shouldSelectBeDisabled, isDataStateHidden, setDataState, setRadio1, radio1 }) {
@@ -44,12 +44,13 @@ export default function SaveProgress({ shouldSelectBeDisabled, isDataStateHidden
                     isDataStateHidden(e); //check if data state is hidden on this element
                     closeDialog(); //close dialog box
                     setDataState(radio1, setRadio1); //reset radio1 state
+                    shouldYouSave(e);
                   }}>
                   <svg {...svgSettings} className="feather feather-check-circle wd-10 mg-r-5">
                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                   </svg>
-                  Afslut
+                  Gem
                 </button>
                 <button
                   className="btn btn-warning reset"

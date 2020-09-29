@@ -201,17 +201,19 @@ export function checkSwitches(callback, e) {
   //check if minimum 1 task is marked complete, if yes disable select, if not enable select
   if (e.target.checked) {
     HTML.tasksChecked++;
+    document.querySelector(".fire-dialogbox").classList.remove("hide");
     callback("hidden");
   } else {
     HTML.tasksChecked--;
     if (HTML.tasksChecked <= 0) {
+      document.querySelector(".fire-dialogbox").classList.add("hide");
       callback("");
     }
   }
 }
 export function shouldYouSave(e) {
   init();
-  console.log("[function] || navigation.js || unfinishedTasks");
+  console.log("[function] || navigation.js || shouldYouSave");
   if (!HTML.finish.classList.contains("hide") && HTML.finish.disabled === false) {
     saveProgress();
   } else if (e.target.classList.contains("undone")) {
@@ -220,5 +222,14 @@ export function shouldYouSave(e) {
     console.log("go back"); //set go back
   } else if (e.target.classList.contains("message")) {
     console.log("start message"); //set start message
+  }
+  if (e.target.classList.contains("start")) {
+    setTimeout(() => {
+      if (HTML.finish.classList.contains("hide")) {
+        console.log("JAAA");
+        document.querySelector("select.custom-select").removeAttribute("disabled");
+        document.querySelector(".fire-dialogbox").classList.add("hide");
+      }
+    }, 100);
   }
 }
