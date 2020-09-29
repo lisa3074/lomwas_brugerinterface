@@ -226,7 +226,6 @@ export function shouldYouSave(e) {
   if (e.target.classList.contains("start")) {
     setTimeout(() => {
       if (HTML.finish.classList.contains("hide")) {
-        console.log("JAAA");
         document.querySelector("select.custom-select").removeAttribute("disabled");
         document.querySelector(".fire-dialogbox").classList.add("hide");
       }
