@@ -1,7 +1,7 @@
 import React from "react";
 import { reset } from "./modules/navigation.js";
 
-export default function Reset({ shouldSelectBeDisabled }) {
+export default function Reset({ shouldSelectBeDisabled, setStartIsPressed }) {
   const svgSettings = {
     xmlns: "http://www.w3.org/2000/svg",
     width: "24",
@@ -20,6 +20,7 @@ export default function Reset({ shouldSelectBeDisabled }) {
       onClick={() => {
         reset(); //reset all progress
         shouldSelectBeDisabled(""); //check if select element should be disabled
+        setStartIsPressed(false);
       }}>
       <svg {...svgSettings} className="feather feather-x-circle wd-10 mg-r-5">
         <circle cx="12" cy="12" r="10"></circle>

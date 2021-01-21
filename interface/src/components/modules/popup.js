@@ -6,6 +6,9 @@ export function popup() {
 export function close(e, setI) {
   console.log("[function] || popup.js | close | e: " + e);
   const image = document.querySelector(".Popup ul.image");
+  document.querySelectorAll(".feather-image").forEach((image) => {
+    image.classList.remove("image");
+  });
   if (e.classList.contains("Popup") || e.classList.contains("close-it") || e.nodeName === "line") {
     document.querySelector(".Popup").classList.add("hide");
     setI(0);

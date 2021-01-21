@@ -1,0 +1,360 @@
+{
+  "schedules": [
+    {
+      "building": 19,
+      "id": 71086,
+      "scheduleID": 60,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 19,
+        "type": 1,
+        "name": "Kontor",
+        "floor": 1,
+        "squareUnit": 20
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 19,
+      "id": 29443,
+      "scheduleID": 2,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 4,
+        "type": 1,
+        "name": "Mødelokale",
+        "floor": 0,
+        "squareUnit": 12
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 2,
+      "id": 13354,
+      "scheduleID": 3,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige borde og stole Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag ",
+      "notes": "Leverandørens egen opgavebeskrivelse",
+      "local": {
+        "id": 1,
+        "type": 1,
+        "name": "Mødelokale",
+        "floor": 0,
+        "squareUnit": 125.5
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 2,
+      "id": 51896,
+      "scheduleID": 6,
+      "description": "Rengøring af håndvaske, armaturer, spejle, hylder samt væg omkring håndvaske - Rengøring af toilet - Udskiftning af hygiejneposer & håndklæder - Opfyldning af sæbe og papirvarer - Hårde gulve: Let støvsugning - Vask af gulv",
+      "notes": "Leverandørens egen opgavebeskrivelse",
+      "local": {
+        "id": 2,
+        "type": 1,
+        "name": "Toilet",
+        "floor": 0,
+        "squareUnit": 19.7
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 1,
+      "id": 33453,
+      "scheduleID": 26,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 9,
+        "type": 1,
+        "name": "Mødelokale, lille",
+        "floor": 0,
+        "squareUnit": 35
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 15,
+      "id": 30782,
+      "scheduleID": 22,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 5,
+        "type": 1,
+        "name": "Kontor",
+        "floor": 0,
+        "squareUnit": 12
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 6,
+      "id": 56999,
+      "scheduleID": 48,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 2,
+        "type": 1,
+        "name": "Kontor",
+        "floor": 0,
+        "squareUnit": 29
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 22,
+      "id": 53030,
+      "scheduleID": 45,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige borde og stole Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag ",
+      "local": {
+        "id": 3,
+        "type": 1,
+        "name": "Mødelokale",
+        "floor": 0,
+        "squareUnit": 20
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 21,
+      "id": 54353,
+      "scheduleID": 46,
+      "description": "Rengøring af håndvaske, armaturer, spejle, hylder samt væg omkring håndvaske - Rengøring af toilet - Udskiftning af hygiejneposer & håndklæder - Opfyldning af sæbe og papirvarer - Hårde gulve: Let støvsugning - Vask af gulv",
+      "local": {
+        "id": 6,
+        "type": 1,
+        "name": "Toilet",
+        "floor": 0,
+        "squareUnit": 6
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 19,
+      "id": 59644,
+      "scheduleID": 50,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask - Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 7,
+        "type": 1,
+        "name": "Køkken",
+        "floor": 0,
+        "squareUnit": 34
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 19,
+      "id": 556761,
+      "scheduleID": 47,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige borde og stole Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag ",
+      "local": {
+        "id": 29,
+        "type": 1,
+        "name": "Mødelokale, Lille",
+        "floor": 2,
+        "squareUnit": 23
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 1,
+      "id": 710861,
+      "scheduleID": 601,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 10,
+        "type": 1,
+        "name": "Køkken",
+        "floor": 1,
+        "squareUnit": 20
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 1,
+      "id": 294431,
+      "scheduleID": 21,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 34,
+        "type": 1,
+        "name": "Konto",
+        "floor": 3,
+        "squareUnit": 12
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 2,
+      "id": 133541,
+      "scheduleID": 31,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige borde og stole Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag ",
+      "notes": "Leverandørens egen opgavebeskrivelse",
+      "local": {
+        "id": 45,
+        "type": 1,
+        "name": "Mødelokale",
+        "floor": 4,
+        "squareUnit": 125.5
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 2,
+      "id": 518961,
+      "scheduleID": 61,
+      "description": "Rengøring af håndvaske, armaturer, spejle, hylder samt væg omkring håndvaske - Rengøring af toilet - Udskiftning af hygiejneposer & håndklæder - Opfyldning af sæbe og papirvarer - Hårde gulve: Let støvsugning - Vask af gulv",
+      "notes": "Leverandørens egen opgavebeskrivelse",
+      "local": {
+        "id": 12,
+        "type": 1,
+        "name": "Toilet",
+        "floor": 1,
+        "squareUnit": 19.7
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 1,
+      "id": 334531,
+      "scheduleID": 261,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 50,
+        "type": 1,
+        "name": "Chef kontor",
+        "floor": 5,
+        "squareUnit": 35
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 15,
+      "id": 307821,
+      "scheduleID": 221,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 22,
+        "type": 1,
+        "name": "Chef kontor",
+        "floor": 2,
+        "squareUnit": 12
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 6,
+      "id": 569991,
+      "scheduleID": 481,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask ( incl. Køreunderlag ) Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 23,
+        "type": 1,
+        "name": "Mødelokale, stor",
+        "floor": 2,
+        "squareUnit": 29
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 22,
+      "id": 530301,
+      "scheduleID": 451,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige borde og stole Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag ",
+      "local": {
+        "id": 24,
+        "type": 1,
+        "name": "Toilet",
+        "floor": 2,
+        "squareUnit": 20
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 21,
+      "id": 543531,
+      "scheduleID": 461,
+      "description": "Rengøring af håndvaske, armaturer, spejle, hylder samt væg omkring håndvaske - Rengøring af toilet - Udskiftning af hygiejneposer & håndklæder - Opfyldning af sæbe og papirvarer - Hårde gulve: Let støvsugning - Vask af gulv",
+      "local": {
+        "id": 25,
+        "type": 1,
+        "name": "Køkken",
+        "floor": 2,
+        "squareUnit": 6
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 19,
+      "id": 596441,
+      "scheduleID": 501,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige skrive- og arbejdsborde samt øvrige borde - Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask - Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag",
+      "local": {
+        "id": 26,
+        "type": 1,
+        "name": "Mødelokale",
+        "floor": 2,
+        "squareUnit": 34
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    },
+    {
+      "building": 19,
+      "id": 556761,
+      "scheduleID": 471,
+      "description": "Inventar: Tømning af papirkurve og affaldsspande samt udskiftning af plastposer efter behov - Aftørring af tilgængelige borde og stole Nedtagning af spindelvæv - Tæpper: Støvsugning af tæpper og måtter - Hårde gulve: Støvsugning og vask Afstøvning eller aftørring af skabe udvendigt samt af frie hylder indtil nå højde 180 cm - Aftørring af tilgængelige vindues karme - Afstøvning af lamper indtil 180 cm - Aftørring af fingermærker på døre og omkring dørhåndtag ",
+      "local": {
+        "id": 32,
+        "type": 1,
+        "name": "Mødelokale, stor",
+        "floor": 3,
+        "squareUnit": 23
+      },
+      "running": false,
+      "date": "2021-01-21 00:00",
+      "hours": 0
+    }
+  ]
+}

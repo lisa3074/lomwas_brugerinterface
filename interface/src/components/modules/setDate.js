@@ -1,14 +1,17 @@
 const HTML = {};
 
 export function initDate(date) {
+  console.log(date);
   console.log("[function] || setDate.js | initDate | date: " + date);
   HTML.dateString = date.toString();
   HTML.newDay = HTML.dateString.substring(8, 10);
   HTML.newYear = HTML.dateString.substring(0, 4);
   HTML.d = new Date(date);
   HTML.weekNumber = getWeekNumber();
-  setDate();
-  setDateEn();
+  setTimeout(() => {
+    setDate();
+    setDateEn();
+  }, 100);
 }
 
 function getWeekNumber() {

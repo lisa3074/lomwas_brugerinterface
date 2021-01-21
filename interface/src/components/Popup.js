@@ -23,7 +23,7 @@ export default function Popup(props) {
   //states
   let [i, setI] = useState(0);
 
-  let [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  let [innerWidth, setInnerWidth] = useState(document.body.clientWidth);
 
   window.addEventListener("resize", resizeHandler);
   function resizeHandler() {

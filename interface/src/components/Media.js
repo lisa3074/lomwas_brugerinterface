@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../sass/media.scss";
 import { popup } from "./modules/popup.js";
-import { popover } from "./modules/popover.js";
+import { popover, closePopOver } from "./modules/popover.js";
 import Popover from "./Popover";
 
 export default function Media(props) {
@@ -50,10 +50,10 @@ export default function Media(props) {
         }>
         {/* test input */}
         {e === "video"
-          ? item.local.name + " AND " + item.id
+          ? item.local.name + " (id: " + item.id + ")"
           : e === "docs"
-          ? item.local.type.name + " AND " + item.id
-          : item.local.type.name + " AND " + item.id}
+          ? "Doc " + item.id
+          : "Photo " + item.id}
       </li>
     ));
 
@@ -83,7 +83,7 @@ export default function Media(props) {
       <svg
         {...svgSettings}
         className={"feather feather-image a" + props.id}
-        onClick={(e) => popoverContent("image") + popup(e.target)}>
+        onClick={(e) => popoverContent("image") + popup(e.target) + closePopOver()}>
         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
         <circle cx="8.5" cy="8.5" r="1.5"></circle>
         <polyline points="21 15 16 10 5 21"></polyline>

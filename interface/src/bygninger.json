@@ -1,0 +1,74 @@
+{
+  "buildings": [
+    {
+      "disabled": false,
+      "group": {
+        "disabled": false,
+        "name": "H. Lundbeck A/S "
+      },
+      "selected": false,
+      "text": "Carsten Petersen Holding (Ladelundvej 82)",
+      "value": "19"
+    },
+    {
+      "disabled": false,
+      "group": {
+        "disabled": false,
+        "name": "H. Lundbeck A/S "
+      },
+      "selected": false,
+      "text": "HP Bygning (Ladelundvej 82)",
+      "value": "2"
+    },
+    {
+      "disabled": false,
+      "group": {
+        "disabled": false,
+        "name": "H. Lundbeck A/S "
+      },
+      "selected": false,
+      "text": "LOMWAS™ (Danneskiold-Samsøes Allè 41)",
+      "value": "1"
+    },
+    {
+      "disabled": false,
+      "group": {
+        "disabled": false,
+        "name": "H. Lundbeck A/S "
+      },
+      "selected": false,
+      "text": "Montagehal (Landvej 1)",
+      "value": "15"
+    },
+    {
+      "disabled": false,
+      "group": {
+        "disabled": false,
+        "name": "H. Lundbeck A/S "
+      },
+      "selected": false,
+      "text": "Produktionen (Gøteborg Plads 7)",
+      "value": "6"
+    },
+    {
+      "disabled": false,
+      "group": {
+        "disabled": false,
+        "name": "H. Lundbeck A/S "
+      },
+      "selected": false,
+      "text": "Testlaboratorier (Nyvej 1)",
+      "value": "22"
+    },
+    {
+      "disabled": false,
+      "group": {
+        "disabled": false,
+        "name": "H. Lundbeck A/S "
+      },
+      "selected": false,
+      "text": "Udvikling (Rørvej 3)",
+      "value": "21"
+    }
+  ]
+}

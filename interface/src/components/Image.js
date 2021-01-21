@@ -20,6 +20,7 @@ export default function Image(props) {
       <figcaption className="figcaption-image"> {props.newDrawer[imageAmount]}</figcaption>
     </figure>
   ));
+
   console.log(imageAmount);
   return (
     <>

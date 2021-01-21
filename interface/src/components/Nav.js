@@ -68,9 +68,9 @@ export default function Nav(props) {
   //set if select should be disabled (React component)
   function shouldSelectBeDisabled(startState) {
     console.log("[function] || isStartHidden | function passed to Start.js and called from there");
+    console.log(startState);
     props.setDisableIt(startState);
   }
-
   //Set if select should be disabled (javaScript module)
   function getDataState() {
     changeDataState(props.setDisableIt);
@@ -82,6 +82,7 @@ export default function Nav(props) {
     console.log("[function] || Start.js | isDataStateHidden");
     const isButtonHidden = e.target.dataset.state.substring(0, 6);
     shouldSelectBeDisabled(isButtonHidden);
+
     finish();
     unable();
   }

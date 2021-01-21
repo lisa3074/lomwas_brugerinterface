@@ -27,3 +27,17 @@ export function popover(id, e, eClass, eRemove) {
     }
   });
 }
+export function closePopOver() {
+  document.querySelectorAll(".Popover").forEach((popover) => {
+    popover.classList.add("hide");
+  });
+  document.querySelectorAll(".feather-film").forEach((film) => {
+    film.classList.remove("video");
+  });
+  document.querySelectorAll(".feather-file").forEach((file) => {
+    file.classList.remove("docs");
+  });
+  document.querySelectorAll(".feather-image").forEach((image) => {
+    image.classList.add("image");
+  });
+}
